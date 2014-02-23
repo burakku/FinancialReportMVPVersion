@@ -6,8 +6,8 @@ public interface UserModel {
 	boolean checkUser(String userId);
 	User getUserById(String userID);
 	Collection<User> getUserList();
-	void addUser(User user);
+	boolean addUser(User user);
 	void removeUser(User user);
 	
-	
+	 
 }
