@@ -19,9 +19,17 @@ public class RegisterPresenter {
 		String userId = register.getUserid();
 		String password = register.getPassword();
 		String name = register.getName();
+		String text = "";
 		
-		newUser = new User(userId, password, name);
-		model.addUser(newUser);
-		register.goUserPage();
+		if(userId.equals("") || password.equals("") || name.equals("")){
+			text = "Please fill out all fields!";
+		} else if(model.getUserById(userId)!= null){
+			text = "The username already exsit, please try another one!";
+		} else {
+			newUser = new User(userId, password, name);
+			model.addUser(newUser);
+			register.goUserPage();
+		}
+		
 	}
 }

@@ -18,6 +18,7 @@ public class LoginPresenter {
 		String userIdInput = login.getUserid();
 		String passwordInput = login.getUserPassword();
 		String password;
+		String result;
 		User user;
 		boolean userExist = model.checkUser(userIdInput);
 		boolean verified;
@@ -31,7 +32,8 @@ public class LoginPresenter {
 				login.goUserPage();
 			}
 		} else {
-			//login.setResultText(//erro msg);
+			result = "Invalid Username or password";
+			login.setResultText(result);
 		}
 	}
 }
