@@ -8,6 +8,16 @@
     android:paddingRight="10sp" >
 
     <EditText
+        android:id="@+id/regName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:hint="Name"
+        android:inputType="textEmailAddress" >
+    </EditText>
+
+    <EditText
         android:id="@+id/regUserid"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -24,16 +34,6 @@
         android:gravity="center"
         android:hint="password"
         android:inputType="textPassword" >
-    </EditText>
-
-    <EditText
-        android:id="@+id/regEmail"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:hint="Email"
-        android:inputType="textEmailAddress" >
     </EditText>
 
     <TextView
