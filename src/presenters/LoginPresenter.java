@@ -31,7 +31,7 @@ public class LoginPresenter {
 				login.goUserPage();
 			}
 		} else {
-			login.setResultText(//erro msg);
+			//login.setResultText(//erro msg);
 		}
 	}
 }
