@@ -7,10 +7,6 @@ import java.util.Map;
 public class MemoryModel implements UserModel{
 	private static Map<String, User> userList = new HashMap<String, User>();
 	// Initialize administrative account
-	static {
-		userList.put("admin",new User("admin","pass123", "Admin"));
-	}
-	 
 /*********************************************
  * method to check if a user is contained in 
  * the userList by its userId

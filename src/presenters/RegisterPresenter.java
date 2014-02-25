@@ -5,30 +5,28 @@ import model.User;
 import views.IRegisterView;
 
 public class RegisterPresenter {
-	private IRegisterView register;
-	private MemoryModel model;
-	private User newUser;
+	private IRegisterView view;
 	
-	public RegisterPresenter(IRegisterView r, MemoryModel m) {
-		register = r;
-		model = m;
+	public RegisterPresenter(IRegisterView v) {
+		view = v;
 		//add clickListener
 	}
 	
 	public void onClick() {
-		String userId = register.getUserid();
-		String password = register.getPassword();
-		String name = register.getName();
+		String userId = view.getUserid();
+		String password = view.getPassword();
+		String name = view.getName();
+		String email = view.getEmail();
 		String text = "";
 		
-		if(userId.equals("") || password.equals("") || name.equals("")){
+		if(userId.equals("") || password.equals("") || name.equals("")||email.equals("")){
 			text = "Please fill out all fields!";
-		} else if(model.getUserById(userId)!= null){
+		} else if(view.findUser(userId)!= User.NULL_USER){
 			text = "The username already exsit, please try another one!";
 		} else {
-			newUser = new User(userId, password, name);
-			model.addUser(newUser);
-			register.goUserPage();
+			User newUser = new User(userId, password, name,email);
+			view.addUser(newUser);
+			view.goUserPage();
 		}
 		
 	}

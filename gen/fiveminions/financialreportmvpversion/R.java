@@ -47,26 +47,28 @@ public final class R {
         public static final int pressed=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000c;
+        public static final int action_settings=0x7f09000d;
         public static final int bLogin=0x7f090001;
         public static final int bRegister=0x7f090000;
         public static final int loginText=0x7f090003;
         public static final int loginbutton=0x7f090006;
         public static final int mainText=0x7f090002;
         public static final int passwordLog=0x7f090005;
+        public static final int regEmail=0x7f09000a;
         public static final int regName=0x7f090007;
         public static final int regPassword=0x7f090009;
-        public static final int regText=0x7f09000a;
+        public static final int regText=0x7f09000b;
         public static final int regUserid=0x7f090008;
-        public static final int signUP=0x7f09000b;
+        public static final int signUP=0x7f09000c;
         public static final int usernameLog=0x7f090004;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int login=0x7f030001;
-        public static final int register=0x7f030002;
-        public static final int userpage=0x7f030003;
-        public static final int welcome=0x7f030004;
+        public static final int adminpage=0x7f030001;
+        public static final int login=0x7f030002;
+        public static final int register=0x7f030003;
+        public static final int userpage=0x7f030004;
+        public static final int welcome=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;
