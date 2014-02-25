@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity implements IMainView{
-	public static final String LOGTAG = "GreenLeaf";
+	public static final String LOGTAG = "Clover";
 	private MainPresenter mainPresenter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

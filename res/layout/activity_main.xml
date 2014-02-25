@@ -50,7 +50,7 @@
         android:shadowRadius="1.5"
         android:text="@string/app_name"
         android:textColor="#37b810"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
