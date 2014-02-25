@@ -1,5 +1,7 @@
 package views;
 
+import model.User;
+
 public interface ILoginView {
 	/**
 	 * get user id from user's input
@@ -14,4 +16,6 @@ public interface ILoginView {
 	 */
 	void setResultText(String text);
 	void goUserPage();
+	User findUser(String uid);
+	void goAdminPage();
 }

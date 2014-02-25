@@ -1,6 +1,8 @@
 package fiveminions.financialreportmvpversion;
 
-import model.MemoryModel;
+
+import database.FinancialUserSource;
+import model.User;
 import presenters.RegisterPresenter;
 import views.IRegisterView;
 import android.app.Activity;
@@ -13,8 +15,9 @@ import android.widget.TextView;
 public class RegisterActivity extends Activity implements IRegisterView{
 
 	private RegisterPresenter regPresenter;
-	EditText name, userID, password;
+	EditText name, userID, password,email;
 	TextView resultTxt;
+	private FinancialUserSource datasource;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +25,26 @@ public class RegisterActivity extends Activity implements IRegisterView{
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.register);
-		regPresenter = new RegisterPresenter(this, new MemoryModel());
+		regPresenter = new RegisterPresenter(this);
 		
 		name = (EditText) findViewById(R.id.regName);
 		userID = (EditText) findViewById(R.id.regUserid);
 		password = (EditText) findViewById(R.id.regPassword);
+		email = (EditText) findViewById(R.id.regEmail);
+		datasource = new FinancialUserSource(this);
 		
-		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		datasource.open();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		datasource.close();
 	}
 	
 	public void onSignUpButtonClick(View v){
@@ -37,34 +53,45 @@ public class RegisterActivity extends Activity implements IRegisterView{
 
 	@Override
 	public String getUserid() {
-		// TODO Auto-generated method stub
-		return userID.toString();
+		return userID.getText().toString();
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return password.toString();
+		return password.getText().toString();
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return name.toString();
+		return name.getText().toString();
 	}
 
 	@Override
 	public void setRegisterText(String text) {
-		// TODO Auto-generated method stub
 		resultTxt.setText(text);
 		
 	}
 
 	@Override
 	public void goUserPage() {
-		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, UserpageActivity.class );
 		startActivity(intent);		
+	}
+
+	@Override
+	public String getEmail() {
+		return email.getText().toString();
+	}
+
+	@Override
+	public void addUser(User user) {
+		datasource.addUser(user);	
+		
+	}
+
+	@Override
+	public User findUser(String uid) {
+		return datasource.findUser(uid);
 	}
 
 }

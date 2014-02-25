@@ -5,35 +5,32 @@ import model.User;
 import views.ILoginView;
 
 public class LoginPresenter {
-	private ILoginView login;
-	private MemoryModel model;
+	private ILoginView view;
 	
-	public LoginPresenter(ILoginView l, MemoryModel m) {
-		login = l;
-		model = m;
+	public LoginPresenter(ILoginView l) {
+		view = l;
 		//add clickListner
 	}
 	
 	public void onClick() {
-		String userIdInput = login.getUserid();
-		String passwordInput = login.getUserPassword();
-		String password;
-		String result;
-		User user;
-		boolean userExist = model.checkUser(userIdInput);
-		boolean verified;
-		
-		if (userExist) {
-			user = model.getUserById(userIdInput);
-			password = user.getPassword();
-			verified = passwordInput.equals(password);
-			
-			if (verified) {
-				login.goUserPage();
+		String uid = view.getUserid();
+		String pw = view.getUserPassword();
+		String text = "";
+		User user = view.findUser(uid);
+		if(uid.equals("") || pw.equals("")){
+			text = "Username or Password cannot be empty!";
+		} else if(user==User.NULL_USER){
+			text = "The userId does not exsit!";
+		} else if(user.getPassword().equals(pw)){
+			if(user.getUserID().equals("admin")){
+				view.goAdminPage();
+			} else {
+				view.goUserPage();
 			}
+			
 		} else {
-			result = "Invalid Username or password";
-			login.setResultText(result);
+			text = "The password is incorrect!";
 		}
+		view.setResultText(text);
 	}
 }
