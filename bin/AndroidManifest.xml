@@ -48,6 +48,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+=======
+              <activity
+            android:name=".AdminPageActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="fiveminions.financialreportmvpversion.ADMINPAGEACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+>>>>>>> b37665fa4bb6d984c6f9efee0c61a10ea3c2bc71
     </application>
 
 </manifest>
