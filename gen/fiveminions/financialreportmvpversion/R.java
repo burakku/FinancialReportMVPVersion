@@ -48,15 +48,15 @@ public final class R {
     }
     public static final class id {
         public static final int accountText=0x7f090011;
-        public static final int action_settings=0x7f09001c;
-        public static final int add_new_account=0x7f09001b;
+        public static final int action_settings=0x7f090020;
+        public static final int add_new_account=0x7f09001f;
         public static final int bLogin=0x7f090001;
         public static final int bRegister=0x7f090000;
         public static final int delete_userB=0x7f090008;
         public static final int email=0x7f090006;
         public static final int loginText=0x7f090009;
         public static final int loginbutton=0x7f09000c;
-        public static final int logoutButton=0x7f090019;
+        public static final int logoutButton=0x7f09001d;
         public static final int mainText=0x7f090002;
         public static final int name=0x7f090003;
         public static final int newAcBalance=0x7f09000f;
@@ -65,16 +65,20 @@ public final class R {
         public static final int newAcName=0x7f09000d;
         public static final int password=0x7f090005;
         public static final int passwordLog=0x7f09000b;
-        public static final int regEmail=0x7f090015;
-        public static final int regName=0x7f090012;
-        public static final int regPassword=0x7f090014;
-        public static final int regText=0x7f090016;
-        public static final int regUserid=0x7f090013;
+        public static final int regEmail=0x7f090019;
+        public static final int regName=0x7f090013;
+        public static final int regPassword=0x7f090017;
+        public static final int regText=0x7f09001a;
+        public static final int regUserid=0x7f090015;
         public static final int reset_passwordB=0x7f090007;
-        public static final int setting_account_button=0x7f090018;
-        public static final int signUP=0x7f090017;
-        public static final int userPageName=0x7f09001a;
-        public static final int user_page_setting=0x7f09001d;
+        public static final int setting_account_button=0x7f09001c;
+        public static final int signUP=0x7f09001b;
+        public static final int textEmail=0x7f090018;
+        public static final int textName=0x7f090012;
+        public static final int textPassword=0x7f090016;
+        public static final int textUserid=0x7f090014;
+        public static final int userPageName=0x7f09001e;
+        public static final int user_page_setting=0x7f090021;
         public static final int username=0x7f090004;
         public static final int usernameLog=0x7f09000a;
     }
