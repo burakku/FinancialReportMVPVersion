@@ -24,7 +24,6 @@ public interface IRegisterView {
 	 * set display result text to show any error
 	 */
 	void setRegisterText(String text);
-	void goUserPage();
 	/**
 	 * addUser into model
 	 */
@@ -35,4 +34,5 @@ public interface IRegisterView {
 	 * @return
 	 */
 	User findUser(String uid);
+	void goLoginPage();
 }

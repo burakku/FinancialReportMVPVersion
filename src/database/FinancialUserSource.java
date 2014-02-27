@@ -96,4 +96,10 @@ public class FinancialUserSource {
 		}
 		return users;
 	}
+
+	public void removeUser(String userID) {
+		String[] value = new String[]{userID};
+		db.delete(FinancialDBOpenHelper.TABLE_USERS, FinancialDBOpenHelper.COLUMN_USERID + "=?", value);
+		Log.i(LOGTAG, "Delete user : " + userID);
+	}
 }

@@ -26,8 +26,8 @@ public class RegisterPresenter {
 		} else {
 			User newUser = new User(userId, password, name,email);
 			view.addUser(newUser);
-			view.goUserPage();
+			view.goLoginPage();
 		}
-		
+		view.setRegisterText(text);
 	}
 }

@@ -70,6 +70,8 @@ public class LoginActivity extends Activity implements ILoginView {
 	@Override
 	public void goUserPage() {
 		Intent intent = new Intent(this, UserpageActivity.class );
+		User user = findUser(getUserid());
+		intent.putExtra("model.User", user);
 		startActivity(intent);		
 	}
 

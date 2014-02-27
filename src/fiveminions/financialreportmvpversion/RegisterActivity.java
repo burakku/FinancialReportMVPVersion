@@ -1,6 +1,5 @@
 package fiveminions.financialreportmvpversion;
 
-
 import database.FinancialUserSource;
 import model.User;
 import presenters.RegisterPresenter;
@@ -12,42 +11,44 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class RegisterActivity extends Activity implements IRegisterView{
+public class RegisterActivity extends Activity implements IRegisterView {
 
 	private RegisterPresenter regPresenter;
-	EditText name, userID, password,email;
+	EditText name, userID, password, email;
 	TextView resultTxt;
 	private FinancialUserSource datasource;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.register);
 		regPresenter = new RegisterPresenter(this);
-		
+
 		name = (EditText) findViewById(R.id.regName);
 		userID = (EditText) findViewById(R.id.regUserid);
 		password = (EditText) findViewById(R.id.regPassword);
 		email = (EditText) findViewById(R.id.regEmail);
+		resultTxt = (TextView) findViewById(R.id.regText);
 		datasource = new FinancialUserSource(this);
-		
+
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		datasource.open();
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
 		datasource.close();
+		finish();
 	}
-	
-	public void onSignUpButtonClick(View v){
+
+	public void onSignUpButtonClick(View v) {
 		regPresenter.onClick();
 	}
 
@@ -69,13 +70,13 @@ public class RegisterActivity extends Activity implements IRegisterView{
 	@Override
 	public void setRegisterText(String text) {
 		resultTxt.setText(text);
-		
+
 	}
 
 	@Override
-	public void goUserPage() {
-		Intent intent = new Intent(this, UserpageActivity.class );
-		startActivity(intent);		
+	public void goLoginPage() {
+		Intent intent = new Intent(this, LoginActivity.class);
+		startActivity(intent);
 	}
 
 	@Override
@@ -85,8 +86,8 @@ public class RegisterActivity extends Activity implements IRegisterView{
 
 	@Override
 	public void addUser(User user) {
-		datasource.addUser(user);	
-		
+		datasource.addUser(user);
+
 	}
 
 	@Override
