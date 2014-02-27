@@ -102,4 +102,12 @@ public class FinancialUserSource {
 		db.delete(FinancialDBOpenHelper.TABLE_USERS, FinancialDBOpenHelper.COLUMN_USERID + "=?", value);
 		Log.i(LOGTAG, "Delete user : " + userID);
 	}
+	
+	public void resetPW(String uid){
+		ContentValues values = new ContentValues();
+		String[] userid = new String[]{uid};
+		values.put(FinancialDBOpenHelper.COLUMN_PASSWORD, "123456");
+		db.update(FinancialDBOpenHelper.TABLE_USERS, values, FinancialDBOpenHelper.COLUMN_USERID + "=?", userid);
+		Log.i(LOGTAG, "Password reset : " + uid);
+	}
 }
