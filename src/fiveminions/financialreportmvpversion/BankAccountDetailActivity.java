@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import database.FinancialAccountSource;
@@ -60,29 +61,31 @@ public class BankAccountDetailActivity extends Activity {
 		return true;
 	}
 	
-	
-	public void onDeleteAccountClick(View v){
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Are you sure you want to delete this account?");
-		builder.setCancelable(false);
-		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.delet_bank_account) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Are you sure you want to delete this account?");
+			builder.setCancelable(false);
+			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					datasource.removeAccount(baccount.getUserid(), baccount.getDisname());
+					finish();
+				}
+			});
 			
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
-				datasource.removeAccount(baccount.getUserid(), baccount.getDisname());
-				finish();
-			}
-		});
-		
-		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();			
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
+			builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();			
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }
