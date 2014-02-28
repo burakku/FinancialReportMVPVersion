@@ -40,6 +40,24 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper{
 		    + "FOREIGN KEY(" + COLUMN_ACUSERID + ") REFERENCES " + TABLE_USERS
 		    + "(" + COLUMN_USERID+  ")" +")";
 	
+	public static final String TABLE_TRANSACTIONS = "transactions";
+	public static final String COLUMN_TRNAME = "trName";
+	public static final String COLUMN_TRTYPE = "trType";
+	public static final String COLUMN_TRDATE = "trDate";
+	public static final String COLUMN_TRAMOUNT = "trAmount";
+	public static final String COLUMN_TRSTATUS = "trStatus";
+	public static final String COLUMN_TRRECORD = "trRecordTime";
+	public static final String COLUMN_TRBKDISNAME = "trBKDisName";
+	
+	private static final String TRANSACTION_TABLE_CREATE = 
+			"CREATE TABLE " + TABLE_TRANSACTIONS + "( " +
+			COLUMN_TRNAME + " TEXT, " + COLUMN_TRTYPE + " TEXT, "
+		    + COLUMN_TRDATE + " DATE, " + COLUMN_TRAMOUNT + " DOUBLE, "
+			+ COLUMN_TRSTATUS + " TEXT,"+ COLUMN_TRRECORD + " DATE, "
+			+ COLUMN_TRBKDISNAME +" TEXT,"
+		    + "FOREIGN KEY(" + COLUMN_TRBKDISNAME + ") REFERENCES " + TABLE_ACCOUNTS
+		    + "(" + COLUMN_DISNAME+  ")" +")";
+	
 	public FinancialDBOpenHelper(Context context) {
 		super(context, DATABASE_NAME, null,DATABASE_VERSION);
 	}
@@ -58,6 +76,8 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper{
 		Log.i(LOGTAG, "Admin has been created");
 		db.execSQL(ACCOUNT_TABLE_CREATE);
 		Log.i(LOGTAG, "Accounts Table has been created");
+		db.execSQL(TRANSACTION_TABLE_CREATE);
+		Log.i(LOGTAG, "Transaction Table has been created");
 	}
 
 	@Override

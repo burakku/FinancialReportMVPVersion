@@ -4,7 +4,10 @@ package fiveminions.financialreportmvpversion;
 import model.BankAccount;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 import database.FinancialAccountSource;
 
@@ -58,12 +61,28 @@ public class BankAccountDetailActivity extends Activity {
 	}
 	
 	
-	public void onResetPWClick(){
+	public void onDeleteAccountClick(View v){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Are you sure you want to delete this account?");
+		builder.setCancelable(false);
+		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				datasource.removeAccount(baccount.getUserid(), baccount.getDisname());
+				finish();
+			}
+		});
 		
-	}
-	
-	public void onDeleteAccountClick(){
-		
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();			
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
 	}
 
 }
