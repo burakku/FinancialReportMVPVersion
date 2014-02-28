@@ -39,12 +39,16 @@ public class UserpageActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
-	        case R.id.user_page_setting:
-	        	Intent intent = new Intent(this, SettingPageActivity.class);
-	        	intent.putExtra("userid", user.getUserID());
+	        case R.id.user_page_account:
+	        	Intent intentAcc = new Intent(this, AccountPageActivity.class);
+	        	intentAcc.putExtra("userid", user.getUserID());
 	        	Log.i(MainActivity.LOGTAG, "Pass in userid");
-	        	startActivity(intent);
+	        	startActivity(intentAcc);
 	        	break;
+	        case R.id.user_page_logout:
+	        	Intent intentLogout = new Intent(this, LoginActivity.class);
+	    		startActivity(intentLogout);
+	        
 	        default:
 	        	break;
 	    }

@@ -50,18 +50,17 @@ public final class R {
     public static final class id {
         public static final int accountText=0x7f09001b;
         public static final int accountname=0x7f090001;
-        public static final int action_settings=0x7f09002a;
-        public static final int add_new_account=0x7f090029;
+        public static final int action_settings=0x7f090028;
+        public static final int add_new_account=0x7f090027;
         public static final int bLogin=0x7f090006;
         public static final int bRegister=0x7f090005;
         public static final int balance=0x7f090003;
         public static final int bankname=0x7f090000;
-        public static final int delet_bank_account=0x7f09002b;
+        public static final int delet_bank_account=0x7f090029;
         public static final int delete_userB=0x7f09000d;
         public static final int email=0x7f09000b;
         public static final int loginText=0x7f09000e;
         public static final int loginbutton=0x7f090011;
-        public static final int logoutButton=0x7f090027;
         public static final int mainText=0x7f090007;
         public static final int mir=0x7f090004;
         public static final int name=0x7f090008;
@@ -77,7 +76,6 @@ public final class R {
         public static final int regText=0x7f090024;
         public static final int regUserid=0x7f09001f;
         public static final int reset_passwordB=0x7f09000c;
-        public static final int setting_account_button=0x7f090026;
         public static final int signUP=0x7f090025;
         public static final int textEmail=0x7f090022;
         public static final int textName=0x7f09001c;
@@ -88,10 +86,11 @@ public final class R {
         public static final int textView3=0x7f090017;
         public static final int textView4=0x7f090019;
         public static final int textView5=0x7f090012;
-        public static final int userPageName=0x7f090028;
-        public static final int user_page_menu=0x7f09002c;
-        public static final int user_page_setting=0x7f09002e;
-        public static final int user_page_trans=0x7f09002d;
+        public static final int userPageName=0x7f090026;
+        public static final int user_page_account=0x7f09002b;
+        public static final int user_page_logout=0x7f09002d;
+        public static final int user_page_menu=0x7f09002a;
+        public static final int user_page_trans=0x7f09002c;
         public static final int userid=0x7f090002;
         public static final int username=0x7f090009;
         public static final int usernameLog=0x7f09000f;
@@ -106,9 +105,8 @@ public final class R {
         public static final int login=0x7f030006;
         public static final int newaccount_page=0x7f030007;
         public static final int register=0x7f030008;
-        public static final int setting_page=0x7f030009;
-        public static final int user_page=0x7f03000a;
-        public static final int welcome=0x7f03000b;
+        public static final int user_page=0x7f030009;
+        public static final int welcome=0x7f03000a;
     }
     public static final class menu {
         public static final int account_menu=0x7f080000;
