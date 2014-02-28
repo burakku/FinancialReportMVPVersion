@@ -46,13 +46,13 @@ public class FinancialAccountSource {
 		dbhelper.onUpgrade(fs.db, 1, 1);
 	}
 	
-	public boolean checkAccount(String uid, String acname){
+	public boolean checkAccount(String uid, String disname){
 		Cursor cursor = db.query(FinancialDBOpenHelper.TABLE_ACCOUNTS, accountColumns,
 				FinancialDBOpenHelper.COLUMN_ACUSERID + " = " + "'"+ uid + "'", null, null, null, null);
 		if(cursor.getCount() >0){
 			while(cursor.moveToNext()){
-					String name= cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_ACNAME));
-					if(name.equals(acname)){
+					String name= cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_DISNAME));
+					if(name.equals(disname)){
 						Log.i(LOGTAG, "find exsit account in " + uid);
 						return true;
 					}
@@ -73,10 +73,10 @@ public class FinancialAccountSource {
 		Log.i(LOGTAG, "Add a new account " + ba.getName()+ "in " + ba.getUserid());
 	}
 	
-	public List<BankAccount> getAccountList(){
+	public List<BankAccount> getAccountList(String uid){
 		List<BankAccount> accounts = new ArrayList<BankAccount>();
 		Cursor cursor = db.query(FinancialDBOpenHelper.TABLE_ACCOUNTS, accountColumns,
-				null, null, null, null, null);
+				FinancialDBOpenHelper.COLUMN_ACUSERID + " = " + "'"+ uid + "'", null, null, null, null);
 		Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
 		if(cursor.getCount() >0){
 			while(cursor.moveToNext()){

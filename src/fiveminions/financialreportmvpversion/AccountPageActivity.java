@@ -34,7 +34,7 @@ public class AccountPageActivity extends ListActivity{
 	}
 
 	public void display(){
-		accounts = datasource.getAccountList();
+		accounts = datasource.getAccountList(userid);
 		ArrayAdapter<BankAccount> adapter = new ArrayAdapter<BankAccount>(this, R.layout.list_view1, accounts);
 		setListAdapter(adapter);
 		Log.i(MainActivity.LOGTAG, "Refresh Account List");

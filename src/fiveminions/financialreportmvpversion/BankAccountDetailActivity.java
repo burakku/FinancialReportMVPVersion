@@ -4,7 +4,6 @@ package fiveminions.financialreportmvpversion;
 import model.BankAccount;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 import database.FinancialAccountSource;
