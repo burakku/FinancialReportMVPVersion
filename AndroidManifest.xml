@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WelcomeActivity"
+            android:name="fiveminions.financialreportmvpversion.WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
             <intent-filter>
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="fiveminions.financialreportmvpversion.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.LOGINACTIVITY" />
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name="fiveminions.financialreportmvpversion.RegisterActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.REGISTERACTIVITY" />
@@ -51,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserpageActivity"
+            android:name="fiveminions.financialreportmvpversion.UserpageActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.USERPAGEACTIVITY" />
@@ -60,7 +60,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdminPageActivity"
+            android:name="fiveminions.financialreportmvpversion.AdminPageActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.ADMINPAGEACTIVITY" />
@@ -69,7 +69,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AccountPageActivity"
+            android:name="fiveminions.financialreportmvpversion.AccountPageActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.ACCOUNTPAGEACTIVITY" />
@@ -78,7 +78,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewAccountActivity"
+            android:name="fiveminions.financialreportmvpversion.NewAccountActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.NEWACCOUNTACTIVITY" />
@@ -87,7 +87,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingPageActivity"
+            android:name="fiveminions.financialreportmvpversion.SettingPageActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.SETTINGPAGEACTIVITY" />
@@ -96,13 +96,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserDetailActivity"
+            android:name="fiveminions.financialreportmvpversion.UserDetailActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.USERDETAILACTIVITY" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.BankAccountDetailActivity"
+            android:label="@string/title_activity_bank_account_detail" >
         </activity>
     </application>
 

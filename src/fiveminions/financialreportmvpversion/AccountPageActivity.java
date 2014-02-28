@@ -13,7 +13,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class AccountPageActivity extends ListActivity{
 	
@@ -72,6 +74,16 @@ public class AccountPageActivity extends ListActivity{
 	        	break;
 	    }
 	            return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		super.onListItemClick(l, v, position, id);
+		BankAccount baccount = accounts.get(position);
+		Intent intent = new Intent(this, BankAccountDetailActivity.class);
+		intent.putExtra("model.BankAccout", baccount);
+		startActivity(intent);
 	}
 	
 }
