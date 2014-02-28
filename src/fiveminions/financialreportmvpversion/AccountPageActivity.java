@@ -82,7 +82,7 @@ public class AccountPageActivity extends ListActivity{
 		super.onListItemClick(l, v, position, id);
 		BankAccount baccount = accounts.get(position);
 		Intent intent = new Intent(this, BankAccountDetailActivity.class);
-		intent.putExtra("model.BankAccout", baccount);
+		intent.putExtra("model.BankAccount", baccount);
 		startActivity(intent);
 	}
 	
