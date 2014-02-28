@@ -93,7 +93,8 @@ public class FinancialAccountSource {
 	}
 	public void removeAccount(String userID, String displayName){
 		String[] values = new String[]{userID, displayName};
-		db.delete(FinancialDBOpenHelper.TABLE_ACCOUNTS, FinancialDBOpenHelper.COLUMN_USERID + "=?", values);
+		db.delete(FinancialDBOpenHelper.TABLE_ACCOUNTS, FinancialDBOpenHelper.COLUMN_ACUSERID + "=? AND "
+		+ FinancialDBOpenHelper.COLUMN_DISNAME + "=?" , values);
 		Log.i(LOGTAG, "account deleted");
 	}
 
