@@ -55,10 +55,10 @@ public static final String LOGTAG="CLOVER";
 		Log.i(LOGTAG, "Add a new transaction " + tr.getName()+ "in " + tr.getBkDisName());
 	}
 	
-	public List<Transaction> getTransactionList(String uid){
+	public List<Transaction> getTransactionList(String bankname){
 		List<Transaction> trs = new ArrayList<Transaction>();
-		Cursor cursor = db.query(FinancialDBOpenHelper.TABLE_ACCOUNTS, transactionColumns,
-				FinancialDBOpenHelper.COLUMN_TRBKDISNAME + " = " + "'"+ uid + "'", null, null, null, null);
+		Cursor cursor = db.query(FinancialDBOpenHelper.TABLE_TRANSACTIONS, transactionColumns,
+				FinancialDBOpenHelper.COLUMN_TRBKDISNAME + " = " + "'"+ bankname + "'", null, null, null, null);
 		Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
 		if(cursor.getCount() >0){
 			while(cursor.moveToNext()){

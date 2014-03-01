@@ -84,6 +84,7 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper{
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("DROP TABLE IF EXISTS "+ TABLE_USERS);
 		db.execSQL("DROP TABLE IF EXISTS "+ TABLE_ACCOUNTS);
+		db.execSQL("DROP TABLE IF EXISTS "+ TABLE_TRANSACTIONS);
 		onCreate(db);
 	}
 

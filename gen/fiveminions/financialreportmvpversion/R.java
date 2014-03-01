@@ -101,12 +101,14 @@ public final class R {
         public static final int activity_main=0x7f030002;
         public static final int admin_page_detail=0x7f030003;
         public static final int adminpage=0x7f030004;
-        public static final int list_view1=0x7f030005;
-        public static final int login=0x7f030006;
-        public static final int newaccount_page=0x7f030007;
-        public static final int register=0x7f030008;
-        public static final int user_page=0x7f030009;
-        public static final int welcome=0x7f03000a;
+        public static final int bank_transaction=0x7f030005;
+        public static final int list_view1=0x7f030006;
+        public static final int login=0x7f030007;
+        public static final int newaccount_page=0x7f030008;
+        public static final int register=0x7f030009;
+        public static final int transaction_page=0x7f03000a;
+        public static final int user_page=0x7f03000b;
+        public static final int welcome=0x7f03000c;
     }
     public static final class menu {
         public static final int account_menu=0x7f080000;
