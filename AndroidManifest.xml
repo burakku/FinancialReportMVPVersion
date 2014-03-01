@@ -112,31 +112,20 @@
         <activity
             android:name="fiveminions.financialreportmvpversion.TransactionActivity"
             android:label="@string/app_name" >
- -            
             <intent-filter>
- -                
                 <action android:name="fiveminions.financialreportmvpversion.TRANSACTIONACTIVITY" />
- -
- -                
+
                 <category android:name="android.intent.category.DEFAULT" />
- -            
             </intent-filter>
- -        
         </activity>
- -        
         <activity
             android:name="fiveminions.financialreportmvpversion.AccountTransactionActivity"
             android:label="@string/app_name" >
- -            
             <intent-filter>
- -                
                 <action android:name="fiveminions.financialreportmvpversion.ACCOUNTTRANSACTIONACTIVITY" />
- -
- -                
+
                 <category android:name="android.intent.category.DEFAULT" />
- -            
             </intent-filter>
- -        
         </activity>
     </application>
 
