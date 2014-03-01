@@ -9,10 +9,33 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
+    
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/main_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="App Icon"
+            android:src="@drawable/ic_icon" />
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/main_icon"
+            android:text="@string/app_name"
+            android:textColor="#B0E2FF"
+            android:textSize="50dp" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/bRegister"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"
         android:background="@drawable/button_bk"
@@ -24,7 +47,7 @@
 
     <Button
         android:id="@+id/bLogin"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_alignLeft="@+id/bRegister"
         android:layout_below="@+id/bRegister"
@@ -36,21 +59,5 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bRegister"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="61dp"
-        android:gravity="center"
-        android:shadowColor="#326300"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1.5"
-        android:text="@string/app_name"
-        android:textColor="#37b810"
-        android:textSize="60sp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

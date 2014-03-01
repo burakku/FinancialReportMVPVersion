@@ -8,8 +8,10 @@ import views.IMainView;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements IMainView{
 	public static final String LOGTAG = "Clover";
@@ -18,6 +20,11 @@ public class MainActivity extends Activity implements IMainView{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
+		TextView textView = (TextView)findViewById(R.id.main_title);
+		textView.setTypeface(typeface);
+		
 		mainPresenter = new MainPresenter(this);
 	}
 
