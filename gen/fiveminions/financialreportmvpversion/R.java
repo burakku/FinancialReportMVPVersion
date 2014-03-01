@@ -42,9 +42,10 @@ public final class R {
     }
     public static final class drawable {
         public static final int button_bk=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int normal=0x7f020002;
-        public static final int pressed=0x7f020003;
+        public static final int ic_action_settings=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int normal=0x7f020003;
+        public static final int pressed=0x7f020004;
     }
     public static final class id {
         public static final int accountText=0x7f09001c;
@@ -56,6 +57,7 @@ public final class R {
         public static final int balance=0x7f090003;
         public static final int bankname=0x7f090000;
         public static final int bdelete=0x7f090005;
+        public static final int delet_bank_account=0x7f09002c;
         public static final int delete_userB=0x7f09000e;
         public static final int email=0x7f09000c;
         public static final int loginText=0x7f09000f;
@@ -75,6 +77,7 @@ public final class R {
         public static final int regPassword=0x7f090022;
         public static final int regText=0x7f090025;
         public static final int regUserid=0x7f090020;
+        public static final int reset_password=0x7f09002d;
         public static final int reset_passwordB=0x7f09000d;
         public static final int setting_account_button=0x7f090027;
         public static final int signUP=0x7f090026;
@@ -88,7 +91,9 @@ public final class R {
         public static final int textView4=0x7f09001a;
         public static final int textView5=0x7f090013;
         public static final int userPageName=0x7f090029;
-        public static final int user_page_setting=0x7f09002c;
+        public static final int user_page_menu=0x7f09002e;
+        public static final int user_page_setting=0x7f090030;
+        public static final int user_page_trans=0x7f09002f;
         public static final int userid=0x7f090002;
         public static final int username=0x7f09000a;
         public static final int usernameLog=0x7f090010;
