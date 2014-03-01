@@ -12,11 +12,6 @@
                 android:orderInCategory="100"
                 android:showAsAction="always"
                 android:title="Delete Bank"/>
-            <item
-                android:id="@+id/reset_password"
-                android:orderInCategory="101"
-                android:showAsAction="always"
-                android:title="Reset Password"/>
         </menu>
     </item>
 
