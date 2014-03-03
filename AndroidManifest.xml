@@ -127,6 +127,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.AddTransactionActivity"
+            android:label="@string/title_activity_add_transaction" >
+        </activity>
     </application>
 
 </manifest>
