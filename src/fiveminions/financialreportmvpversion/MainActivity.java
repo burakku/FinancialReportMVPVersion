@@ -20,11 +20,7 @@ public class MainActivity extends Activity implements IMainView{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
-		TextView textView = (TextView)findViewById(R.id.main_title);
-		textView.setTypeface(typeface);
-		
+		setFont();
 		mainPresenter = new MainPresenter(this);
 	}
 
@@ -63,6 +59,12 @@ public class MainActivity extends Activity implements IMainView{
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivity(intent);
 		
+	}
+	
+	public void setFont() {
+		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
+		TextView textView = (TextView)findViewById(R.id.main_title);
+		textView.setTypeface(typeface);
 	}
 
 }

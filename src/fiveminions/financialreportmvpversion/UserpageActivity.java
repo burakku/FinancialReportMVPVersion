@@ -4,10 +4,14 @@ package fiveminions.financialreportmvpversion;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.PieGraph;
+import views.PieSlice;
+
 import model.User;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,6 +41,21 @@ public class UserpageActivity extends ListActivity {
 		menu.add("Transactions");
 		
 		userName.setText("Hello, "+ user.getName());
+		
+		PieGraph pg = (PieGraph)findViewById(R.id.pieGraph);
+		PieSlice slice = new PieSlice();
+		slice.setColor(Color.parseColor("#99CC00"));
+		slice.setValue(2);
+		slice.setTitle("test");
+		pg.addSlice(slice);
+		slice = new PieSlice();
+		slice.setColor(Color.parseColor("#FFBB33"));
+		slice.setValue(3);
+		pg.addSlice(slice);
+		slice = new PieSlice();
+		slice.setColor(Color.parseColor("#AA66CC"));
+		slice.setValue(8);
+		pg.addSlice(slice);
 		display();
 	}
 

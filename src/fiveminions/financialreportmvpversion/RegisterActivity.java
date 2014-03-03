@@ -21,7 +21,6 @@ public class RegisterActivity extends Activity implements IRegisterView {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.register);
@@ -33,19 +32,8 @@ public class RegisterActivity extends Activity implements IRegisterView {
 		email = (EditText) findViewById(R.id.regEmail);
 		resultTxt = (TextView) findViewById(R.id.regText);
 		datasource = new FinancialUserSource(this);
+		setFont();
 		
-		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf");
-		Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
-		TextView textView1 = (TextView)findViewById(R.id.register_text_name);
-		TextView textView2 = (TextView)findViewById(R.id.register_text_userid);
-		TextView textView3 = (TextView)findViewById(R.id.register_text_password);
-		TextView textView4 = (TextView)findViewById(R.id.textEmail);
-		TextView textView5 = (TextView)findViewById(R.id.register_title);
-		textView1.setTypeface(typeface);
-		textView2.setTypeface(typeface);
-		textView3.setTypeface(typeface);
-		textView4.setTypeface(typeface);
-		textView5.setTypeface(typeface1);
 	}
 
 	@Override
@@ -106,6 +94,21 @@ public class RegisterActivity extends Activity implements IRegisterView {
 	@Override
 	public User findUser(String uid) {
 		return datasource.findUser(uid);
+	}
+	
+	public void setFont() {
+		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf");
+		Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
+		TextView textView1 = (TextView)findViewById(R.id.register_text_name);
+		TextView textView2 = (TextView)findViewById(R.id.register_text_userid);
+		TextView textView3 = (TextView)findViewById(R.id.register_text_password);
+		TextView textView4 = (TextView)findViewById(R.id.textEmail);
+		TextView textView5 = (TextView)findViewById(R.id.register_title);
+		textView1.setTypeface(typeface);
+		textView2.setTypeface(typeface);
+		textView3.setTypeface(typeface);
+		textView4.setTypeface(typeface);
+		textView5.setTypeface(typeface1);
 	}
 
 }

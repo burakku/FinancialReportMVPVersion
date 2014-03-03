@@ -42,25 +42,58 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int bkgd=0x7f020000;
-        public static final int button_bk=0x7f020001;
-        public static final int ic_action_new=0x7f020002;
-        public static final int ic_action_settings=0x7f020003;
-        public static final int ic_icon=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int normal=0x7f020006;
-        public static final int pressed=0x7f020007;
+        public static final int ab_background_textured_clover=0x7f020000;
+        public static final int ab_bottom_solid_clover=0x7f020001;
+        public static final int ab_solid_clover=0x7f020002;
+        public static final int ab_stacked_solid_clover=0x7f020003;
+        public static final int ab_texture_tile_clover=0x7f020004;
+        public static final int ab_transparent_clover=0x7f020005;
+        public static final int bkgd=0x7f020006;
+        public static final int btn_cab_done_clover=0x7f020007;
+        public static final int btn_cab_done_default_clover=0x7f020008;
+        public static final int btn_cab_done_focused_clover=0x7f020009;
+        public static final int btn_cab_done_pressed_clover=0x7f02000a;
+        public static final int button_bk=0x7f02000b;
+        public static final int cab_background_bottom_clover=0x7f02000c;
+        public static final int cab_background_top_clover=0x7f02000d;
+        public static final int ic_action_new=0x7f02000e;
+        public static final int ic_action_settings=0x7f02000f;
+        public static final int ic_icon=0x7f020010;
+        public static final int ic_launcher=0x7f020011;
+        public static final int list_focused_clover=0x7f020012;
+        public static final int list_pressed_clover=0x7f020013;
+        public static final int menu_dropdown_panel_clover=0x7f020014;
+        public static final int normal=0x7f020015;
+        public static final int popup_black=0x7f020016;
+        public static final int pressed=0x7f020017;
+        public static final int progress_bg_clover=0x7f020018;
+        public static final int progress_horizontal_clover=0x7f020019;
+        public static final int progress_primary_clover=0x7f02001a;
+        public static final int progress_secondary_clover=0x7f02001b;
+        public static final int selectable_background_clover=0x7f02001c;
+        public static final int spinner_ab_default_clover=0x7f02001d;
+        public static final int spinner_ab_disabled_clover=0x7f02001e;
+        public static final int spinner_ab_focused_clover=0x7f02001f;
+        public static final int spinner_ab_pressed_clover=0x7f020020;
+        public static final int spinner_background_ab_clover=0x7f020021;
+        public static final int tab_indicator_ab_clover=0x7f020022;
+        public static final int tab_selected_clover=0x7f020023;
+        public static final int tab_selected_focused_clover=0x7f020024;
+        public static final int tab_selected_pressed_clover=0x7f020025;
+        public static final int tab_unselected_clover=0x7f020026;
+        public static final int tab_unselected_focused_clover=0x7f020027;
+        public static final int tab_unselected_pressed_clover=0x7f020028;
     }
     public static final class id {
         public static final int accountText=0x7f09001c;
         public static final int accountname=0x7f090001;
-        public static final int action_settings=0x7f09002b;
-        public static final int add_new_account=0x7f09002a;
+        public static final int action_settings=0x7f09002c;
+        public static final int add_new_account=0x7f09002b;
         public static final int bLogin=0x7f090008;
         public static final int bRegister=0x7f090007;
         public static final int balance=0x7f090003;
         public static final int bankname=0x7f090000;
-        public static final int delet_bank_account=0x7f09002c;
+        public static final int delet_bank_account=0x7f09002d;
         public static final int delete_userB=0x7f09000e;
         public static final int email=0x7f09000c;
         public static final int loginText=0x7f090011;
@@ -76,6 +109,7 @@ public final class R {
         public static final int newAcName=0x7f090015;
         public static final int password=0x7f09000b;
         public static final int passwordLog=0x7f090010;
+        public static final int pieGraph=0x7f090029;
         public static final int regEmail=0x7f090025;
         public static final int regName=0x7f09001f;
         public static final int regPassword=0x7f090023;
@@ -93,14 +127,14 @@ public final class R {
         public static final int textView4=0x7f09001a;
         public static final int textView5=0x7f090013;
         public static final int userPageName=0x7f090028;
-        public static final int user_page_account=0x7f09002e;
-        public static final int user_page_logout=0x7f090030;
-        public static final int user_page_menu=0x7f09002d;
-        public static final int user_page_trans=0x7f09002f;
+        public static final int user_page_account=0x7f09002f;
+        public static final int user_page_logout=0x7f090031;
+        public static final int user_page_menu=0x7f09002e;
+        public static final int user_page_trans=0x7f090030;
         public static final int userid=0x7f090002;
         public static final int username=0x7f09000a;
         public static final int usernameLog=0x7f09000f;
-        public static final int welcome_app_name=0x7f090029;
+        public static final int welcome_app_name=0x7f09002a;
     }
     public static final class layout {
         public static final int account_page=0x7f030000;
@@ -136,6 +170,10 @@ public final class R {
         public static final int title_activity_bank_account_detail=0x7f060009;
     }
     public static final class style {
+        public static final int ActionBar_Solid_Clover=0x7f070003;
+        public static final int ActionBar_Transparent_Clover=0x7f070004;
+        public static final int ActionBarTabStyle_Clover=0x7f070007;
+        public static final int ActionButton_CloseMode_Clover=0x7f07000a;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -162,5 +200,13 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int DropDownListView_Clover=0x7f070006;
+        public static final int DropDownNav_Clover=0x7f070008;
+        public static final int PopupMenu_Clover=0x7f070005;
+        public static final int ProgressBar_Clover=0x7f070009;
+        public static final int Theme_Clover=0x7f070002;
+        /**  this style is only referenced in a Light.DarkActionBar based theme 
+         */
+        public static final int Theme_Clover_Widget=0x7f07000b;
     }
 }

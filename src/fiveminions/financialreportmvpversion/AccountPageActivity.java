@@ -78,7 +78,6 @@ public class AccountPageActivity extends ListActivity{
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
 		BankAccount baccount = accounts.get(position);
 		Intent intent = new Intent(this, BankAccountDetailActivity.class);
