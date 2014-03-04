@@ -5,14 +5,14 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="13"
         android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="fiveminions.financialreportmvpversion.MainActivity"
             android:label="@string/app_name" >
@@ -34,7 +34,8 @@
         </activity>
         <activity
             android:name="fiveminions.financialreportmvpversion.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.LOGINACTIVITY" />
 
@@ -107,6 +108,28 @@
         <activity
             android:name="fiveminions.financialreportmvpversion.BankAccountDetailActivity"
             android:label="@string/title_activity_bank_account_detail" >
+        </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.TransactionActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="fiveminions.financialreportmvpversion.TRANSACTIONACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.AccountTransactionActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="fiveminions.financialreportmvpversion.ACCOUNTTRANSACTIONACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.AddTransactionActivity"
+            android:label="@string/title_activity_add_transaction" >
         </activity>
     </application>
 
