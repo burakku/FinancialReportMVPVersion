@@ -42,9 +42,12 @@ public class MemoryModel implements UserModel{
  * 
  */
 	@Override
-	public Collection<User> getUserList() {
-		Map<String, User> copy = new HashMap<String, User>(userList);
-		return (Collection<User>) copy;
+	public User[] getUserList() {
+		Collection<User> uCopy = userList.values();
+		User[] uList = new User[uCopy.size()];
+		int i = 0;
+		for (User u : uCopy) uList[i++] = u;
+		return uList;
 	}
 	
 /************************************************
