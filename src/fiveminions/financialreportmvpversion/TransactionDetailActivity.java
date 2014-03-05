@@ -31,7 +31,7 @@ public class TransactionDetailActivity extends Activity {
 		tran_amount = (TextView) findViewById(R.id.tran_amount);
 		
 		Bundle b = getIntent().getExtras();
-		tran = b.getParcelable("Model.Transaction");
+		tran = b.getParcelable("model.Transaction");
 		display();
 		
 		datasource = new FinancialTransactionSource(this);
