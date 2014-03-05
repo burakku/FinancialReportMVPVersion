@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bkg" >
+    android:background="@color/bkg_start" >
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/new_bAcc_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="New Bank Account"
         android:layout_gravity="center"
-        android:textStyle="bold"
+        android:textColor="@color/user_text_bright"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -21,12 +21,13 @@
         android:layout_marginLeft="20dp" >
 
         <TextView
-            android:id="@+id/login_title"
+            android:id="@+id/new_bAcc_bank"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Bank Name"
             android:layout_gravity="bottom"
+            android:textColor="@color/user_text"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <EditText
@@ -50,12 +51,13 @@
         android:layout_marginLeft="20dp" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/new_bAcc_disName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Display Name"
             android:layout_gravity="bottom"
+            android:textColor="@color/user_text"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <EditText
@@ -76,12 +78,13 @@
         android:layout_marginLeft="20dp" >
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/new_bAcc_balance"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Balance"
             android:layout_gravity="bottom"
+            android:textColor="@color/user_text"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <EditText
@@ -103,12 +106,13 @@
         android:layout_marginLeft="20dp" >
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/new_bAcc_MIR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Monthly Interest Rate"
             android:layout_gravity="bottom"
+            android:textColor="@color/user_text"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <EditText

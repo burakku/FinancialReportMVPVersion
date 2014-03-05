@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bkg"
+    android:background="@color/bkg_start"
     android:orientation="vertical"
     android:paddingLeft="10sp"
     android:paddingRight="10sp" >
@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="Join Clover Now!"
-        android:textColor="#B0E2FF"
+        android:textColor="@color/user_text_bright"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -41,6 +41,7 @@
             android:layout_weight="5"
             android:ems="5"
             android:gravity="left"
+            android:textColor="@color/user_edit_text"
             android:singleLine="true" />
 
         <requestFocus />
@@ -68,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:ems="5"
+            android:textColor="@color/user_edit_text"
             android:singleLine="true" >
         </EditText>
     </LinearLayout>
@@ -94,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:ems="5"
+            android:textColor="@color/user_edit_text"
             android:inputType="textPassword"
             android:singleLine="true" />
     </LinearLayout>
@@ -120,6 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:ems="5"
+            android:textColor="@color/user_edit_text"
             android:inputType="textEmailAddress"
             android:singleLine="true" />
     </LinearLayout>

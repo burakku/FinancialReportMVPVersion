@@ -20,11 +20,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 public class UserpageActivity extends ListActivity {
 
-	private TextView userName;
 	private User user;
 	private List<String> menu;
 	@Override
@@ -32,16 +33,16 @@ public class UserpageActivity extends ListActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_page);
-		userName = (TextView) findViewById(R.id.userPageName);
-		
+
 		Bundle b = getIntent().getExtras();
 		user = b.getParcelable("model.User");
-		
+
 		menu = new ArrayList<String>();
 		menu.add("Transactions");
-		
-		userName.setText("Hello, "+ user.getName());
-		
+
+
+		setTab();
+
 		PieGraph pg = (PieGraph)findViewById(R.id.pieGraph);
 		PieSlice slice = new PieSlice();
 		slice.setColor(Color.parseColor("#99CC00"));
@@ -59,39 +60,56 @@ public class UserpageActivity extends ListActivity {
 		display();
 	}
 
+	private void setTab() {
+		TabHost th = (TabHost) findViewById(R.id.tabhost);
+		th.setup();
+		TabSpec ts = th.newTabSpec("a");
+		ts.setContent(R.id.tab1);
+		ts.setIndicator("Spending");
+		th.addTab(ts);
+		ts = th.newTabSpec("b");
+		ts.setContent(R.id.tab2);
+		ts.setIndicator("Income");
+		th.addTab(ts);
+		ts = th.newTabSpec("c");
+		ts.setContent(R.id.tab3);
+		ts.setIndicator("Cash Flow");
+		th.addTab(ts);
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.user_page_menu, menu);
+		inflater.inflate(R.menu.user_page_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.user_page_account:
-	        	Intent intentAcc = new Intent(this, AccountPageActivity.class);
-	        	intentAcc.putExtra("userid", user.getUserID());
-	        	Log.i(MainActivity.LOGTAG, "Pass in userid");
-	        	startActivity(intentAcc);
-	        	break;
-	        case R.id.user_page_logout:
-	        	Intent intentLogout = new Intent(this, LoginActivity.class);
-	    		startActivity(intentLogout);
-	    		break;
-	        default:
-	        	break;
-	    }
-	            return super.onOptionsItemSelected(item);
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.user_page_account:
+			Intent intentAcc = new Intent(this, AccountPageActivity.class);
+			intentAcc.putExtra("userid", user.getUserID());
+			Log.i(MainActivity.LOGTAG, "Pass in userid");
+			startActivity(intentAcc);
+			break;
+		case R.id.user_page_logout:
+			Intent intentLogout = new Intent(this, LoginActivity.class);
+			startActivity(intentLogout);
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void display(){
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_view1, menu);
 		setListAdapter(adapter);
 		Log.i(MainActivity.LOGTAG, "Refresh Account List");
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
@@ -100,12 +118,12 @@ public class UserpageActivity extends ListActivity {
 		case 0:
 			Intent intent = new Intent(this, TransactionActivity.class);
 			intent.putExtra("userid", user.getUserID());
-        	Log.i(MainActivity.LOGTAG, "Pass in userid");
+			Log.i(MainActivity.LOGTAG, "Pass in userid");
 			startActivity(intent);
 		default:
 			break;
 		}
 
 	}
-	
+
 }

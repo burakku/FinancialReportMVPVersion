@@ -9,12 +9,12 @@
     <string name="app_motto">A clever way to manage.</string>
     <string name="signup">Sign Up</string>
     <string name="reset_pw">After reset, the password will be changed
-				 to 123456, are you still going to process?</string>
+				 to 123456, do you still want to process?</string>
     <string name="remove_user">All the data of the user will be deleted,
-        		 are you still going to process?</string>
-    <string name="title_activity_bank_account_detail">BankAccountDetailActivity</string>
-    <string name="title_activity_add_transaction">AddTransactionActivity</string>
-    <string name="hello_world">Hello world!</string>
+        		 do you still want to process?</string>
+    <string name="title_activity_bank_account_detail">Account Detail</string>
+    <string name="title_activity_add_transaction">New Transaction</string>
+    <string name="hello">Hello!</string>
     <string name="spinner_title">Select Type</string>
 
 </resources>

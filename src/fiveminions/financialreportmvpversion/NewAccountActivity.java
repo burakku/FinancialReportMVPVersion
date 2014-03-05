@@ -5,6 +5,7 @@ import database.FinancialAccountSource;
 import presenters.NewAccountPresenter;
 import views.INewAccountView;
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -36,8 +37,26 @@ public class NewAccountActivity extends Activity implements INewAccountView {
 		mir = (EditText) findViewById(R.id.newAcMIR);
 		resultText = (TextView) findViewById(R.id.accountText);
 		b = getIntent().getExtras();
+		
+		setFont();
 	}
 	
+	private void setFont() {
+		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf");
+		Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
+		
+		TextView textView1 = (TextView)findViewById(R.id.new_bAcc_bank);
+		TextView textView2 = (TextView)findViewById(R.id.new_bAcc_disName);
+		TextView textView3 = (TextView)findViewById(R.id.new_bAcc_balance);
+		TextView textView4 = (TextView)findViewById(R.id.new_bAcc_MIR);
+		TextView textView5 = (TextView)findViewById(R.id.new_bAcc_title);
+		textView1.setTypeface(typeface);
+		textView2.setTypeface(typeface);
+		textView3.setTypeface(typeface);
+		textView4.setTypeface(typeface);
+		textView5.setTypeface(typeface1);
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();

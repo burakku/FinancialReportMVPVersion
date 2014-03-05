@@ -12,10 +12,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Clover" >
         <activity
             android:name="fiveminions.financialreportmvpversion.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAINACTIVITY" />
 
@@ -25,7 +26,7 @@
         <activity
             android:name="fiveminions.financialreportmvpversion.WelcomeActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +45,8 @@
         </activity>
         <activity
             android:name="fiveminions.financialreportmvpversion.RegisterActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.REGISTERACTIVITY" />
 
@@ -53,7 +55,7 @@
         </activity>
         <activity
             android:name="fiveminions.financialreportmvpversion.UserpageActivity"
-            android:label="@string/app_name" >
+            android:label="@string/hello" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.USERPAGEACTIVITY" />
 
@@ -80,7 +82,8 @@
         </activity>
         <activity
             android:name="fiveminions.financialreportmvpversion.NewAccountActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="fiveminions.financialreportmvpversion.NEWACCOUNTACTIVITY" />
 
@@ -133,7 +136,7 @@
         </activity>
         <activity
             android:name="fiveminions.financialreportmvpversion.TransactionDetailActivity"
-            android:label="@string/title_activity_transaction_detail_activity" >
+            android:label="@string/app_name" >
         </activity>
     </application>
 
