@@ -79,7 +79,7 @@ public class UserpageActivity extends ListActivity {
 	        case R.id.user_page_logout:
 	        	Intent intentLogout = new Intent(this, LoginActivity.class);
 	    		startActivity(intentLogout);
-	        
+	    		break;
 	        default:
 	        	break;
 	    }

@@ -8,24 +8,57 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AddTransactionActivity" >
 
-    <CheckBox
-        android:id="@+id/deposit"
+    <EditText
+        android:id="@+id/tranName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="39dp"
-        android:text="Deposit" />
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="name" />
 
     <EditText
-        android:id="@+id/trname"
+        android:id="@+id/tranDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/deposit"
-        android:layout_alignParentRight="true"
-        android:ems="10" >
+        android:layout_below="@+id/tranName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:ems="10"
+        android:hint="yyyy-mm-dd" />
 
-        <requestFocus />
-    </EditText>
+    <EditText
+        android:id="@+id/tranAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tranDate"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Amount" />
+
+    <Spinner
+        android:id="@+id/tranTypeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tranAmount"
+        android:layout_marginTop="25dp"
+        android:prompt="@string/spinner_title" />
+
+    <TextView
+        android:id="@+id/tranText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tranTypeSpinner" />
+
+    <Button
+        android:id="@+id/tranSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tranAmount"
+        android:layout_below="@+id/tranTypeSpinner"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="61dp"
+        android:onClick="onSubmitClick"
+        android:text="Submit" />
 
 </RelativeLayout>

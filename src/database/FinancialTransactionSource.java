@@ -51,7 +51,7 @@ public static final String LOGTAG="CLOVER";
 		values.put(FinancialDBOpenHelper.COLUMN_TRSTATUS, tr.getStatus());
 		values.put(FinancialDBOpenHelper.COLUMN_TRRECORD, tr.getRecordTime());
 		values.put(FinancialDBOpenHelper.COLUMN_TRBKDISNAME, tr.getBkDisName());
-		db.insert(FinancialDBOpenHelper.TABLE_ACCOUNTS, null, values);
+		db.insert(FinancialDBOpenHelper.TABLE_TRANSACTIONS, null, values);
 		Log.i(LOGTAG, "Add a new transaction " + tr.getName()+ "in " + tr.getBkDisName());
 	}
 	

@@ -30,7 +30,6 @@ public class BankAccountDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bank_account_detail);
 		bankname = (TextView) findViewById(R.id.bankname);
-		userid = (TextView) findViewById(R.id.userid);
 		accountname = (TextView) findViewById(R.id.accountname);
 		balance = (TextView) findViewById(R.id.balance);
 		mir = (TextView) findViewById(R.id.mir);
@@ -47,7 +46,6 @@ public class BankAccountDetailActivity extends Activity {
 	}
 	
 	private void display(){
-		userid.setText(baccount.getUserid());
 		bankname.setText(baccount.getName());
 		accountname.setText(baccount.getDisname());
 		balance.setText(Double.toString(baccount.getBalance()));
