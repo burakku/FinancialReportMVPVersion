@@ -12,14 +12,8 @@
                 android:showAsAction="always"
                 android:title="Account"/>
             <item
-                android:id="@+id/user_page_trans"
-                android:orderInCategory="101"
-                android:showAsAction="always"
-                android:title="Add Transaction">
-            </item>
-            <item
                 android:id="@+id/user_page_logout"
-                android:orderInCategory="102"
+                android:orderInCategory="101"
                 android:showAsAction="always"
                 android:title="Log out"/>
         </menu>

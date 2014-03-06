@@ -18,8 +18,9 @@
  <color name="black">#000000</color>
  <color name="lightgray">#716d6d</color>
  <color name="bkg_start">#0f627e</color>
- <color name="bkg">#FFFFE0</color>
+ <color name="bkg">#F0F8FF</color>
  <color name="user_text">#6996AD</color>
  <color name="user_text_bright">#B0E2FF</color>
  <color name="user_edit_text">#EEDC82</color>
+ <color name="user_text_reg">#2B4F81</color>
 </resources>

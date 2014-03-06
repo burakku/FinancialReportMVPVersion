@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +37,7 @@ public class BankAccountDetailActivity extends Activity {
 		
 		Bundle b = getIntent().getExtras();
 		baccount = b.getParcelable("model.BankAccount");
+		setFont();
 		display();
 		
 
@@ -45,6 +47,22 @@ public class BankAccountDetailActivity extends Activity {
 		
 	}
 	
+	private void setFont() {
+		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf");
+		Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
+		
+		TextView textView1 = (TextView)findViewById(R.id.accD_balance);
+		TextView textView2 = (TextView)findViewById(R.id.accD_bankname);
+		TextView textView3 = (TextView)findViewById(R.id.accD_disName);
+		TextView textView4 = (TextView)findViewById(R.id.accD_mir);
+		TextView textView5 = (TextView)findViewById(R.id.accD_title);
+		textView1.setTypeface(typeface);
+		textView2.setTypeface(typeface);
+		textView3.setTypeface(typeface);
+		textView4.setTypeface(typeface);
+		textView5.setTypeface(typeface1);
+	}
+
 	private void display(){
 		bankname.setText(baccount.getName());
 		accountname.setText(baccount.getDisname());
