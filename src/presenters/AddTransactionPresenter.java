@@ -36,8 +36,11 @@ public class AddTransactionPresenter {
 		else{
 			bankName = view.getBKDisname();
 			double dbamount = Double.parseDouble(amount);
-			view.addTrans(new Transaction(name,type,date,dbamount,bankName));
-			view.goBack();
+			if(view.addTrans(new Transaction(name,type,date,dbamount,bankName))){
+				view.goBack();
+			} else {
+				resultText = "Don't have enough balance.";
+			}
 		}
 		view.setText(resultText);
 	}
