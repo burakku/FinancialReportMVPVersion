@@ -1,11 +1,16 @@
 package fiveminions.financialreportmvpversion;
 
+
 import database.FinancialTransactionSource;
 import model.Transaction;
+import model.myDate;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class TransactionDetailActivity extends Activity {
@@ -17,6 +22,7 @@ public class TransactionDetailActivity extends Activity {
 	private TextView tran_date;
 	private TextView tran_amount;
 	private Transaction tran;
+	private myDate date;
 	private FinancialTransactionSource datasource;
 
 	@Override
@@ -33,6 +39,7 @@ public class TransactionDetailActivity extends Activity {
 		
 		Bundle b = getIntent().getExtras();
 		tran = b.getParcelable("model.Transaction");
+		date = b.getParcelable("model.myDate");
 		setFont();
 		display();
 		
@@ -65,7 +72,7 @@ public class TransactionDetailActivity extends Activity {
 		tran_name.setText(tran.getName());
 		tran_type.setText(tran.getType());
 		tran_status.setText(tran.getStatus());
-		tran_date.setText(tran.getDate());
+		tran_date.setText(date.toString());
 		tran_amount.setText(Double.toString(tran.getAmount()));
 	}
 
@@ -76,4 +83,30 @@ public class TransactionDetailActivity extends Activity {
 		return true;
 	}
 
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.delete_trans) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Are you sure you want to delete this transaction?");
+			builder.setCancelable(false);
+			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					datasource.deleteTransaction(tran.getRecordTime());
+					finish();
+				}
+			});
+			
+			builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();			
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }

@@ -138,6 +138,10 @@
             android:name="fiveminions.financialreportmvpversion.TransactionDetailActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.SpendingReportActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

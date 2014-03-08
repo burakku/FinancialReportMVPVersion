@@ -39,6 +39,7 @@ public class UserpageActivity extends ListActivity {
 
 		menu = new ArrayList<String>();
 		menu.add("Transactions");
+		menu.add("Spending Report");
 
 
 		setTab();
@@ -120,6 +121,11 @@ public class UserpageActivity extends ListActivity {
 			intent.putExtra("userid", user.getUserID());
 			Log.i(MainActivity.LOGTAG, "Pass in userid");
 			startActivity(intent);
+			break;
+		case 1:
+			Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
+			startActivity(spendingIntent);
+			break;
 		default:
 			break;
 		}

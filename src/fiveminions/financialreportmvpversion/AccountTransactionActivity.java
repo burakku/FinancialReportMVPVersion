@@ -69,6 +69,7 @@ public class AccountTransactionActivity extends ListActivity{
 		Intent intent = new Intent(this, TransactionDetailActivity.class);
 		Transaction tran = transactions.get(position);
 		intent.putExtra("model.Transaction", tran);
+		intent.putExtra("model.myDate", tran.getDate());
 		Log.i(MainActivity.LOGTAG, "Pass in accounttransaction");
 		startActivity(intent);
 	}

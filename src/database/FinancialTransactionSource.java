@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Transaction;
+import model.myDate;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -47,12 +48,12 @@ public class FinancialTransactionSource {
 		double newbalance = 0;
 		values.put(FinancialDBOpenHelper.COLUMN_TRNAME, tr.getName());
 		values.put(FinancialDBOpenHelper.COLUMN_TRTYPE, tr.getType());
-		values.put(FinancialDBOpenHelper.COLUMN_TRDATE, tr.getDate());
+		values.put(FinancialDBOpenHelper.COLUMN_TRDATE, tr.getDate().getRawDate());
 		values.put(FinancialDBOpenHelper.COLUMN_TRAMOUNT, tr.getAmount());
 		values.put(FinancialDBOpenHelper.COLUMN_TRSTATUS, tr.getStatus());
 		values.put(FinancialDBOpenHelper.COLUMN_TRRECORD, tr.getRecordTime());
 		values.put(FinancialDBOpenHelper.COLUMN_TRBKDISNAME, tr.getBkDisName());
-		db.insert(FinancialDBOpenHelper.TABLE_TRANSACTIONS, null, values);
+		
 
 		
 		double total = getBalance(tr.getBkDisName());
@@ -63,6 +64,7 @@ public class FinancialTransactionSource {
 		}
 		
 		if(newbalance >0){
+			db.insert(FinancialDBOpenHelper.TABLE_TRANSACTIONS, null, values);
 			updateBalance(newbalance, tr.getBkDisName());
 			flag = true;
 		} 
@@ -78,27 +80,8 @@ public class FinancialTransactionSource {
 				transactionColumns, FinancialDBOpenHelper.COLUMN_TRBKDISNAME
 						+ " = " + "'" + bankname + "'", null, null, null, null);
 		Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
-		if (cursor.getCount() > 0) {
-			while (cursor.moveToNext()) {
-				Transaction tr = new Transaction();
-				tr.setName(cursor.getString(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRNAME)));
-				tr.setType(cursor.getString(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRTYPE)));
-				tr.setDate(cursor.getString(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRDATE)));
-				tr.setAmount(cursor.getDouble(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
-				tr.setStatus(cursor.getString(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRSTATUS)));
-				tr.setRecordTime(cursor.getString(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRRECORD)));
-				tr.setBkDisName(cursor.getString(cursor
-						.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRBKDISNAME)));
-				trs.add(tr);
-			}
-		}
-		return trs;
+
+		return cursorTransaction(cursor, trs);
 	}
 	
 	public double getBalance(String disname) {
@@ -121,6 +104,28 @@ public class FinancialTransactionSource {
 		db.update(FinancialDBOpenHelper.TABLE_ACCOUNTS, cd,
 				FinancialDBOpenHelper.COLUMN_DISNAME + " = " + "'" + disname +"'", null);
 		Log.i(LOGTAG, "Update new balance $"+ nb +  " in" + disname);
+	}
+	
+	public void deleteTransaction(String recordTime){
+		String[] values = new String[]{recordTime};
+		db.delete(FinancialDBOpenHelper.TABLE_TRANSACTIONS, FinancialDBOpenHelper.COLUMN_TRRECORD + "=?", values);
+		Log.i(LOGTAG, "transaction deleted");
+	}
+	protected static List<Transaction> cursorTransaction(Cursor c, List<Transaction> trs){
+		if(c.getCount() >0){
+			while(c.moveToNext()){
+				Transaction tr = new Transaction();
+					tr.setName(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRNAME)));
+					tr.setType(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRTYPE)));
+					tr.setDate(new myDate(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRDATE))));
+					tr.setAmount(c.getDouble(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
+					tr.setStatus(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRSTATUS)));
+					tr.setRecordTime(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRRECORD)));
+					tr.setBkDisName(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRBKDISNAME)));
+					trs.add(tr);
+			}
+		}
+		return trs;
 	}
 	
 }

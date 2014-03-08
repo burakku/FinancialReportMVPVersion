@@ -3,8 +3,11 @@ package presenters;
 import java.util.ArrayList;
 import java.util.List;
 
-import views.IAddTransactionView;
 import model.Transaction;
+import model.myDate;
+
+import views.IAddTransactionView;
+
 
 public class AddTransactionPresenter {
 	private final IAddTransactionView view;
@@ -21,13 +24,13 @@ public class AddTransactionPresenter {
 	}
 	public void onSubmitClick(){
 		String name;
-		String date;
+		myDate date;
 		String amount;
 		String type;
 		String bankName;
 		String resultText = "";
 		name = view.getName();
-		date = view.getDate();
+		date = new myDate(view.getDate());
 		amount = view.getAmount();
 		type = view.getType();
 		if(name.equals("") || date.equals("") ||amount.equals("")||type.equals("")){
