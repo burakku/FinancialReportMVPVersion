@@ -16,5 +16,6 @@
     <string name="title_activity_add_transaction">New Transaction</string>
     <string name="hello">Hello!</string>
     <string name="spinner_title">Select Type</string>
-
+	<string name="report_year_spinner">Select Year</string>
+	<string name="report_month_spinner">Select Month</string>
 </resources>
