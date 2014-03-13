@@ -60,7 +60,8 @@ public class TransactionActivity extends ListActivity{
 		BankAccount baccount = accounts.get(position);
 		Intent intent = new Intent(this, AccountTransactionActivity.class);
 		intent.putExtra("bankname", baccount.getDisname());
-		Log.i(MainActivity.LOGTAG, "Pass in bankname");
+		intent.putExtra("userid", userid);
+		Log.i(MainActivity.LOGTAG, "Pass in bankname and userid");
 		startActivity(intent);
 	}
 	

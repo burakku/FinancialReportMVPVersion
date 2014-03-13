@@ -33,7 +33,7 @@ public class LoginActivity extends Activity implements ILoginView {
 		resultTxt = (TextView) findViewById(R.id.loginText);
 		
 		datasource = new FinancialUserSource(this);
-		//datasource.open();
+		datasource.open();
 		//datasource.update(datasource);
 	}
 	

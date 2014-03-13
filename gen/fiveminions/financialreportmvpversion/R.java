@@ -96,14 +96,14 @@ public final class R {
         public static final int accD_title=0x7f090006;
         public static final int accountText=0x7f090033;
         public static final int accountname=0x7f09000a;
-        public static final int action_settings=0x7f09004a;
-        public static final int add_new_account=0x7f090049;
+        public static final int action_settings=0x7f09004b;
+        public static final int add_new_account=0x7f09004a;
         public static final int bLogin=0x7f090012;
         public static final int bRegister=0x7f090011;
         public static final int balance=0x7f09000c;
         public static final int bankname=0x7f090008;
-        public static final int delet_bank_account=0x7f09004b;
-        public static final int delete_trans=0x7f09004c;
+        public static final int delet_bank_account=0x7f09004c;
+        public static final int delete_trans=0x7f09004d;
         public static final int delete_userB=0x7f090025;
         public static final int email=0x7f090023;
         public static final int loginText=0x7f090028;
@@ -123,7 +123,7 @@ public final class R {
         public static final int new_bAcc_title=0x7f09002a;
         public static final int password=0x7f090022;
         public static final int passwordLog=0x7f090027;
-        public static final int pieGraph=0x7f090045;
+        public static final int pieGraph=0x7f090046;
         public static final int regEmail=0x7f09003c;
         public static final int regName=0x7f090036;
         public static final int regPassword=0x7f09003a;
@@ -135,14 +135,15 @@ public final class R {
         public static final int register_title=0x7f090034;
         public static final int reportMonthSpinner=0x7f090040;
         public static final int reportText=0x7f090042;
+        public static final int reportTotalAmountText=0x7f090043;
         public static final int reportViewB=0x7f090041;
         public static final int reportYearSpinner=0x7f09003f;
         public static final int reset_passwordB=0x7f090024;
         public static final int signUP=0x7f09003e;
-        public static final int tab1=0x7f090044;
-        public static final int tab2=0x7f090046;
-        public static final int tab3=0x7f090047;
-        public static final int tabhost=0x7f090043;
+        public static final int tab1=0x7f090045;
+        public static final int tab2=0x7f090047;
+        public static final int tab3=0x7f090048;
+        public static final int tabhost=0x7f090044;
         public static final int textEmail=0x7f09003b;
         public static final int tranAmount=0x7f090002;
         public static final int tranDate=0x7f090001;
@@ -163,12 +164,12 @@ public final class R {
         public static final int transD_textView5=0x7f09001c;
         public static final int transD_textView6=0x7f09001e;
         public static final int transD_title=0x7f090013;
-        public static final int user_page_account=0x7f09004e;
-        public static final int user_page_logout=0x7f09004f;
-        public static final int user_page_menu=0x7f09004d;
+        public static final int user_page_account=0x7f09004f;
+        public static final int user_page_logout=0x7f090050;
+        public static final int user_page_menu=0x7f09004e;
         public static final int username=0x7f090021;
         public static final int usernameLog=0x7f090026;
-        public static final int welcome_app_name=0x7f090048;
+        public static final int welcome_app_name=0x7f090049;
     }
     public static final class layout {
         public static final int account_page=0x7f030000;

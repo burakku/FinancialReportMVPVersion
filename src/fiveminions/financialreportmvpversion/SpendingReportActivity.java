@@ -30,6 +30,7 @@ public class SpendingReportActivity extends ListActivity implements
 	private FinancialReportGenerator datasource;
 	private List<Transaction> spendingList;
 	private TextView text;
+	private TextView amountText;
 	private Report rp;
 	private ReportPresenter presenter;
 	private Spinner yearSpinner;
@@ -38,17 +39,21 @@ public class SpendingReportActivity extends ListActivity implements
 	private List<String> monthList;
 	private String year = "";
 	private String month = "";
-
+	private String userid;
+	Bundle b;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.report);
 		datasource = new FinancialReportGenerator(this);
-
-		text = (TextView) findViewById(R.id.reportText);
+		presenter = new ReportPresenter(this);
 		rp = new Report();
-
-		text.setText(rp.getSpendingTitle(year, month));
+		
+		b = getIntent().getExtras();
+		userid = b.getString("userid");
+		
+		text = (TextView) findViewById(R.id.reportText);
+		amountText = (TextView) findViewById(R.id.reportTotalAmountText);
 
 		yearSpinner = (Spinner) findViewById(R.id.reportYearSpinner);
 		monthSpinner = (Spinner) findViewById(R.id.reportMonthSpinner);
@@ -96,12 +101,13 @@ public class SpendingReportActivity extends ListActivity implements
 	}
 
 	public void display(String yearmonth) {
-		spendingList = datasource.getSpendingList(yearmonth);
+		spendingList = datasource.getSpendingList(yearmonth, userid);
 		ArrayAdapter<Transaction> adapter = new ArrayAdapter<Transaction>(this,
 				R.layout.list_view1, spendingList);
 		setListAdapter(adapter);
 		Log.i(MainActivity.LOGTAG, "Refresh Spending List");
 		text.setText(rp.getSpendingTitle(year, month));
+		amountText.setText(rp.getTotalTile(datasource.getTotal(spendingList)));
 	}
 
 	@Override
@@ -122,14 +128,14 @@ public class SpendingReportActivity extends ListActivity implements
 		super.onListItemClick(l, v, position, id);
 		Intent intent = new Intent(this, TransactionDetailActivity.class);
 		Transaction tran = spendingList.get(position);
-		intent.putExtra("com.example.financial.model.Transaction", tran);
-		intent.putExtra("com.example.financial.model.myDate", tran.getDate());
+		intent.putExtra("model.Transaction", tran);
+		intent.putExtra("model.myDate", tran.getDate());
 		Log.i(MainActivity.LOGTAG, "Open Transaction Detail");
 		startActivity(intent);
 	}
 
 	public void onViewClick(View v) {
-		refresh();
+		presenter.onClickView();
 	}
 
 	@Override

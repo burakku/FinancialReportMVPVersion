@@ -19,7 +19,7 @@ public class FinancialUserSource {
 	SQLiteOpenHelper dbhelper;
 	SQLiteDatabase db;
 	
-	public static final String[] userColumns = {
+	protected static final String[] userColumns = {
 		FinancialDBOpenHelper.COLUMN_USERID,
 		FinancialDBOpenHelper.COLUMN_PASSWORD,
 		FinancialDBOpenHelper.COLUMN_NAME,
@@ -100,6 +100,8 @@ public class FinancialUserSource {
 	public void removeUser(String userID) {
 		String[] value = new String[]{userID};
 		db.delete(FinancialDBOpenHelper.TABLE_USERS, FinancialDBOpenHelper.COLUMN_USERID + "=?", value);
+		db.delete(FinancialDBOpenHelper.TABLE_ACCOUNTS, FinancialDBOpenHelper.COLUMN_ACUSERID+ "=?", value);
+		db.delete(FinancialDBOpenHelper.TABLE_TRANSACTIONS, FinancialDBOpenHelper.COLUMN_TRUSERID+ "=?", value);
 		Log.i(LOGTAG, "Delete user : " + userID);
 	}
 	
