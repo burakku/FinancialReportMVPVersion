@@ -22,13 +22,14 @@ public class AddTransactionPresenter {
 		categories.add("Deposit");
 		return (ArrayList<String>) categories;
 	}
+	
 	public void onSubmitClick(){
 		String name;
 		myDate date;
 		String amount;
 		String type;
 		String bankName;
-		String userid = null;
+		String userid;
 		String resultText = "";
 		name = view.getName();
 		date = new myDate(view.getDate());
@@ -39,6 +40,7 @@ public class AddTransactionPresenter {
 		}
 		else{
 			bankName = view.getBKDisname();
+			userid = view.getUserid();
 			double dbamount = Double.parseDouble(amount);
 			if(view.addTrans(new Transaction(name,type,date,dbamount,bankName,userid))){
 				view.goBack();

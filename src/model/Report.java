@@ -7,13 +7,11 @@ import java.util.Date;
 public class Report {
 	private myDate reportDate;
 	private Date date;
-	private String title;
 	
 	public Report() {
 		date = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		this.reportDate = new myDate(df.format(date));
-		title = "";
 	}
 	
 	public String getCurrentYearMonth(){
@@ -33,6 +31,4 @@ public class Report {
 	public String getTotalTile(double total){
 		return "The total is $" + total;
 	}
-	
-	
 }
