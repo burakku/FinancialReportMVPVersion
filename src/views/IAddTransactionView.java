@@ -12,4 +12,5 @@ public interface IAddTransactionView {
 	boolean addTrans(Transaction t);
 	void setText(String t);
 	void goBack();
+	String getUserid();
 }

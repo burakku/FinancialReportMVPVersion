@@ -8,6 +8,9 @@
 package fiveminions.financialreportmvpversion;
 
 public final class R {
+    public static final class array {
+        public static final int nav_drawer_items=0x7f070000;
+    }
     public static final class attr {
     }
     public static final class color {
@@ -21,6 +24,8 @@ public final class R {
         public static final int green=0x7f04000c;
         public static final int lightgray=0x7f040010;
         public static final int lime=0x7f04000a;
+        public static final int list_background=0x7f040018;
+        public static final int list_divider=0x7f040017;
         public static final int maroon=0x7f040008;
         public static final int navy=0x7f04000e;
         public static final int olive=0x7f040006;
@@ -62,114 +67,115 @@ public final class R {
         public static final int cab_background_top_clover=0x7f02000d;
         public static final int ic_action_new=0x7f02000e;
         public static final int ic_action_settings=0x7f02000f;
-        public static final int ic_icon=0x7f020010;
-        public static final int ic_launcher=0x7f020011;
-        public static final int list_focused_clover=0x7f020012;
-        public static final int list_pressed_clover=0x7f020013;
-        public static final int menu_dropdown_panel_clover=0x7f020014;
-        public static final int normal=0x7f020015;
-        public static final int popup_black=0x7f020016;
-        public static final int pressed=0x7f020017;
-        public static final int progress_bg_clover=0x7f020018;
-        public static final int progress_horizontal_clover=0x7f020019;
-        public static final int progress_primary_clover=0x7f02001a;
-        public static final int progress_secondary_clover=0x7f02001b;
-        public static final int selectable_background_clover=0x7f02001c;
-        public static final int spinner_ab_default_clover=0x7f02001d;
-        public static final int spinner_ab_disabled_clover=0x7f02001e;
-        public static final int spinner_ab_focused_clover=0x7f02001f;
-        public static final int spinner_ab_pressed_clover=0x7f020020;
-        public static final int spinner_background_ab_clover=0x7f020021;
-        public static final int tab_indicator_ab_clover=0x7f020022;
-        public static final int tab_selected_clover=0x7f020023;
-        public static final int tab_selected_focused_clover=0x7f020024;
-        public static final int tab_selected_pressed_clover=0x7f020025;
-        public static final int tab_unselected_clover=0x7f020026;
-        public static final int tab_unselected_focused_clover=0x7f020027;
-        public static final int tab_unselected_pressed_clover=0x7f020028;
+        public static final int ic_drawer=0x7f020010;
+        public static final int ic_icon=0x7f020011;
+        public static final int ic_launcher=0x7f020012;
+        public static final int list_focused_clover=0x7f020013;
+        public static final int list_pressed_clover=0x7f020014;
+        public static final int menu_dropdown_panel_clover=0x7f020015;
+        public static final int normal=0x7f020016;
+        public static final int popup_black=0x7f020017;
+        public static final int pressed=0x7f020018;
+        public static final int progress_bg_clover=0x7f020019;
+        public static final int progress_horizontal_clover=0x7f02001a;
+        public static final int progress_primary_clover=0x7f02001b;
+        public static final int progress_secondary_clover=0x7f02001c;
+        public static final int selectable_background_clover=0x7f02001d;
+        public static final int spinner_ab_default_clover=0x7f02001e;
+        public static final int spinner_ab_disabled_clover=0x7f02001f;
+        public static final int spinner_ab_focused_clover=0x7f020020;
+        public static final int spinner_ab_pressed_clover=0x7f020021;
+        public static final int spinner_background_ab_clover=0x7f020022;
+        public static final int tab_indicator_ab_clover=0x7f020023;
+        public static final int tab_selected_clover=0x7f020024;
+        public static final int tab_selected_focused_clover=0x7f020025;
+        public static final int tab_selected_pressed_clover=0x7f020026;
+        public static final int tab_unselected_clover=0x7f020027;
+        public static final int tab_unselected_focused_clover=0x7f020028;
+        public static final int tab_unselected_pressed_clover=0x7f020029;
     }
     public static final class id {
-        public static final int accD_balance=0x7f09000b;
-        public static final int accD_bankname=0x7f090007;
-        public static final int accD_disName=0x7f090009;
-        public static final int accD_mir=0x7f09000d;
-        public static final int accD_title=0x7f090006;
-        public static final int accountText=0x7f090033;
-        public static final int accountname=0x7f09000a;
-        public static final int action_settings=0x7f09004b;
-        public static final int add_new_account=0x7f09004a;
-        public static final int bLogin=0x7f090012;
-        public static final int bRegister=0x7f090011;
-        public static final int balance=0x7f09000c;
-        public static final int bankname=0x7f090008;
-        public static final int delet_bank_account=0x7f09004c;
-        public static final int delete_trans=0x7f09004d;
-        public static final int delete_userB=0x7f090025;
-        public static final int email=0x7f090023;
-        public static final int loginText=0x7f090028;
-        public static final int loginbutton=0x7f090029;
-        public static final int main_icon=0x7f09000f;
-        public static final int main_title=0x7f090010;
-        public static final int mir=0x7f09000e;
-        public static final int name=0x7f090020;
-        public static final int newAcBalance=0x7f090030;
-        public static final int newAcDisName=0x7f09002e;
-        public static final int newAcMIR=0x7f090032;
-        public static final int newAcName=0x7f09002c;
-        public static final int new_bAcc_MIR=0x7f090031;
-        public static final int new_bAcc_balance=0x7f09002f;
-        public static final int new_bAcc_bank=0x7f09002b;
-        public static final int new_bAcc_disName=0x7f09002d;
-        public static final int new_bAcc_title=0x7f09002a;
-        public static final int password=0x7f090022;
-        public static final int passwordLog=0x7f090027;
-        public static final int pieGraph=0x7f090046;
-        public static final int regEmail=0x7f09003c;
-        public static final int regName=0x7f090036;
-        public static final int regPassword=0x7f09003a;
-        public static final int regText=0x7f09003d;
-        public static final int regUserid=0x7f090038;
-        public static final int register_text_name=0x7f090035;
-        public static final int register_text_password=0x7f090039;
-        public static final int register_text_userid=0x7f090037;
-        public static final int register_title=0x7f090034;
-        public static final int reportMonthSpinner=0x7f090040;
-        public static final int reportText=0x7f090042;
-        public static final int reportTotalAmountText=0x7f090043;
-        public static final int reportViewB=0x7f090041;
-        public static final int reportYearSpinner=0x7f09003f;
-        public static final int reset_passwordB=0x7f090024;
-        public static final int signUP=0x7f09003e;
-        public static final int tab1=0x7f090045;
-        public static final int tab2=0x7f090047;
-        public static final int tab3=0x7f090048;
-        public static final int tabhost=0x7f090044;
-        public static final int textEmail=0x7f09003b;
-        public static final int tranAmount=0x7f090002;
-        public static final int tranDate=0x7f090001;
-        public static final int tranName=0x7f090000;
-        public static final int tranSubmit=0x7f090005;
-        public static final int tranText=0x7f090004;
-        public static final int tranTypeSpinner=0x7f090003;
-        public static final int tran_amount=0x7f090019;
-        public static final int tran_bkname=0x7f09001d;
-        public static final int tran_date=0x7f090017;
-        public static final int tran_name=0x7f090015;
-        public static final int tran_status=0x7f09001f;
-        public static final int tran_type=0x7f09001b;
-        public static final int transD_textView1=0x7f090014;
-        public static final int transD_textView2=0x7f090016;
-        public static final int transD_textView3=0x7f090018;
-        public static final int transD_textView4=0x7f09001a;
-        public static final int transD_textView5=0x7f09001c;
-        public static final int transD_textView6=0x7f09001e;
-        public static final int transD_title=0x7f090013;
-        public static final int user_page_account=0x7f09004f;
-        public static final int user_page_logout=0x7f090050;
-        public static final int user_page_menu=0x7f09004e;
-        public static final int username=0x7f090021;
-        public static final int usernameLog=0x7f090026;
-        public static final int welcome_app_name=0x7f090049;
+        public static final int accD_balance=0x7f0a000b;
+        public static final int accD_bankname=0x7f0a0007;
+        public static final int accD_disName=0x7f0a0009;
+        public static final int accD_mir=0x7f0a000d;
+        public static final int accD_title=0x7f0a0006;
+        public static final int accountText=0x7f0a0035;
+        public static final int accountname=0x7f0a000a;
+        public static final int action_settings=0x7f0a004b;
+        public static final int add_new_account=0x7f0a004a;
+        public static final int bLogin=0x7f0a0012;
+        public static final int bRegister=0x7f0a0011;
+        public static final int balance=0x7f0a000c;
+        public static final int bankname=0x7f0a0008;
+        public static final int delet_bank_account=0x7f0a004c;
+        public static final int delete_trans=0x7f0a004d;
+        public static final int delete_userB=0x7f0a0025;
+        public static final int drawer_layout=0x7f0a0046;
+        public static final int email=0x7f0a0023;
+        public static final int frame_container=0x7f0a0047;
+        public static final int list_slidermenu=0x7f0a0048;
+        public static final int loginText=0x7f0a002a;
+        public static final int loginbutton=0x7f0a002b;
+        public static final int main_icon=0x7f0a000f;
+        public static final int main_title=0x7f0a0010;
+        public static final int mir=0x7f0a000e;
+        public static final int name=0x7f0a0020;
+        public static final int newAcBalance=0x7f0a0032;
+        public static final int newAcDisName=0x7f0a0030;
+        public static final int newAcMIR=0x7f0a0034;
+        public static final int newAcName=0x7f0a002e;
+        public static final int new_bAcc_MIR=0x7f0a0033;
+        public static final int new_bAcc_balance=0x7f0a0031;
+        public static final int new_bAcc_bank=0x7f0a002d;
+        public static final int new_bAcc_disName=0x7f0a002f;
+        public static final int new_bAcc_title=0x7f0a002c;
+        public static final int password=0x7f0a0022;
+        public static final int passwordLog=0x7f0a0029;
+        public static final int pieGraph=0x7f0a0027;
+        public static final int regEmail=0x7f0a003e;
+        public static final int regName=0x7f0a0038;
+        public static final int regPassword=0x7f0a003c;
+        public static final int regText=0x7f0a003f;
+        public static final int regUserid=0x7f0a003a;
+        public static final int register_text_name=0x7f0a0037;
+        public static final int register_text_password=0x7f0a003b;
+        public static final int register_text_userid=0x7f0a0039;
+        public static final int register_title=0x7f0a0036;
+        public static final int reportMonthSpinner=0x7f0a0042;
+        public static final int reportText=0x7f0a0044;
+        public static final int reportTotalAmountText=0x7f0a0045;
+        public static final int reportViewB=0x7f0a0043;
+        public static final int reportYearSpinner=0x7f0a0041;
+        public static final int reset_passwordB=0x7f0a0024;
+        public static final int signUP=0x7f0a0040;
+        public static final int textEmail=0x7f0a003d;
+        public static final int title=0x7f0a0026;
+        public static final int tranAmount=0x7f0a0002;
+        public static final int tranDate=0x7f0a0001;
+        public static final int tranName=0x7f0a0000;
+        public static final int tranSubmit=0x7f0a0005;
+        public static final int tranText=0x7f0a0004;
+        public static final int tranTypeSpinner=0x7f0a0003;
+        public static final int tran_amount=0x7f0a0019;
+        public static final int tran_bkname=0x7f0a001d;
+        public static final int tran_date=0x7f0a0017;
+        public static final int tran_name=0x7f0a0015;
+        public static final int tran_status=0x7f0a001f;
+        public static final int tran_type=0x7f0a001b;
+        public static final int transD_textView1=0x7f0a0014;
+        public static final int transD_textView2=0x7f0a0016;
+        public static final int transD_textView3=0x7f0a0018;
+        public static final int transD_textView4=0x7f0a001a;
+        public static final int transD_textView5=0x7f0a001c;
+        public static final int transD_textView6=0x7f0a001e;
+        public static final int transD_title=0x7f0a0013;
+        public static final int user_page_account=0x7f0a004f;
+        public static final int user_page_logout=0x7f0a0050;
+        public static final int user_page_menu=0x7f0a004e;
+        public static final int username=0x7f0a0021;
+        public static final int usernameLog=0x7f0a0028;
+        public static final int welcome_app_name=0x7f0a0049;
     }
     public static final class layout {
         public static final int account_page=0x7f030000;
@@ -180,23 +186,26 @@ public final class R {
         public static final int admin_page_detail=0x7f030005;
         public static final int adminpage=0x7f030006;
         public static final int bank_transaction=0x7f030007;
-        public static final int list_view1=0x7f030008;
-        public static final int login=0x7f030009;
-        public static final int newaccount_page=0x7f03000a;
-        public static final int register=0x7f03000b;
-        public static final int report=0x7f03000c;
-        public static final int transaction_page=0x7f03000d;
-        public static final int user_page=0x7f03000e;
-        public static final int welcome=0x7f03000f;
+        public static final int drawer_list_item=0x7f030008;
+        public static final int fragment_home=0x7f030009;
+        public static final int list_view1=0x7f03000a;
+        public static final int login=0x7f03000b;
+        public static final int newaccount_page=0x7f03000c;
+        public static final int register=0x7f03000d;
+        public static final int report=0x7f03000e;
+        public static final int transaction_page=0x7f03000f;
+        public static final int user_homepage=0x7f030010;
+        public static final int user_page=0x7f030011;
+        public static final int welcome=0x7f030012;
     }
     public static final class menu {
-        public static final int account_menu=0x7f080000;
-        public static final int add_transaction=0x7f080001;
-        public static final int bank_account_detail=0x7f080002;
-        public static final int main=0x7f080003;
-        public static final int transaction_detail_acitivity=0x7f080004;
-        public static final int transaction_menu=0x7f080005;
-        public static final int user_page_menu=0x7f080006;
+        public static final int account_menu=0x7f090000;
+        public static final int add_transaction=0x7f090001;
+        public static final int bank_account_detail=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int transaction_detail_acitivity=0x7f090004;
+        public static final int transaction_menu=0x7f090005;
+        public static final int user_page_menu=0x7f090006;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -216,10 +225,10 @@ public final class R {
         public static final int title_activity_bank_account_detail=0x7f060009;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Clover=0x7f070003;
-        public static final int ActionBar_Transparent_Clover=0x7f070004;
-        public static final int ActionBarTabStyle_Clover=0x7f070007;
-        public static final int ActionButton_CloseMode_Clover=0x7f07000a;
+        public static final int ActionBar_Solid_Clover=0x7f080003;
+        public static final int ActionBar_Transparent_Clover=0x7f080004;
+        public static final int ActionBarTabStyle_Clover=0x7f080007;
+        public static final int ActionButton_CloseMode_Clover=0x7f08000a;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -241,18 +250,18 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
-        public static final int DropDownListView_Clover=0x7f070006;
-        public static final int DropDownNav_Clover=0x7f070008;
-        public static final int PopupMenu_Clover=0x7f070005;
-        public static final int ProgressBar_Clover=0x7f070009;
-        public static final int Theme_Clover=0x7f070002;
+        public static final int AppTheme=0x7f080001;
+        public static final int DropDownListView_Clover=0x7f080006;
+        public static final int DropDownNav_Clover=0x7f080008;
+        public static final int PopupMenu_Clover=0x7f080005;
+        public static final int ProgressBar_Clover=0x7f080009;
+        public static final int Theme_Clover=0x7f080002;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
-        public static final int Theme_Clover_Widget=0x7f07000b;
+        public static final int Theme_Clover_Widget=0x7f08000b;
     }
 }

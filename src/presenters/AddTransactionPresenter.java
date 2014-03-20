@@ -28,6 +28,7 @@ public class AddTransactionPresenter {
 		String amount;
 		String type;
 		String bankName;
+		String userid = null;
 		String resultText = "";
 		name = view.getName();
 		date = new myDate(view.getDate());
@@ -39,7 +40,7 @@ public class AddTransactionPresenter {
 		else{
 			bankName = view.getBKDisname();
 			double dbamount = Double.parseDouble(amount);
-			if(view.addTrans(new Transaction(name,type,date,dbamount,bankName))){
+			if(view.addTrans(new Transaction(name,type,date,dbamount,bankName,userid))){
 				view.goBack();
 			} else {
 				resultText = "Don't have enough balance.";

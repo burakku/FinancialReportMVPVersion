@@ -4,14 +4,9 @@ package fiveminions.financialreportmvpversion;
 import java.util.ArrayList;
 import java.util.List;
 
-import views.PieGraph;
-import views.PieSlice;
-
 import model.User;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,9 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
-import android.widget.TextView;
 
 public class UserpageActivity extends ListActivity {
 
@@ -30,7 +22,6 @@ public class UserpageActivity extends ListActivity {
 	private List<String> menu;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_page);
 
@@ -41,41 +32,7 @@ public class UserpageActivity extends ListActivity {
 		menu.add("Transactions");
 		menu.add("Spending Report");
 
-
-		setTab();
-
-		PieGraph pg = (PieGraph)findViewById(R.id.pieGraph);
-		PieSlice slice = new PieSlice();
-		slice.setColor(Color.parseColor("#99CC00"));
-		slice.setValue(2);
-		slice.setTitle("test");
-		pg.addSlice(slice);
-		slice = new PieSlice();
-		slice.setColor(Color.parseColor("#FFBB33"));
-		slice.setValue(3);
-		pg.addSlice(slice);
-		slice = new PieSlice();
-		slice.setColor(Color.parseColor("#AA66CC"));
-		slice.setValue(8);
-		pg.addSlice(slice);
 		display();
-	}
-
-	private void setTab() {
-		TabHost th = (TabHost) findViewById(R.id.tabhost);
-		th.setup();
-		TabSpec ts = th.newTabSpec("a");
-		ts.setContent(R.id.tab1);
-		ts.setIndicator("Spending");
-		th.addTab(ts);
-		ts = th.newTabSpec("b");
-		ts.setContent(R.id.tab2);
-		ts.setIndicator("Income");
-		th.addTab(ts);
-		ts = th.newTabSpec("c");
-		ts.setContent(R.id.tab3);
-		ts.setIndicator("Cash Flow");
-		th.addTab(ts);
 	}
 
 	@Override
@@ -113,7 +70,6 @@ public class UserpageActivity extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
 		switch(position) {
 		case 0:
@@ -124,6 +80,8 @@ public class UserpageActivity extends ListActivity {
 			break;
 		case 1:
 			Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
+			spendingIntent.putExtra("userid", user.getUserID());
+			Log.i(MainActivity.LOGTAG, "Pass in userid");
 			startActivity(spendingIntent);
 			break;
 		default:

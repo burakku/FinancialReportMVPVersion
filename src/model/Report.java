@@ -30,5 +30,9 @@ public class Report {
 		return"Spending Report for " + reportDate.getYear() + " "+ reportDate.getFormatMonth();
 	}
 	
+	public String getTotalTile(double total){
+		return "The total is $" + total;
+	}
+	
 	
 }

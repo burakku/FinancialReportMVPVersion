@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="13"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
     <application
@@ -141,6 +141,15 @@
         <activity
             android:name="fiveminions.financialreportmvpversion.SpendingReportActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="fiveminions.financialreportmvpversion.UserHomepageActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="fiveminions.financialreportmvpversion.USERHOMEPAGEACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

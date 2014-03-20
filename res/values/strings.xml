@@ -18,4 +18,12 @@
     <string name="spinner_title">Select Type</string>
 	<string name="report_year_spinner">Select Year</string>
 	<string name="report_month_spinner">Select Month</string>
+	<string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Transaction</item>
+        <item >Monthly Spending</item>
+        <item >Monthly Income</item>
+        <item >Account</item>
+        <item >Logout</item>
+    </string-array>
 </resources>

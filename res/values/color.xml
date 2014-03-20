@@ -23,4 +23,6 @@
  <color name="user_text_bright">#B0E2FF</color>
  <color name="user_edit_text">#EEDC82</color>
  <color name="user_text_reg">#2B4F81</color>
+ <color name="list_divider">#272727</color>
+ <color name="list_background">#303030</color>
 </resources>
