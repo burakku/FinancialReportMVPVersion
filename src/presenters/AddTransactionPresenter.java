@@ -8,21 +8,41 @@ import model.myDate;
 
 import views.IAddTransactionView;
 
-
+/**
+ * Presenter to handle any logic related to users'
+ * add transaction activities.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class AddTransactionPresenter {
 	private final IAddTransactionView view;
-	
+	/**
+	 * Constructor for adding transaction presenter
+	 * 
+	 * @param v the view
+	 */
 	public AddTransactionPresenter(IAddTransactionView v){
 		view = v;
 	}
-	
+	/**
+	 * geTypeList method which returns the array list of the type 
+	 * of the transactions
+	 * 
+	 * @return categories the categories of the transactions
+	 */
 	public ArrayList<String> getTypeList(){
 		List<String> categories = new ArrayList<String>();
 		categories.add("Withdrawl");
 		categories.add("Deposit");
 		return (ArrayList<String>) categories;
 	}
-	
+	/**
+	 * Handle the submit button click in the UI,
+	 * Submit the users' option
+	 * 
+	 */
 	public void onSubmitClick(){
 		String name;
 		myDate date;

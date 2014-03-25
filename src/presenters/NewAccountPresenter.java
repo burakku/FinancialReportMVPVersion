@@ -3,8 +3,14 @@ package presenters;
 import model.BankAccount;
 import views.INewAccountView;
 
-
-
+/**
+ * Presenter to handle any logic related to users'
+ * creating new account activities.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class NewAccountPresenter {
 	private final INewAccountView view;
 	

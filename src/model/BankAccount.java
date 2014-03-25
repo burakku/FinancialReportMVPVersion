@@ -62,6 +62,7 @@ public class BankAccount implements Parcelable{
 	/**
 	 * setName method which sets the name of the user
 	 * 
+	 * @return name - the name of the user
 	 */
 	public void setName(String name) {
 		this.name = name;
