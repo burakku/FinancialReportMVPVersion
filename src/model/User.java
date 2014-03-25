@@ -5,6 +5,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+/**
+ * This class allows a bank user to access and change his 
+ * or her information such as get his or her name, change
+ * account password and so forth. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class User implements Parcelable{
 
 	private String userID;
@@ -110,23 +119,41 @@ public class User implements Parcelable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	/**
+	 * toString method which return user name and ID
+	 * 
+	 * @return user name and ID 
+	 */
 	public String toString() {
 		return name + " : " + userID;
 	}
-
+	/**
+	 * describeContents method which returns content
+	 * 
+	 * @return 0
+	 */
 	@Override
 	public int describeContents() {
 		return 0;
 	}
-
+	/**
+	 * Constructor for User
+	 * 
+	 * @param in 
+	 */
 	public User(Parcel in) {
 		userID = in.readString();
 		password = in.readString();
 		name = in.readString();
 		email = in.readString();
 	}
-
+	/**
+	 * writeToParcel method which writes the information of
+	 * the user to parcel
+	 * 
+	 * @param dest
+	 * @param flag
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flag) {
 		Log.i(MainActivity.LOGTAG, "writeToParcel");

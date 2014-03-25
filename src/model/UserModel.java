@@ -1,7 +1,14 @@
 package model;
 
 import java.util.Collection;
-
+/**
+ * A Facade for the actual model, which specifies 
+ * what methods the Model class contains. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public interface UserModel {
 	boolean checkUser(String userId);
 	User getUserById(String userID);
