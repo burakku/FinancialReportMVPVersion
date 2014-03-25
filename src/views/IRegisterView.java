@@ -2,7 +2,13 @@ package views;
 
 import model.User;
 
-
+/**
+ * Interface to the view for registration
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public interface IRegisterView {
 	/**
 	 * get user id from user's input
@@ -34,5 +40,8 @@ public interface IRegisterView {
 	 * @return
 	 */
 	User findUser(String uid);
+	/**
+	 * redirect to loging page
+	 */
 	void goLoginPage();
 }

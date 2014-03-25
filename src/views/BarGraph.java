@@ -48,6 +48,14 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+/**
+ * Graph class to the view for setting information
+ * for the bar graph 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class BarGraph extends View {
 
 	private ArrayList<Bar> points = new ArrayList<Bar>();
@@ -59,28 +67,56 @@ public class BarGraph extends View {
 	private OnBarClickedListener listener;
 	private Bitmap fullImage;
 	private boolean shouldUpdate = false;
-	
+	/**
+	 * Constructor for Bar Graph
+	 * Calling super constructor
+	 * 
+	 * @param context context to type in
+	 */
 	public BarGraph(Context context) {
 		super(context);
 	}
-	
+	/**
+	 * Constructor for Bar Graph
+	 * Calling super constructor
+	 * 
+	 * @param context context to type in
+	 * @param attrs attribute of the bar graph
+	 */
 	public BarGraph(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-	
+	/**
+	 * setShowBarText method which sets the text shown on the bar graph
+	 * 
+	 * @param show the text shown on the bar graph
+	 */
 	public void setShowBarText(boolean show){
 		showBarText = show;
 	}
-	
+	/**
+	 * setBars method which sets the points in the bar graph
+	 * 
+	 * @param points the points in the bar graph
+	 */
 	public void setBars(ArrayList<Bar> points){
 		this.points = points;
 		postInvalidate();
 	}
-	
+	/**
+	 * getBars method which gets the points of the bar graph
+	 * 
+	 * @return points the points in the bar graph
+	 */
 	public ArrayList<Bar> getBars(){
 		return this.points;
 	}
-
+	/**
+	 * draws the interface of the bar graph, set the heigth and width
+	 * and set the color of the graph
+	 * 
+	 * @param ca 
+	 */
 	public void onDraw(Canvas ca) {
 		
 		if (fullImage == null || shouldUpdate) {
@@ -158,7 +194,12 @@ public class BarGraph extends View {
 		ca.drawBitmap(fullImage, 0, 0, null);
 		
 	}
-
+	/**
+	 * check if the event is touched
+	 * 
+	 * @param event event of the bar graph
+	 * @return true if the event is touched  
+	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 
@@ -190,11 +231,18 @@ public class BarGraph extends View {
 
 	    return true;
 	}
-	
+	/**
+	 * setOnBarClickedListener method which sets the listener in the bar graph
+	 * 
+	 * @param listener
+	 */
 	public void setOnBarClickedListener(OnBarClickedListener listener) {
 		this.listener = listener;
 	}
-	
+	/**
+	 * interface for the click listener
+	 * 
+	 */
 	public interface OnBarClickedListener {
 		abstract void onClick(int index);
 	}

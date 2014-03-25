@@ -42,6 +42,14 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+/**
+ * Graph class to the view for setting information
+ * for the pie graph 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */	
 public class PieGraph extends View {
 
 	private ArrayList<PieSlice> slices = new ArrayList<PieSlice>();
@@ -52,14 +60,29 @@ public class PieGraph extends View {
 	private int thickness = 50;
 	private OnSliceClickedListener listener;
 	
-	
+	/**
+	 * Constructor for pie graph
+	 * 
+	 * @param context context in the pie graph
+	 */
 	public PieGraph(Context context) {
 		super(context);
 	}
+	/**
+	 * Constructor for pie graph
+	 * 
+	 * @param context context in the pie graph
+	 * @param attrs in the pie graph
+	 */
 	public PieGraph(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-	
+	/**
+	 * draws the interface of the pie graph, set the height and width
+	 * and set the color of the graph
+	 * 
+	 * @param canvas
+	 */
 	public void onDraw(Canvas canvas) {
 		canvas.drawColor(Color.TRANSPARENT);
 		paint.reset();
@@ -124,7 +147,12 @@ public class PieGraph extends View {
 		
 		
 	}
-	
+	/**
+	 * check if the event is touched
+	 * 
+	 * @param event event of the bar graph
+	 * @return true if the event is touched  
+	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 
@@ -158,40 +186,79 @@ public class PieGraph extends View {
 
 	    return true;
 	}
-	
+	/**
+	 * getSlices method 
+	 * 
+	 * @return slices an arraylist of the pie slices    
+	 */
 	public ArrayList<PieSlice> getSlices() {
 		return slices;
 	}
+	/**
+	 * setSlices method which set the slices of the pie graph 
+	 * 
+	 * @param slices arraylist of the pie slice  
+	 */
 	public void setSlices(ArrayList<PieSlice> slices) {
 		this.slices = slices;
 		postInvalidate();
 	}
+	/**
+	 * getSlice method 
+	 * 
+	 * @return slice a particular slice in the arraylist    
+	 */
 	public PieSlice getSlice(int index) {
 		return slices.get(index);
 	}
+	/**
+	 * addSlices method which add a slice to the pie graph
+	 * 
+	 * @return slice the slice to be added    
+	 */
 	public void addSlice(PieSlice slice) {
 		this.slices.add(slice);
 		postInvalidate();
 	}
+	/**
+	 * setOnSliceClickedListener method which sets the listener in the pie graph
+	 * 
+	 * @param listener
+	 */
 	public void setOnSliceClickedListener(OnSliceClickedListener listener) {
 		this.listener = listener;
 	}
-	
+	/**
+	 * getThickness method 
+	 * 
+	 * @return thickness the thickness of the pie gragh    
+	 */
 	public int getThickness() {
 		return thickness;
 	}
+	/**
+	 * setThickness method which set the thickness of the pie graph 
+	 * 
+	 * @param thickness the thickness of the pie gragh    
+	 */
 	public void setThickness(int thickness) {
 		this.thickness = thickness;
 		postInvalidate();
 	}
-	
+	/**
+	 * remove all the slices in pie graph
+	 *     
+	 */
 	public void removeSlices(){
 		for (int i = slices.size()-1; i >= 0; i--){
 			slices.remove(i);
 		}
 		postInvalidate();
 	}
-
+	/**
+	 * interface for the click listener
+	 * 
+	 */
 	public static interface OnSliceClickedListener {
 		public abstract void onClick(int index);
 	}

@@ -2,7 +2,13 @@ package views;
 
 import model.BankAccount;
 
-
+/**
+ * Interface to the view for creating new account
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public interface INewAccountView {
 	/**
 	 * get AccountName from user's input
@@ -38,7 +44,13 @@ public interface INewAccountView {
 	 * set display result text to show any error
 	 */
 	boolean checkAccount();
+	/**
+	 * set the text in the bar graph
+	 */
 	void setText(String text);
+	/**
+	 * redirect to account page
+	 */
 	void goAccountPage();
 
 	

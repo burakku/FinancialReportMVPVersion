@@ -15,7 +15,16 @@ public interface ILoginView {
 	 * set display result text to show any error
 	 */
 	void setResultText(String text);
+	/**
+	 * redirect to user page
+	 */
 	void goUserPage();
+	/**
+	 * search a user to check if he or she exists
+	 */
 	User findUser(String uid);
+	/**
+	 * redirect to main page
+	 */
 	void goAdminPage();
 }
