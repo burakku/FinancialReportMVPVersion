@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Clover</string>
     <string name="action_settings">Settings</string>
@@ -18,12 +18,12 @@
     <string name="spinner_title">Select Type</string>
 	<string name="report_year_spinner">Select Year</string>
 	<string name="report_month_spinner">Select Month</string>
-	<string-array name="nav_drawer_items">
+	<string android:layout_height="wrap_content" android:id="@+id/forgotpassword" android:layout_width="wrap_content" name="forgotpassword">\nplease fill in correct information below and make sure the email are send from the same adress as filled. We will verify these information.\n</string><string-array name="nav_drawer_items">
         <item >Home</item>
-        <item >Transaction</item>
-        <item >Monthly Spending</item>
+        <item >Transaction</item>        <item >Monthly Spending</item>
         <item >Monthly Income</item>
         <item >Account</item>
         <item >Logout</item>
     </string-array>
+
 </resources>

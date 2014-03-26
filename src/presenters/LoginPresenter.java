@@ -49,4 +49,11 @@ public class LoginPresenter {
 		}
 		view.setResultText(text);
 	}
+	
+
+	public void onForgotPasswordClick() {
+		view.goForgotPasswordPage();
+		
+		
+	}
 }

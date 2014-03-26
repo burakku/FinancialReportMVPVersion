@@ -58,4 +58,18 @@
         android:textStyle="bold"
         android:width="150dp" />
 
+    <Button
+        android:id="@+id/bForgotpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_bk"
+        android:onClick="onForgotPasswordButtonClick"
+        android:text="forgot password"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:width="150dp" />
+
 </LinearLayout>

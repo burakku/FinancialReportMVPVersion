@@ -27,4 +27,5 @@ public interface ILoginView {
 	 * redirect to main page
 	 */
 	void goAdminPage();
+	void goForgotPasswordPage();
 }

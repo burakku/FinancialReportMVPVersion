@@ -32,6 +32,7 @@ public class LoginActivity extends Activity implements ILoginView {
 		password = (EditText) findViewById(R.id.passwordLog);	
 		resultTxt = (TextView) findViewById(R.id.loginText);
 		
+		
 		datasource = new FinancialUserSource(this);
 		datasource.open();
 		//datasource.update(datasource);
@@ -53,6 +54,10 @@ public class LoginActivity extends Activity implements ILoginView {
 		loginPresenter.onClick();
 	}
 
+	public void onForgotPasswordButtonClick(View v){
+		loginPresenter.onForgotPasswordClick();
+	}
+	
 	@Override
 	public String getUserid() {
 		return userId.getText().toString();
@@ -67,10 +72,16 @@ public class LoginActivity extends Activity implements ILoginView {
 	public void setResultText(String text) {
 		resultTxt.setText(text);
 	}
-
+	
+	public void goForgotPasswordPage() {
+		Intent intent = new Intent(this, ForgotPasswordActivity.class );
+		startActivity(intent);		
+	}
+	
+	
 	@Override
 	public void goUserPage() {
-		Intent intent = new Intent(this, UserHomepageActivity.class );
+		Intent intent = new Intent(this, UserHomePage1.class );
 		User user = findUser(getUserid());
 		intent.putExtra("model.User", user);
 		startActivity(intent);		
@@ -85,7 +96,7 @@ public class LoginActivity extends Activity implements ILoginView {
 	public void goAdminPage() {
 		Intent intent = new Intent(this, AdminPageActivity.class );
 		startActivity(intent);
-		
 	}
+	
 
 }
