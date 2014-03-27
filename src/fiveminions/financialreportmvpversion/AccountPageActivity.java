@@ -19,9 +19,9 @@ import android.widget.ListView;
 
 public class AccountPageActivity extends ListActivity{
 	
-	private String userid;
-	private FinancialAccountSource datasource;
-	private List<BankAccount> accounts;
+	transient private String userid;
+	transient private FinancialAccountSource datasource;
+	transient private List<BankAccount> accounts;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
