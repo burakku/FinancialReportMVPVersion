@@ -15,8 +15,8 @@ import android.util.Log;
 public class FinancialAccountSource {
 	public static final String LOGTAG = "CLOVER";
 
-	SQLiteOpenHelper dbhelper;
-	SQLiteDatabase database;
+	transient SQLiteOpenHelper dbhelper;
+	transient SQLiteDatabase database;
 
 	public static final String[] ACCOUNTCOLUMNS = {
 			FinancialDBOpenHelper.COLUMN_ACNAME,
