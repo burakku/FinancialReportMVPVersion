@@ -19,8 +19,32 @@ public class UserPresenter {
 	 * @param v the view
 	 * @param m the model
 	 */
-	public UserPresenter(IUserpageView u, MemoryModel m) {
-		userPage = u;
-		model = m;
+	public UserPresenter(final IUserpageView view,final MemoryModel mmodel) {
+		setUserPage(view);
+		setModel(mmodel);
+	}
+	/**
+	 * @return the userPage
+	 */
+	public IUserpageView getUserPage() {
+		return userPage;
+	}
+	/**
+	 * @param userPage the userPage to set
+	 */
+	public void setUserPage(final IUserpageView userPage) {
+		this.userPage = userPage;
+	}
+	/**
+	 * @return the model
+	 */
+	public MemoryModel getModel() {
+		return model;
+	}
+	/**
+	 * @param model the model to set
+	 */
+	public void setModel(final MemoryModel model) {
+		this.model = model;
 	}
 }

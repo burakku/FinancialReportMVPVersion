@@ -13,14 +13,14 @@ import views.IRegisterView;
  * @author Team 23
  */
 public class RegisterPresenter {
-	private IRegisterView view;
+	private transient final IRegisterView view;
 	/**
 	 * Constructor for register presenter
 	 * 
 	 * @param v the view
 	 */
-	public RegisterPresenter(IRegisterView v) {
-		view = v;
+	public RegisterPresenter(final IRegisterView rview) {
+		view = rview;
 		//add clickListener
 	}
 	/**
@@ -30,18 +30,18 @@ public class RegisterPresenter {
 	 * then redirect to login page
 	 */
 	public void onClick() {
-		String userId = view.getUserid();
-		String password = view.getPassword();
-		String name = view.getName();
-		String email = view.getEmail();
+		final String userId = view.getUserid();
+		final String password = view.getPassword();
+		final String name = view.getName();
+		final String email = view.getEmail();
 		String text = "";
 		
 		if(userId.equals("") || password.equals("") || name.equals("")||email.equals("")){
 			text = "Please fill out all fields!";
-		} else if(view.findUser(userId)!= User.NULL_USER){
+		} else if(view.findUser(userId).equals(User.NULL_USER)){
 			text = "The username already exsit, please try another one!";
 		} else {
-			User newUser = new User(userId, password, name,email);
+			final User newUser = new User(userId, password, name,email);
 			view.addUser(newUser);
 			view.goLoginPage();
 		}

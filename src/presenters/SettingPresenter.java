@@ -11,14 +11,14 @@ import views.ISettingView;
  * @author Team 23
  */
 public class SettingPresenter {
-	private final ISettingView setview;
+	private transient final ISettingView setview;
 	/**
 	 * Constructor for setting presenter
 	 * 
 	 * @param v the view
 	 */
-	public SettingPresenter(ISettingView v) {
-		setview = v;
+	public SettingPresenter(final ISettingView view) {
+		setview = view;
 	}
 	/**
 	 * Handle the register button click in the UI,
@@ -34,4 +34,12 @@ public class SettingPresenter {
 	public void onLogoutClick() {
 		setview.logout();
 	}
+	/**
+	 * @return the setview
+	 */
+	public ISettingView getSetview() {
+		return setview;
+	}
+	
+	
 }

@@ -133,5 +133,13 @@ public class FinancialTransactionSource {
 		}
 		return trs;
 	}
+
+	/**
+	 * @return
+	 */
+	public static Context getContext() {
+		// TODO Auto-generated method stub
+		return FinancialTransactionSource.getContext();
+	}
 	
 }
