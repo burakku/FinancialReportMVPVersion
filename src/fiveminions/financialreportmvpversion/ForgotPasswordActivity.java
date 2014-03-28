@@ -10,8 +10,8 @@ import android.widget.EditText;
 
 public class ForgotPasswordActivity extends Activity implements View.OnClickListener {
 
-		EditText personsEmail, name , userName;
-		String sEmail, sName, sUerName, adminEmail;
+		EditText personsEmail , userName;
+		String sEmail, sUerName, adminEmail;
 		Button sendEmail;
 		
 		@Override
@@ -20,13 +20,14 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.email);
 			adminEmail = "cloverAppManager@gmail.com";
+			//password: clover123
 			initializeVars();
 			sendEmail.setOnClickListener(this);
 		}
 		private void initializeVars() {
 			// TODO Auto-generated method stub
 			personsEmail = (EditText) findViewById(R.id.etEmails);
-			name = (EditText) findViewById(R.id.etName);
+			
 			userName = (EditText) findViewById(R.id.etUsername);
 			sendEmail = (Button) findViewById(R.id.bSentEmail);
 		}
@@ -34,8 +35,7 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 			// TODO Auto-generated method stub
 			convertEditTextVarsIntoStrings();
 			String emailaddress[] = { adminEmail };
-			String message = "password reset request:\nname: "
-					+ sName
+			String message = "password reset request: "
 					+ "\nuserName: "
 					+ sUerName
 					+"\nsend from email adress: "
@@ -62,7 +62,7 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 		private void convertEditTextVarsIntoStrings() {
 			// TODO Auto-generated method stub
 			sEmail = personsEmail.getText().toString();
-			sName = name.getText().toString();
+			
 			sUerName = userName.getText().toString();
 			
 		}
