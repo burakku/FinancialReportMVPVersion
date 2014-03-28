@@ -1,4 +1,4 @@
-/*
+/* // NOPMD by hailin on 3/28/14 7:01 PM
  * 	   Created by Daniel Nadeau
  * 	   daniel.nadeau01@gmail.com
  * 	   danielnadeau.blogspot.com
@@ -23,7 +23,7 @@
 
 package views;
 
-import android.graphics.Color;
+
 import android.graphics.Path;
 import android.graphics.Region;
 
@@ -35,7 +35,7 @@ import android.graphics.Region;
  * 
  * @author Team 23
  */
-public class Bar {
+public class Bar { // NOPMD by hailin on 3/28/14 7:01 PM
 	private int color;
 	private String name;
 	private float value;
@@ -54,7 +54,7 @@ public class Bar {
 	 *
 	 * @return color color of the interface
 	 */
-	public void setColor(int color) {
+	public void setColor(final int color) {
 		this.color = color;
 	}
 	/**
@@ -70,7 +70,7 @@ public class Bar {
 	 *
 	 * @param name name displayed the interface
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 	/**
@@ -86,7 +86,7 @@ public class Bar {
 	 *
 	 * @param value value displayed on the interface
 	 */
-	public void setValue(float value) {
+	public void setValue(final float value) {
 		this.value = value;
 	}
 	/**
@@ -102,7 +102,7 @@ public class Bar {
 	 * 
 	 * @param path path of the interface
 	 */
-	public void setPath(Path path) {
+	public void setPath(final Path path) {
 		this.path = path;
 	}
 	/**
@@ -118,7 +118,7 @@ public class Bar {
 	 *
 	 * @return region region of the interface
 	 */
-	public void setRegion(Region region) {
+	public void setRegion(final Region region) {
 		this.region = region;
 	}
 	

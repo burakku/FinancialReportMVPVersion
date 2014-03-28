@@ -11,14 +11,14 @@ import views.IMainView;
  * @author Team 23
  */
 public class MainPresenter {
-	private IMainView view;
+	private transient final IMainView view;
 	/**
 	 * Constructor for main presenter
 	 * 
 	 * @param m the view
 	 */
-	public MainPresenter(IMainView m) {
-		view = m;
+	public MainPresenter(final IMainView mview) {
+		view = mview;
 	}
 	
 	/**

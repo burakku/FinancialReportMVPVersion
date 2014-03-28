@@ -22,14 +22,14 @@ public class SettingPresenter {
 	}
 	/**
 	 * Handle the register button click in the UI,
-	 * Go to account
+	 * Go to account.
 	 */
 	public void onAccountClick() {
 		setview.goToAccount();
 	}
 	/**
 	 * Handle the register button click in the UI,
-	 * Logout
+	 * Logout.
 	 */
 	public void onLogoutClick() {
 		setview.logout();

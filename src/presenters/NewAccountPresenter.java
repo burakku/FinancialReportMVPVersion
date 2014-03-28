@@ -12,10 +12,10 @@ import views.INewAccountView;
  * @author Team 23
  */
 public class NewAccountPresenter {
-	private final INewAccountView view;
+	private transient final INewAccountView view;
 	
-	public NewAccountPresenter(INewAccountView v){
-		view = v;
+	public NewAccountPresenter(INewAccountView aview){
+		view = aview;
 	}
 	
 	/**
@@ -25,19 +25,19 @@ public class NewAccountPresenter {
 	 * then redirect back to account page
 	 */
 	public void onSubmitClick(){
-		String acname = view.getAcName();
-		String disname = view.getDisName();
-		String uid = view.getUserid();
-		String balance = view.getBalance();
-		String mir = view.getMIR();
+		final String acname = view.getAcName();
+		final String disname = view.getDisName();
+		final String uid = view.getUserid();
+		final String balance = view.getBalance();
+		final String mir = view.getMIR();
 		String text = "";
 		if(acname.equals("") || disname.equals("") || balance.equals("") || mir.equals("")){
 			text = "Please fill out the names";
 		} else if(view.checkAccount()){
 			text = "This display name already exsit, please try another one!";
 		} else {
-			double dbbalance = Double.parseDouble(balance);
-			double dbmir = Double.parseDouble(mir);
+			final double dbbalance = Double.parseDouble(balance);
+			final double dbmir = Double.parseDouble(mir);
 			view.addAccount(new BankAccount(acname,disname,dbbalance,dbmir,uid));
 			view.goAccountPage();
 		}

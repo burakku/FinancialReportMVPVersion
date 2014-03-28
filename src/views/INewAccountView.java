@@ -38,7 +38,7 @@ public interface INewAccountView {
 	/**
 	 * add new account into database
 	 */
-	void addAccount(BankAccount ba);
+	void addAccount(BankAccount bankaccount);
 	
 	/**
 	 * set display result text to show any error

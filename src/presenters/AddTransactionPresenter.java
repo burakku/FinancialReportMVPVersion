@@ -17,14 +17,14 @@ import views.IAddTransactionView;
  * @author Team 23
  */
 public class AddTransactionPresenter {
-	private final IAddTransactionView view;
+	private transient final IAddTransactionView view;
 	/**
 	 * Constructor for adding transaction presenter
 	 * 
 	 * @param v the view
 	 */
-	public AddTransactionPresenter(IAddTransactionView v){
-		view = v;
+	public AddTransactionPresenter(final IAddTransactionView atview){
+		view = atview;
 	}
 	/**
 	 * geTypeList method which returns the array list of the type 
@@ -33,7 +33,7 @@ public class AddTransactionPresenter {
 	 * @return categories the categories of the transactions
 	 */
 	public ArrayList<String> getTypeList(){
-		List<String> categories = new ArrayList<String>();
+		final List<String> categories = new ArrayList<String>();
 		categories.add("Withdrawl");
 		categories.add("Deposit");
 		return (ArrayList<String>) categories;
@@ -50,7 +50,7 @@ public class AddTransactionPresenter {
 		String type;
 		String bankName;
 		String userid;
-		String resultText = "";
+		String resultText = ""; // NOPMD by hailin on 3/28/14 7:07 PM
 		name = view.getName();
 		date = new myDate(view.getDate());
 		amount = view.getAmount();
@@ -61,7 +61,7 @@ public class AddTransactionPresenter {
 		else{
 			bankName = view.getBKDisname();
 			userid = view.getUserid();
-			double dbamount = Double.parseDouble(amount);
+			final double dbamount = Double.parseDouble(amount);
 			if(view.addTrans(new Transaction(name,type,date,dbamount,bankName,userid))){
 				view.goBack();
 			} else {

@@ -201,20 +201,20 @@ public class BarGraph extends View {
 	 * @return true if the event is touched  
 	 */
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(final MotionEvent event) {
 
-	    Point point = new Point();
+	    final Point point = new Point();
 	    point.x = (int) event.getX();
 	    point.y = (int) event.getY();
 	    
 	    int count = 0;
 	    for (Bar bar : points){
-	    	Region r = new Region();
-	    	r.setPath(bar.getPath(), bar.getRegion());
-	    	if (r.contains((int)point.x,(int) point.y) && event.getAction() == MotionEvent.ACTION_DOWN){
+	    	final Region region = new Region();
+	    	region.setPath(bar.getPath(), bar.getRegion());
+	    	if (region.contains((int)point.x,(int) point.y) && event.getAction() == MotionEvent.ACTION_DOWN){
 	    		indexSelected = count;
 	    	} else if (event.getAction() == MotionEvent.ACTION_UP){
-	    		if (r.contains((int)point.x,(int) point.y) && listener != null){
+	    		if (region.contains((int)point.x,(int) point.y) && listener != null){
 	    			listener.onClick(indexSelected);
 	    		}
 	    		indexSelected = -1;
@@ -236,7 +236,7 @@ public class BarGraph extends View {
 	 * 
 	 * @param listener
 	 */
-	public void setOnBarClickedListener(OnBarClickedListener listener) {
+	public void setOnBarClickedListener(final OnBarClickedListener listener) {
 		this.listener = listener;
 	}
 	/**

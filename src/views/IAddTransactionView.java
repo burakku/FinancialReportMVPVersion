@@ -37,11 +37,11 @@ public interface IAddTransactionView {
 	/**
 	 * add transaction to the database
 	 */
-	boolean addTrans(Transaction t);
+	boolean addTrans(Transaction transaction);
 	/**
 	 * set text displaying in the bar 
 	 */
-	void setText(String t);
+	void setText(String text);
 	/**
 	 * redirect to previous page
 	 */

@@ -13,14 +13,14 @@ import views.ILoginView;
  * @author Team 23
  */
 public class LoginPresenter {
-	private ILoginView view;
+	private transient final ILoginView view;
 	/**
 	 * Constructor for login presenter
 	 * 
 	 * @param l the view
 	 */
-	public LoginPresenter(ILoginView l) {
-		view = l;
+	public LoginPresenter(final ILoginView lview) {
+		view = lview;
 		//add clickListner
 	}
 	/**
@@ -29,10 +29,10 @@ public class LoginPresenter {
 	 * 
 	 */
 	public void onClick() {
-		String uid = view.getUserid();
-		String pw = view.getUserPassword();
+		final String uid = view.getUserid();
+		final String pw = view.getUserPassword();
 		String text = "";
-		User user = view.findUser(uid);
+		final User user = view.findUser(uid);
 		if(uid.equals("") || pw.equals("")){
 			text = "Username or Password cannot be empty!";
 		} else if(user==User.NULL_USER){

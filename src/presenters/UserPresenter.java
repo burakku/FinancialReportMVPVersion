@@ -14,14 +14,14 @@ public class UserPresenter {
 	private IUserpageView userPage;
 	private MemoryModel model;
 	/**
-	 * Constructor for user presenter
+	 * Constructor for user presenter.
 	 * 
 	 * @param v the view
 	 * @param m the model
 	 */
-	public UserPresenter(final IUserpageView view,final MemoryModel mmodel) {
+	public UserPresenter(final IUserpageView view,final MemoryModel model) {
 		setUserPage(view);
-		setModel(mmodel);
+		setModel(model);
 	}
 	/**
 	 * @return the userPage
