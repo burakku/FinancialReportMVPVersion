@@ -19,9 +19,9 @@ import android.widget.ListView;
 
 public class AccountPageActivity extends ListActivity{
 	
-	private String userid;
-	private FinancialAccountSource datasource;
-	private List<BankAccount> accounts;
+	transient private String userid;
+	transient private FinancialAccountSource datasource;
+	transient private List<BankAccount> accounts;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,7 +35,8 @@ public class AccountPageActivity extends ListActivity{
 
 	public void display(){
 		accounts = datasource.getAccountList(userid);
-		ArrayAdapter<BankAccount> adapter = new ArrayAdapter<BankAccount>(this, R.layout.list_view1, accounts);
+		final ArrayAdapter<BankAccount> adapter = 
+				new ArrayAdapter<BankAccount>(this, R.layout.list_view1, accounts);
 		setListAdapter(adapter);
 		Log.i(MainActivity.LOGTAG, "Refresh Account List");
 	}
@@ -65,7 +66,8 @@ public class AccountPageActivity extends ListActivity{
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
 	        case R.id.add_new_account:
-	        	Intent intent = new Intent(this, NewAccountActivity.class);
+	        	final Intent intent = 
+	        		new Intent(this, NewAccountActivity.class);
 	        	intent.putExtra("userid", userid);
 	        	Log.i(MainActivity.LOGTAG, "Pass in userid");
 	        	startActivity(intent);
@@ -74,15 +76,15 @@ public class AccountPageActivity extends ListActivity{
 	        	break;
 	    }
 	            return super.onOptionsItemSelected(item);
-	}
-	
+	}	
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	protected void onListItemClick(ListView l,
+				View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		BankAccount baccount = accounts.get(position);
-		Intent intent = new Intent(this, BankAccountDetailActivity.class);
+		final BankAccount baccount = accounts.get(position);
+		final Intent intent =
+			new Intent(this, BankAccountDetailActivity.class);
 		intent.putExtra("model.BankAccount", baccount);
 		startActivity(intent);
 	}
-	
 }

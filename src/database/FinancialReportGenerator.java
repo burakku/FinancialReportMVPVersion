@@ -15,25 +15,25 @@ public class FinancialReportGenerator {
 	public static final String LOGTAG = "CLOVER";
 
 	SQLiteOpenHelper dbhelper;
-	SQLiteDatabase db;
+	SQLiteDatabase database;
 	
-	public FinancialReportGenerator(Context context) {
+	public FinancialReportGenerator(final Context context) {
 		dbhelper = new FinancialDBOpenHelper(context);
 	}
 	
 	public void open() {
 		Log.i(LOGTAG, "Account Databases opened");
-		db = dbhelper.getWritableDatabase();
+		database = dbhelper.getWritableDatabase();
 	}
 
 	public void close() {
 		Log.i(LOGTAG, "Account Databases closed");
-		db.close();
+		database.close();
 	}
 		
 	public List<Transaction> getSpendingList(String date, String userid){
-		List<Transaction> trs = new ArrayList<Transaction>();
-		Cursor cursor = db.query(FinancialDBOpenHelper.TABLE_TRANSACTIONS, FinancialTransactionSource.transactionColumns,
+		final List<Transaction> trs = new ArrayList<Transaction>();
+		final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
 				FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
 				 + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " +
 				FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'"+ userid + "'",
@@ -42,8 +42,8 @@ public class FinancialReportGenerator {
 		return FinancialTransactionSource.cursorTransaction(cursor, trs);
 	}
 	
-	public Double getTotal(List<Transaction> list){
-		List<Transaction> trs = list;
+	public Double getTotal(final List<Transaction> list){
+		final List<Transaction> trs = list;
 		double total = 0;
 		for(int i=0; i < trs.size(); i++){
 			total += trs.get(i).getAmount();
