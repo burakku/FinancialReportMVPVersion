@@ -1,6 +1,5 @@
 package presenters;
 
-import model.MemoryModel;
 import model.User;
 import views.ILoginView;
 
@@ -30,15 +29,15 @@ public class LoginPresenter {
 	 */
 	public void onClick() {
 		final String uid = view.getUserid();
-		final String pw = view.getUserPassword();
-		String text = "";
-		final User user = view.findUser(uid);
-		if(uid.equals("") || pw.equals("")){
+		final String password = view.getUserPassword();
+		String text = ""; // NOPMD by hailin on 3/29/14 12:59 AM
+		final User user = view.findUser(uid); // NOPMD by hailin on 3/29/14 1:01 AM
+		if(uid.equals("") || password.equals("")){ // NOPMD by hailin on 3/29/14 1:00 AM
 			text = "Username or Password cannot be empty!";
 		} else if(user==User.NULL_USER){
 			text = "The userId does not exsit!";
-		} else if(user.getPassword().equals(pw)){
-			if(user.getUserID().equals("admin")){
+		} else if(user.getPassword().equals(password)){ // NOPMD by hailin on 3/29/14 12:59 AM
+			if(user.getUserID().equals("admin")){ // NOPMD by hailin on 3/29/14 1:00 AM
 				view.goAdminPage();
 			} else {
 				view.goUserPage();

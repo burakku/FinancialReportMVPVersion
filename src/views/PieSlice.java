@@ -2,25 +2,7 @@
  * 	   Created by Daniel Nadeau
  * 	   daniel.nadeau01@gmail.com
  * 	   danielnadeau.blogspot.com
- * 
- * 	   Licensed to the Apache Software Foundation (ASF) under one
-       or more contributor license agreements.  See the NOTICE file
-       distributed with this work for additional information
-       regarding copyright ownership.  The ASF licenses this file
-       to you under the Apache License, Version 2.0 (the
-       "License"); you may not use this file except in compliance
-       with the License.  You may obtain a copy of the License at
-
-         http://www.apache.org/licenses/LICENSE-2.0
-
-       Unless required by applicable law or agreed to in writing,
-       software distributed under the License is distributed on an
-       "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-       KIND, either express or implied.  See the License for the
-       specific language governing permissions and limitations
-       under the License.
  */
-
 package views;
 
 import android.graphics.Color;
@@ -42,7 +24,7 @@ public class PieSlice {
 	private Path path;
 	private Region region;
 	/**
-	 * getTitle method
+	 * getTitle method.
 	 *
 	 * @return title the title of the pie slice
 	 */
@@ -50,15 +32,15 @@ public class PieSlice {
 		return title;
 	}
 	/**
-	 * setTitle method which set the title of the pie slice
+	 * setTitle method which set the title of the pie slice.
 	 *
 	 * @param title the title of the pie slice
 	 */
-	public void setTitle(String title) {
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 	/**
-	 * getColor method
+	 * getColor method.
 	 *
 	 * @return color the color of the pie slice
 	 */
@@ -66,15 +48,15 @@ public class PieSlice {
 		return color;
 	}
 	/**
-	 * setColor method which set the color of the pie slice
+	 * setColor method which set the color of the pie slice.
 	 *
 	 * @param color the color of the pie slice
 	 */
-	public void setColor(int color) {
+	public void setColor(final int color) {
 		this.color = color;
 	}
 	/**
-	 * getValue method
+	 * getValue method.
 	 *
 	 * @return value the value of the pie slice
 	 */
@@ -82,15 +64,15 @@ public class PieSlice {
 		return value;
 	}
 	/**
-	 * setValue method which set the value of the pie slice
+	 * setValue method which set the value of the pie slice.
 	 *
 	 * @param value the value of the pie slice
 	 */
-	public void setValue(float value) {
+	public void setValue(final float value) {
 		this.value = value;
 	}
 	/**
-	 * getPath method
+	 * getPath method.
 	 *
 	 * @return path the path of the pie slice
 	 */
@@ -98,15 +80,15 @@ public class PieSlice {
 		return path;
 	}
 	/**
-	 * setPath method which set the path of the pie slice
+	 * setPath method which set the path of the pie slice.
 	 *
 	 * @param path the path of the pie slice
 	 */
-	public void setPath(Path path) {
+	public void setPath(final Path path) {
 		this.path = path;
 	}
 	/**
-	 * getRegion method
+	 * getRegion method.
 	 *
 	 * @return region the region of the pie slice
 	 */
@@ -114,12 +96,11 @@ public class PieSlice {
 		return region;
 	}
 	/**
-	 * setRegion method which set the region of the pie slice
+	 * setRegion method which set the region of the pie slice.
 	 *
 	 * @param region the region of the pie slice
 	 */
-	public void setRegion(Region region) {
+	public void setRegion(final Region region) {
 		this.region = region;
 	}
-	
 }

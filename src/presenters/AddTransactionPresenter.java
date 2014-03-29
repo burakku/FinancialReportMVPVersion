@@ -32,7 +32,7 @@ public class AddTransactionPresenter {
 	 * 
 	 * @return categories the categories of the transactions
 	 */
-	public ArrayList<String> getTypeList(){
+	public ArrayList<String> getTypeList(){ // NOPMD by hailin on 3/29/14 12:58 AM
 		final List<String> categories = new ArrayList<String>();
 		categories.add("Withdrawl");
 		categories.add("Deposit");
@@ -55,7 +55,7 @@ public class AddTransactionPresenter {
 		date = new myDate(view.getDate());
 		amount = view.getAmount();
 		type = view.getType();
-		if(name.equals("") || date.equals("") ||amount.equals("")||type.equals("")){
+		if(name.equals("") || date.equals("") ||amount.equals("")||type.equals("")){ // NOPMD by hailin on 3/29/14 12:58 AM
 			resultText = "Please fill out all the fields";
 		}
 		else{

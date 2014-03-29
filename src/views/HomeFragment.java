@@ -9,36 +9,33 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class HomeFragment extends Fragment {
-
-	public HomeFragment() {
-	}
 	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, // NOPMD by hailin on 3/28/14 11:19 PM
+            Bundle savedInstanceState) { // NOPMD by hailin on 3/28/14 11:19 PM
   
         final View rootView = inflater.inflate(R.layout.fragment_home, container, false);
           
         return rootView;
     }
 	
-	public void onActivityCreated(Bundle savedInstanceState) {
+	public void onActivityCreated(Bundle savedInstanceState) { // NOPMD by hailin on 3/28/14 11:19 PM
 		super.onActivityCreated(savedInstanceState);
 		
-		PieGraph pg = (PieGraph)getView().findViewById(R.id.pieGraph);
+		final PieGraph piegraph = (PieGraph)getView().findViewById(R.id.pieGraph); // NOPMD by hailin on 3/28/14 11:19 PM
 		PieSlice slice = new PieSlice();
 		slice.setColor(Color.parseColor("#99CC00"));
 		slice.setValue(2);
 		slice.setTitle("test");
-		pg.addSlice(slice);
+		piegraph.addSlice(slice);
 		slice = new PieSlice();
 		slice.setColor(Color.parseColor("#FFBB33"));
 		slice.setValue(3);
-		pg.addSlice(slice);
+		piegraph.addSlice(slice);
 		slice = new PieSlice();
 		slice.setColor(Color.parseColor("#AA66CC"));
 		slice.setValue(8);
-		pg.addSlice(slice);
+		piegraph.addSlice(slice);
 	}
 
 }

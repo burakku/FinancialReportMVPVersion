@@ -1,6 +1,5 @@
 package presenters;
 
-import model.MemoryModel;
 import model.User;
 import views.IRegisterView;
 
@@ -34,11 +33,11 @@ public class RegisterPresenter {
 		final String password = view.getPassword();
 		final String name = view.getName();
 		final String email = view.getEmail();
-		String text = "";
+		String text = ""; // NOPMD by hailin on 3/29/14 1:06 AM
 		
-		if(userId.equals("") || password.equals("") || name.equals("")||email.equals("")){
+		if(userId.equals("") || password.equals("") || name.equals("")||email.equals("")){ // NOPMD by hailin on 3/29/14 1:06 AM
 			text = "Please fill out all fields!";
-		} else if(view.findUser(userId).equals(User.NULL_USER)){
+		} else if(view.findUser(userId).equals(User.NULL_USER)){ // NOPMD by hailin on 3/29/14 1:07 AM
 			text = "The username already exsit, please try another one!";
 		} else {
 			final User newUser = new User(userId, password, name,email);
