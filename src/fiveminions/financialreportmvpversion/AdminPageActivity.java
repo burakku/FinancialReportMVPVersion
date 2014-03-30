@@ -13,6 +13,16 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * This class describes the methods needed for the 
+ * activity of administrator page. This class is for 
+ * administrator of the bank to process the info for 
+ * the bank activities.  
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class AdminPageActivity extends ListActivity{
 
 	private FinancialUserSource datasource;

@@ -15,6 +15,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * This is a subclass of ListActivity that describes 
+ * the protected methods needed for the activity of 
+ * the transaction.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class TransactionActivity extends ListActivity{
 	private String userid;
 	private FinancialAccountSource datasource;

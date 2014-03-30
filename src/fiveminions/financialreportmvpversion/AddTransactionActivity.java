@@ -19,6 +19,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * This class describes the protected and public methods 
+ * needed for the activity of add transactions. These 
+ * methods hold the name, date, amount, type and other 
+ * informations for the transaction being added. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener{
 
 	AddTransactionPresenter presenter;

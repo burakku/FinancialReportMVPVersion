@@ -11,7 +11,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+/**
+ * This class describes the methods needed for the 
+ * new accounts which can get and set information of 
+ * the new account including monthly interest rate
+ * balance, name and so forth. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class NewAccountActivity extends Activity implements INewAccountView {
 
 	private NewAccountPresenter presenter;

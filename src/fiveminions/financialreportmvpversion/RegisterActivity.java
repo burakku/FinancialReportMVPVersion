@@ -12,6 +12,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * This is a subclass of Activity which contains 
+ * the public methods needed for the activity of 
+ * register to find user, add user and get the info 
+ * of users. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class RegisterActivity extends Activity implements IRegisterView {
 
 	private RegisterPresenter regPresenter;

@@ -13,6 +13,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * This class describes the methods needed for the activity 
+ * of transaction detail. This class contains the detailed 
+ * information including transaction bank name, type, status
+ * and so forth.  
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class TransactionDetailActivity extends Activity {
 	
 	private TextView tran_bkname;

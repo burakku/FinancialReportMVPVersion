@@ -8,6 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * This subclass of Fragment contains the methods to 
+ * access the view and to set the activity. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class HomeFragment extends Fragment {
 	
 	@Override
