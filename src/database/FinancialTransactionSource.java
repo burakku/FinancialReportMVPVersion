@@ -13,6 +13,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * This class describes the methods needed for the 
+ * source of financial transaction which operates on
+ * transaction's balance and add or delete transaction.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class FinancialTransactionSource {
 	public static final String LOGTAG = "CLOVER";
 
@@ -29,21 +38,34 @@ public class FinancialTransactionSource {
 			FinancialDBOpenHelper.COLUMN_TBDNAME,
 			FinancialDBOpenHelper.COLUMN_TRUSERID
 	};
-
+	/**
+	 * Constructor for FinancialTransactionSource
+	 * 
+	 * @param context context of the transaction source
+	 */
 	public FinancialTransactionSource(Context context) {
 		dbhelper = new FinancialDBOpenHelper(context);
 	}
-
+	/**
+	 * void method to open the transaction source
+	 */
 	public void open() {
 		Log.i(LOGTAG, "Transaction Databases opened");
 		database = dbhelper.getWritableDatabase();
 	}
-
+	/**
+	 * void method to close the transaction source
+	 */
 	public void close() {
 		Log.i(LOGTAG, "Transaction Databases closed");
 		database.close();
 	}
-
+	/**
+	 * method to check if the transaction is added
+	 * 
+	 * @param tr transaction
+	 * @return flag true or false based on the result
+	 */
 	public boolean addTransaction(final Transaction trans) {
 		boolean flag = false;
 		final ContentValues values = new ContentValues();
@@ -75,7 +97,12 @@ public class FinancialTransactionSource {
 						+ trans.getBkDisName());
 		return flag;
 	}
-
+	/**
+	 * getTransactionList method
+	 * 
+	 * @param bankname the name of the bank
+	 * @param userid the ID of the user
+	 */
 	public List<Transaction> getTransactionList(String bankname, String userid){
 		List<Transaction> trs = new ArrayList<Transaction>();
 		Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, TRANSCOLUMNS,
@@ -85,7 +112,13 @@ public class FinancialTransactionSource {
 		Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
 		return cursorTransaction(cursor, trs);
 	}
-	
+	/**
+	 * getBalance method
+	 * 
+	 * @param disname the name displayed
+	 * @param userid the ID of the user
+	 * @return result the balance of the account 
+	 */
 	public double getBalance(String disname, String userid) {
 		double result = 0;
 		Cursor c = database.query(FinancialDBOpenHelper.TABLE_ACCOUNTS,
@@ -101,7 +134,14 @@ public class FinancialTransactionSource {
 		Log.i(LOGTAG, "Get balance $" + result);
 		return result;
 	}
-	
+	/**
+	 * void method to update the balance of the 
+	 * transaction
+	 * 
+	 * @param nb new balance
+	 * @param disname the name displayed
+	 * @param userid the ID of the user
+	 */
 	public void updateBalance(double nb, String disname, String userid){
 		ContentValues cd = new ContentValues();
 		cd.put(FinancialDBOpenHelper.COLUMN_BALANCE, nb);
@@ -110,12 +150,22 @@ public class FinancialTransactionSource {
 				+ FinancialDBOpenHelper.COLUMN_ACUSERID + " = " + "'"+ userid + "'", null);
 		Log.i(LOGTAG, "Update new balance $"+ nb +  " in" + disname);
 	}
-	
+	/**
+	 * deleteTransactionList method
+	 * 
+	 * @param recordTime the recorded time of the delete option
+	 */
 	public void deleteTransaction(String recordTime){
 		String[] values = new String[]{recordTime};
 		database.delete(FinancialDBOpenHelper.TABLE_TRANS, FinancialDBOpenHelper.COLUMN_TRRECORD + "=?", values);
 		Log.i(LOGTAG, "transaction deleted");
 	}
+	/**
+	 * protected method that return the list of the transactions
+	 * 
+	 * @param c
+	 * @param trs the list of the transaction 
+	 */
 	protected static List<Transaction> cursorTransaction(Cursor c, List<Transaction> trs){
 		if(c.getCount() >0){
 			while(c.moveToNext()){

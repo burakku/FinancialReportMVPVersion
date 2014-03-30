@@ -6,6 +6,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * This subclass describes of SQLiteOpenHelper class 
+ * contains the methods that help and financial DB to 
+ * be opened.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class FinancialDBOpenHelper extends SQLiteOpenHelper{
 	private static final String LOGTAG = "CLOVER";
 	
@@ -60,7 +69,12 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper{
 		    + "(" + COLUMN_DISNAME + ")" 
 		    + "FOREIGN KEY(" + COLUMN_TRUSERID +") REFERENCES " + TABLE_USERS
 		    + "(" + COLUMN_USERID + ")"+")"; 
-	
+	/**
+	 * Constructor for FinancialDBOpenHelper calling
+	 * constructor of super class
+	 * 
+	 * @param context context of the account source
+	 */
 	public FinancialDBOpenHelper(final Context context) {
 		super(context, DATABASE_NAME, null,DATABASE_VERSION);
 	}

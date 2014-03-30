@@ -43,6 +43,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+                <activity
+            android:name="fiveminions.financialreportmvpversion.ForgotPasswordActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="fiveminions.financialreportmvpversion.FORGOTPASSWORDACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="fiveminions.financialreportmvpversion.UserHomePage1"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="fiveminions.financialreportmvpversion.USERHOMEPAGE1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name="fiveminions.financialreportmvpversion.RegisterActivity"
             android:label="@string/app_name"
