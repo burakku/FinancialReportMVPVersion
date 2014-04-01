@@ -6,6 +6,7 @@ import views.HomeFragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -155,6 +156,27 @@ public class UserHomepageActivity extends Activity {
         case 0:
             fragment = new HomeFragment();
             break;
+            
+        case 1:
+        	Intent intent = new Intent(this, TransactionActivity.class);
+			intent.putExtra("userid", user.getUserID());
+			Log.i(MainActivity.LOGTAG, "Pass in userid");
+			startActivity(intent);
+			break;
+			
+        case 2:
+        	Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
+			spendingIntent.putExtra("userid", user.getUserID());
+			Log.i(MainActivity.LOGTAG, "Pass in userid");
+			startActivity(spendingIntent);
+			break;
+			
+        case 4:
+        	Intent intentAcc = new Intent(this, AccountPageActivity.class);
+			intentAcc.putExtra("userid", user.getUserID());
+			Log.i(MainActivity.LOGTAG, "Pass in userid");
+			startActivity(intentAcc);
+			break;
  
         default:
             break;
