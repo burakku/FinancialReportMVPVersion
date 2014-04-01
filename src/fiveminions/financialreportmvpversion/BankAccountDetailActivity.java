@@ -13,7 +13,16 @@ import android.view.View;
 import android.widget.TextView;
 import database.FinancialAccountSource;
 
-
+/**
+ * This class describes the methods needed for the 
+ * activity of bank account detail which contains
+ * the details of a bank account such as setting 
+ * font for the account.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class BankAccountDetailActivity extends Activity {
 	public static final String LOGTAG = "CLOVER";
 			String test;

@@ -173,7 +173,12 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            
         </activity>
+        <uses-library android:name="android.test.runner" />
+        
     </application>
-
+          <instrumentation android:name="android.test.InstrumentationTestRunner"
+            android:targetPackage="model.package"
+            android:label="MemoryModelTest.java" />
 </manifest>

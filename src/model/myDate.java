@@ -5,19 +5,35 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+/**
+ * This class mainly contains the methods to get and 
+ * set the date of the transaction and it restricts 
+ * format of the date to be returned.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class myDate implements Parcelable{
 	private int year;
 	private int month;
 	private int day;
 	private String rawDate;
-
+	/**
+	 * Default constructor for myDate
+	 *
+	 */
 	public myDate() {
 		this.year = 0;
 		this.month = 0;
 		this.day = 0;
 		this.rawDate= "";
 	}
-
+	/**
+	 * Constructor for myDate
+	 *
+	 * @param date the date 
+	 */
 	public myDate(String date) {
 		this.rawDate = date;
 		String[] a = date.split("-");
@@ -29,7 +45,12 @@ public class myDate implements Parcelable{
 			Log.i(MainActivity.LOGTAG, "Date string format is not valid. " );
 		}
 	}
-
+	/**
+	 * formatMonth method that return the month in format
+	 * 
+	 * @param m month
+	 * @return month - the month in format
+	 */
 	public String formatMonth(int m){
 		String result = "";
 		switch (m){
@@ -74,35 +95,67 @@ public class myDate implements Parcelable{
 		}
 		return result;
 	}
-	
+	/**
+	 * getYear method
+	 * 
+	 * @return name - the year 
+	 */
 	public int getYear() {
 		return year;
 	}
-
+	/**
+	 * setYear method which sets the year
+	 * 
+	 * @param year the year 
+	 */
 	public void setYear(int year) {
 		this.year = year;
 	}
-
+	/**
+	 * getMonth method
+	 * 
+	 * @return month - the month 
+	 */
 	public int getMonth() {
 		return month;
 	}
-	
+	/**
+	 * getFormatMonth method
+	 * 
+	 * @return formatMonth - the month in format 
+	 */
 	public String getFormatMonth(){
 		return formatMonth(this.month);
 	}
-
+	/**
+	 * setMonth method which sets the month
+	 * 
+	 * @param month - the month
+	 */
 	public void setMonth(int month) {
 		this.month = month;
 	}
-
+	/**
+	 * getDay method
+	 * 
+	 * @return day - the day
+	 */
 	public int getDay() {
 		return day;
 	}
-
+	/**
+	 * setDay method which sets the day
+	 * 
+	 * @param day - the day
+	 */
 	public void setDay(int day) {
 		this.day = day;
 	}
-	
+	/**
+	 * getRawDate method 
+	 * 
+	 * @param rawDate - the original day
+	 */
 	public String getRawDate(){
 		return rawDate;
 	}
@@ -117,7 +170,11 @@ public class myDate implements Parcelable{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	/**
+	 * Constructor for my date
+	 * 
+	 * @param in
+	 */
 	public myDate(Parcel in){
 		year= in.readInt();
 		month = in.readInt();

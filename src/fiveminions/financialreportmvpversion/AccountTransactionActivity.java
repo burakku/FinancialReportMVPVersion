@@ -19,6 +19,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * This class describes the methods needed for the activity 
+ * of account transaction which holds the information of 
+ * database and deal with the operation for items selected
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class AccountTransactionActivity extends ListActivity{
 
 	private FinancialTransactionSource datasource;

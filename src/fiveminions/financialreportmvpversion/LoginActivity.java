@@ -14,6 +14,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * This class describes the protected and public methods 
+ * needed for the activity of login which can get password, 
+ * ID of the user and can redirect to user page and 
+ * administrator page.  
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class LoginActivity extends Activity implements ILoginView {
 	
 	private LoginPresenter loginPresenter;

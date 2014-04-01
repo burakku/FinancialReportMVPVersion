@@ -13,6 +13,16 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * This is an subclass of Activity which describes the 
+ * public methods needed for the main activity of bank
+ * account. These methods can set font of the view and 
+ * can redirect users to login and register pages.  
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class MainActivity extends Activity implements IMainView{
 	public static final String LOGTAG = "Clover";
 	private MainPresenter mainPresenter;

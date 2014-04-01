@@ -9,6 +9,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * This is a subclass describes the  methods needed for 
+ * the activity of user detail transaction which can set 
+ * the text view of name, user ID, password and so forth. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class UserDetailActivity extends Activity {
 
 	private TextView name;

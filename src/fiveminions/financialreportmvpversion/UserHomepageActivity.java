@@ -18,6 +18,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * This subclass of Activity describes the methods needed 
+ * for the activity of user home page. These methods allows
+ * user home page to be set according to the input.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class UserHomepageActivity extends Activity {
 	
 	private User user;

@@ -16,6 +16,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * This subclass of ListActivity describes the methods 
+ * needed for the activity of user page to allow user 
+ * the menu to be set. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class UserpageActivity extends ListActivity {
 
 	private User user;

@@ -7,6 +7,15 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * This subclass of Activity describes the methods needed 
+ * for the welcome activity transaction and aims to set up
+ * the welcome view for the users.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class WelcomeActivity extends Activity{
 
 	@Override

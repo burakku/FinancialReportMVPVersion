@@ -3,7 +3,8 @@ package presenters;
 import views.IReportView;
 
 /**
- * Presenter to handle any logic related to report.
+ * This class describes the public methods needed for 
+ * report presenter.
  * 
  * @version 1.0
  * 
@@ -23,14 +24,20 @@ public class ReportPresenter {
     public ReportPresenter(final IReportView rview) {
         view = rview;
     }
-	
+	/**
+	 * Constructor for Bank Account 
+	 * 
+	 * @param view the view of the report
+	 */
 /**
  * @return reportview the view.
  */
     public IReportView getView() {
         return view;
     }
-
+	/**
+	 * void method to refresh the view
+	 */
 /**
  * onclick listener.
  */

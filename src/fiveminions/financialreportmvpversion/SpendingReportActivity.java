@@ -24,6 +24,16 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * This is a subclass of ListActivity which describes the 
+ * methods needed for  the activity of spending report. 
+ * These methods can access the information of a report 
+ * about the month, year and so forth. 
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class SpendingReportActivity extends ListActivity implements
 		IReportView, OnItemSelectedListener {
 
