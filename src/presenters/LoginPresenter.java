@@ -52,7 +52,13 @@ public class LoginPresenter {
         }
         view.setResultText(text);
     }
-    
+ 
+/**
+ * For user login test.
+ * @param user user
+ * @param password password
+ * @return true if user is correct
+ */
     public boolean login(String user, String password)
     {
     	String realUser = "admin";
@@ -61,13 +67,16 @@ public class LoginPresenter {
     	if (user.equals("") || password.equals("")) { // NOPMD by hailin on 3/29/14 1:00 AM
             return false;
         } 
-    	if(user.equals(realUser) && !password.equals(realPassword))
-    		return false;
-    	if(!user.equals(realUser) && password.equals(realPassword))
-    		return false;
-    	if(!user.equals(realUser) && !password.equals(realPassword))
-    		return false;
-
+    	if (user.equals(realUser) && !password.equals(realPassword)) {
+            return false;
+    	}
+    	
+        if (!user.equals(realUser) && password.equals(realPassword)) {
+            return false;
+        }
+        if (!user.equals(realUser) && !password.equals(realPassword)) {
+            return false;
+        }
     	return true;
     }
 

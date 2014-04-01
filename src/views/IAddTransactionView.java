@@ -27,7 +27,7 @@ public interface IAddTransactionView {
     String getDate();
 /**
  * get the amount of the transaction.
- * @return amount of the transaction
+ * @return amount amount of the transaction
  */
     String getAmount();
 /**
