@@ -7,7 +7,7 @@ import java.util.Map;
 public class MemoryModel implements UserModel{
 	private static Map<String, User> userList = new HashMap<String, User>();
 	// Initialize administrative account
-/*********************************************
+/**
  * method to check if a user is contained in 
  * the userList by its userId
  * @param userID - the use's userID
@@ -21,7 +21,7 @@ public class MemoryModel implements UserModel{
 		return userList.containsKey(userId);
 	} 
 
-/*****************************************
+/**
  * method to get a user by its userID
  * @param userID - the use's userID
  * @return the matched user if found by the userID
@@ -36,7 +36,11 @@ public class MemoryModel implements UserModel{
 		}
 	}
 	
-/********************************************
+public static void setUserList(Map<String, User> userList) {
+	MemoryModel.userList = userList;
+}
+
+/**
  * method to get a copy of userList
  * @return userList - the userList
  * 
@@ -50,7 +54,7 @@ public class MemoryModel implements UserModel{
 		return uList;
 	}
 	
-/************************************************
+/**
  * method to add a new user to userList if its userID is not
  * in the userList
  * @param user - the user to be added
@@ -66,7 +70,7 @@ public class MemoryModel implements UserModel{
 		return false;
 	}
 	
-/************************************************
+/**
  * method to remove a specified user by its userID
  * from the userList 
  * @param user - the user to be removed

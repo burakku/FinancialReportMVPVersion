@@ -2,24 +2,39 @@ package presenters;
 
 import views.IReportView;
 
-
+/**
+ * Presenter to handle any logic related to report.
+ * 
+ * @version 1.0
+ * 
+ * @author Team 23
+ */
 public class ReportPresenter {
+/**
+ * report activity view.
+ */
+    private final transient IReportView view;
 
-	private transient final IReportView view;
+/**
+ * Constructor for report presenter.
+ * 
+ * @param rview the view.
+ */
+    public ReportPresenter(final IReportView rview) {
+        view = rview;
+    }
 	
-	public ReportPresenter(final IReportView view) {
-		this.view = view;
-	}
-	
-	/**
-	 * @return the view
-	 */
-	public IReportView getView() {
-		return view;
-	}
+/**
+ * @return reportview the view.
+ */
+    public IReportView getView() {
+        return view;
+    }
 
-	public void onClickView(){
-		view.refresh();
-	}
-
+/**
+ * onclick listener.
+ */
+    public void onClickView() {
+        view.refresh();
+    }
 }

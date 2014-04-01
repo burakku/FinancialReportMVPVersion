@@ -14,45 +14,45 @@ public interface IAddTransactionView {
  * get the name of the user.
  * @return name transaction name
  */
-String getName();
+    String getName();
 /**
  * get the type of the transaction.
  * @return transaction type of transaction
  */
-String getType();
+    String getType();
 /**
  * get the date of the transaction.
  * @return date date of the transaction
  */
-String getDate();
+    String getDate();
 /**
  * get the amount of the transaction.
  * @return amount of the transaction
  */
-String getAmount();
+    String getAmount();
 /**
  * get the bank displaying name of the user.
  * @return name displayed bank account name
  */
-String getBKDisname();
+    String getBKDisname();
 /**
  * get the userid of the user.
  * @return userid user id
  */
-String getUserid();
+    String getUserid();
 /**
  * add transaction to the database.
  * @param transaction transaction
  * @return addtrans if transaction is added
  */
-boolean addTrans(Transaction transaction);
+    boolean addTrans(Transaction transaction);
 /**
  * set text displaying in the bar.
  * @param text text
  */
-void setText(String text);
+    void setText(String text);
 /**
  * redirect to previous page.
  */
-void goBack();
+    void goBack();
 }

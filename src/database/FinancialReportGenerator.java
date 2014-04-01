@@ -16,9 +16,7 @@ import android.util.Log;
  * generating the financial report. These methods allows
  * the report to be opened or closed and to get the total
  * amount and spending list of the financial report.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class FinancialReportGenerator {
@@ -55,14 +53,13 @@ public class FinancialReportGenerator {
 	 * @param userid the ID of the user
 	 * @return the spending list of the report
 	 */
-	public List<Transaction> getSpendingList(String date, String userid){
+	public List<Transaction> getSpendingList(final String date, final String userid){
 		final List<Transaction> trs = new ArrayList<Transaction>();
 		final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
 				FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
 				 + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " +
 				FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'"+ userid + "'",
 				 null, null, null, null);
-		Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
 		return FinancialTransactionSource.cursorTransaction(cursor, trs);
 	}
 	/**
@@ -73,12 +70,14 @@ public class FinancialReportGenerator {
 	 */
 	public Double getTotal(final List<Transaction> list){
 		final List<Transaction> trs = list;
+		Transaction temp;
 		double total = 0;
 		for(int i=0; i < trs.size(); i++){
-			total += trs.get(i).getAmount();
+//			total += trs.get(i).getAmount();
+			temp = trs.get(i);
+			total += temp.getAmount();
 		}
-		return total;
-		
+		return total;	
 	}
 	
 }

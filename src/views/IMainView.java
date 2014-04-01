@@ -12,9 +12,9 @@ public interface IMainView {
 /**
  * redirect to register page.
  */
-void goRegister();
+    void goRegister();
 /**
  * redirect to register page.
  */
-void goLogin();
+    void goLogin();
 }

@@ -14,52 +14,52 @@ public interface INewAccountView {
  * get AccountName from user's input.
  * @return name account name
  */
-String getAcName();
+    String getAcName();
 
 /**
  * get AccountDisplayName from user's input.
  * @return name display name
  */
-String getDisName();
+    String getDisName();
 
 /**
  * get Userid from intent extra.
  * @return userid  userid
  */
-String getUserid();
+    String getUserid();
 
 /**
  * get Balance from user's input.
  * @return balance balance
  */
-String getBalance();
+    String getBalance();
 
 /**
  * get Monthly Interest Rate from user's input.
  * @return mir mir
  */
-String getMIR();
+    String getMIR();
 
 /**
  * add new account into database.
  * @param bankaccount bank account
  */
-void addAccount(BankAccount bankaccount);
+    void addAccount(BankAccount bankaccount);
 
 /**
  * set display result text to show any error.
  * @return checkAccount if account exists
  */
-boolean checkAccount();
+    boolean checkAccount();
 /**
  * set the text in the bar graph.
  * @param text text
  */
-void setText(String text);
+    void setText(String text);
 /**
  * redirect to account page.
  */
-void goAccountPage();
+    void goAccountPage();
 
 
 }

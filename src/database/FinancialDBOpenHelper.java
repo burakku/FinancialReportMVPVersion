@@ -10,9 +10,7 @@ import android.util.Log;
  * This subclass describes of SQLiteOpenHelper class 
  * contains the methods that help and financial DB to 
  * be opened.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class FinancialDBOpenHelper extends SQLiteOpenHelper{
@@ -30,7 +28,7 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper{
 	
 	private static final String USER_TABLE_CREATE = 
 			"CREATE TABLE " + TABLE_USERS + "( " +
-			COLUMN_USERID + " TEXT PRIMARY KEY, " + COLUMN_PASSWORD + " TEXT, "
+			COLUMN_USERID + " TEXT PRIMARY KEY, " + COLUMN_PASSWORD + " TEXT, " // NOPMD by hailin on 3/31/14 8:11 PM
 		    + COLUMN_NAME + " TEXT, " + COLUMN_EMAIL + " TEXT, " + COLUMN_TYPE + " TEXT )";
 	
 	public static final String TABLE_ACCOUNTS = "accounts";
