@@ -1,38 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="20dp"
-	android:orientation="vertical" android:layout_width="match_parent"
-	android:weightSum="100" android:layout_height="match_parent">
-	
-		<LinearLayout android:orientation="vertical"
-			android:layout_width="match_parent" android:layout_height="match_parent">
-			
-		    <TextView android:text="@string/forgotpassword" android:layout_width="wrap_content"
-				android:layout_height="wrap_content">
-		        
-		    </TextView>>
-				
-			<TextView android:text="Email address:"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-			<EditText android:layout_height="wrap_content"
-				android:layout_width="match_parent" android:id="@+id/etEmails">
-			</EditText>
-			
-			<TextView android:text="username" android:layout_width="wrap_content"
-				android:layout_height="wrap_content"></TextView>
-			<EditText android:layout_height="wrap_content"
-				android:layout_width="match_parent" android:id="@+id/etUsername"></EditText>
-			
-		<Button android:text="Send Email" android:id="@+id/bSentEmail"
-		    android:layout_width="wrap_content" android:layout_height="50dp"
-		    android:layout_gravity="center"></Button>
-	
-			
-		</LinearLayout>
-	
-		
-	
-	
-	
-	
+    android:weightSum="100"
+    android:background="@color/bkg_start" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/user_text_bright"
+            android:text="@string/forgotpassword" >
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/user_text_bright"
+            android:text="Email address:" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/etEmails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/user_text_bright"
+            android:text="username" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </EditText>
+
+        <Button
+            android:id="@+id/bSentEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="Send Email" >
+        </Button>
+    </LinearLayout>
+
 </LinearLayout>
