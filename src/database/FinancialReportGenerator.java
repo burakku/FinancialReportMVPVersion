@@ -20,64 +20,74 @@ import android.util.Log;
  * @author Team 23
  */
 public class FinancialReportGenerator {
-	public static final String LOGTAG = "CLOVER";
+/**
+ * string variable for log cat.
+ */
+    public static final String LOGTAG = "CLOVER";
 
-	SQLiteOpenHelper dbhelper;
-	SQLiteDatabase database;
-	/**
-	 * Constructor for FinancialReportGenerator
-	 * 
-	 * @param context context of the account source
-	 */
-	public FinancialReportGenerator(final Context context) {
-		dbhelper = new FinancialDBOpenHelper(context);
-	}
-	/**
-	 * void method to open the account source
-	 */
-	public void open() {
-		Log.i(LOGTAG, "Account Databases opened");
-		database = dbhelper.getWritableDatabase();
-	}
-	/**
-	 * void method to close the account source
-	 */
-	public void close() {
-		Log.i(LOGTAG, "Account Databases closed");
-		database.close();
-	}
-	/**
-	 * getSpendingList method
-	 * 
-	 * @param date the date of the report
-	 * @param userid the ID of the user
-	 * @return the spending list of the report
-	 */
-	public List<Transaction> getSpendingList(final String date, final String userid){
-		final List<Transaction> trs = new ArrayList<Transaction>();
-		final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
-				FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
-				 + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " +
-				FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'"+ userid + "'",
-				 null, null, null, null);
-		return FinancialTransactionSource.cursorTransaction(cursor, trs);
-	}
-	/**
-	 * getTotal method
-	 * 
-	 * @param list the list of transaction
-	 * @return total the total amount of the transaction
-	 */
-	public Double getTotal(final List<Transaction> list){
-		final List<Transaction> trs = list;
-		Transaction temp;
-		double total = 0;
-		for(int i=0; i < trs.size(); i++){
-//			total += trs.get(i).getAmount();
-			temp = trs.get(i);
-			total += temp.getAmount();
-		}
-		return total;	
-	}
+/**
+ * database open helper.
+ */
+    SQLiteOpenHelper dbhelper;
+    
+/**
+ * database.
+ */
+    SQLiteDatabase database;
 	
+/**
+ * Constructor for FinancialReportGenerator.
+ * 
+ * @param context context of the account source
+ */
+    public FinancialReportGenerator(final Context context) {
+        dbhelper = new FinancialDBOpenHelper(context);
+    }
+	
+/**
+ * void method to open the account source.
+ */
+    public void open() {
+    	Log.i(LOGTAG, "Account Databases opened");
+    	database = dbhelper.getWritableDatabase();
+    }
+
+/**
+ * void method to close the account source.
+ */
+    public void close() {
+    	Log.i(LOGTAG, "Account Databases closed");
+    	database.close();
+    }
+	
+/**
+ * getSpendingList method.
+ * 
+ * @param date the date of the report
+ * @param userid the ID of the user
+ * @return the spending list of the report
+ */
+    public List<Transaction> getSpendingList(final String date, final String userid) {
+    	final List<Transaction> trs = new ArrayList<Transaction>();
+    	final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
+				FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
+				+ "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " 
+				+ FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'", null, null, null, null);
+    	return FinancialTransactionSource.cursorTransaction(cursor, trs);
+    }
+	
+/**
+ * getTotal method.
+ * 
+ * @param list the list of transaction
+ * @return total the total amount of the transaction
+ */
+    public Double getTotal(final List<Transaction> list) {
+    	final List<Transaction> trs = list;
+    	double total = 0;
+        for (int i = 0; i < trs.size(); i++) {
+            total += trs.get(i).getAmount();
+    	}
+    	return total;	
+    }
 }

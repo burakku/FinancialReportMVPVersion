@@ -26,6 +26,7 @@ public class LoginPresenter {
     public LoginPresenter(final ILoginView lview) {
         view = lview;
     }
+
 /**
  * Handle the login button click in the UI,
  * Check if the user's id and password are correct.
@@ -50,6 +51,24 @@ public class LoginPresenter {
             text = "The password is incorrect!";
         }
         view.setResultText(text);
+    }
+    
+    public boolean login(String user, String password)
+    {
+    	String realUser = "admin";
+    	String realPassword = "123";
+    	
+    	if (user.equals("") || password.equals("")) { // NOPMD by hailin on 3/29/14 1:00 AM
+            return false;
+        } 
+    	if(user.equals(realUser) && !password.equals(realPassword))
+    		return false;
+    	if(!user.equals(realUser) && password.equals(realPassword))
+    		return false;
+    	if(!user.equals(realUser) && !password.equals(realPassword))
+    		return false;
+
+    	return true;
     }
 
 /**
