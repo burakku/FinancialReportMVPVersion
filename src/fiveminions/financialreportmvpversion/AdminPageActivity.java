@@ -23,42 +23,42 @@ import android.widget.ListView;
  */
 public class AdminPageActivity extends ListActivity{
 
-	private FinancialUserSource datasource;
-	private List<User> users;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:56 AM
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.adminpage);
-		datasource = new FinancialUserSource(this);
-		datasource.open();
-		display();
-	}
-	
-	public void display(){
-		users = datasource.getUserList();
-		ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, R.layout.list_view1, users);
-		setListAdapter(adapter);
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		datasource.open();
-		display();
-	}
-	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		datasource.close();
-	}
-	
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:56 AM
-		super.onListItemClick(l, v, position, id);
-		User user = users.get(position);
-		Intent intent = new Intent(this, UserDetailActivity.class);
-		intent.putExtra("model.User", user);
-		startActivity(intent);
-	}
+    private FinancialUserSource datasource;
+    private List<User> users;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:56 AM
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.adminpage);
+        datasource = new FinancialUserSource(this);
+        datasource.open();
+        display();
+    }
+    
+    public void display(){
+        users = datasource.getUserList();
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, R.layout.list_view1, users);
+        setListAdapter(adapter);
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        datasource.open();
+        display();
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        datasource.close();
+    }
+    
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:56 AM
+        super.onListItemClick(l, v, position, id);
+        User user = users.get(position);
+        Intent intent = new Intent(this, UserDetailActivity.class);
+        intent.putExtra("model.User", user);
+        startActivity(intent);
+    }
 }
