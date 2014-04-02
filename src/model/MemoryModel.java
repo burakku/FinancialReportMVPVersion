@@ -15,7 +15,6 @@ public class MemoryModel implements UserModel{
  *         false if not
  */
 	@Override
-	
 	public boolean checkUser(String userId) {
 		// TODO Auto-generated method stub
 		return userList.containsKey(userId);
@@ -36,9 +35,9 @@ public class MemoryModel implements UserModel{
 		}
 	}
 	
-public static void setUserList(Map<String, User> userList) {
-	MemoryModel.userList = userList;
-}
+	public void setUserList(Map<String, User> userList) {
+		MemoryModel.userList = userList;
+	}
 
 /**
  * method to get a copy of userList
