@@ -1,24 +1,37 @@
 package model;
 
-import fiveminions.financialreportmvpversion.MainActivity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import fiveminions.financialreportmvpversion.MainActivity;
 
 /**
  * This class mainly contains the methods to get and 
  * set the date of the transaction and it restricts 
  * format of the date to be returned.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
-public class myDate implements Parcelable{
+public class myDate implements Parcelable{ // NOPMD by wen on 4/2/14 1:20 AM
 	private int year;
 	private int month;
 	private int day;
-	private String rawDate;
+	private String rawDate; // NOPMD by wen on 4/2/14 1:20 AM
+	public static final Parcelable.Creator<myDate> CREATOR = new Parcelable.Creator<myDate>() {
+
+		@Override
+		public myDate createFromParcel(final Parcel arg0) {
+			Log.i(MainActivity.LOGTAG, "createFromParcel");
+			return new myDate(arg0);
+		}
+
+		@Override
+		public myDate[] newArray(final int arg0) {
+			Log.i(MainActivity.LOGTAG, "newArray");
+			return new myDate[arg0];
+		}
+
+	};
 	/**
 	 * Default constructor for myDate
 	 *
@@ -34,13 +47,13 @@ public class myDate implements Parcelable{
 	 *
 	 * @param date the date 
 	 */
-	public myDate(String date) {
+	public myDate(final String date) {
 		this.rawDate = date;
-		String[] a = date.split("-");
-		if(a.length == 3){
-		this.year = Integer.parseInt(a[0]);
-		this.month =Integer.parseInt(a[1]);
-		this.day = Integer.parseInt(a[2]);
+		final String[] string = date.split("-");
+		if(string.length == 3){
+		this.year = Integer.parseInt(string[0]);
+		this.month =Integer.parseInt(string[1]);
+		this.day = Integer.parseInt(string[2]);
 		} else {
 			Log.i(MainActivity.LOGTAG, "Date string format is not valid. " );
 		}
@@ -48,12 +61,12 @@ public class myDate implements Parcelable{
 	/**
 	 * formatMonth method that return the month in format
 	 * 
-	 * @param m month
+	 * @param month month
 	 * @return month - the month in format
 	 */
-	public String formatMonth(int m){
+	public String formatMonth(final int month){ // NOPMD by wen on 4/2/14 1:20 AM
 		String result = "";
-		switch (m){
+		switch (month){
 		case 1:
 			result = "January";
 			break;
@@ -108,7 +121,7 @@ public class myDate implements Parcelable{
 	 * 
 	 * @param year the year 
 	 */
-	public void setYear(int year) {
+	public void setYear(final int year) {
 		this.year = year;
 	}
 	/**
@@ -125,14 +138,14 @@ public class myDate implements Parcelable{
 	 * @return formatMonth - the month in format 
 	 */
 	public String getFormatMonth(){
-		return formatMonth(this.month);
+		return formatMonth(this.month); // NOPMD by wen on 4/2/14 1:21 AM
 	}
 	/**
 	 * setMonth method which sets the month
 	 * 
 	 * @param month - the month
 	 */
-	public void setMonth(int month) {
+	public void setMonth(final int month) {
 		this.month = month;
 	}
 	/**
@@ -148,7 +161,7 @@ public class myDate implements Parcelable{
 	 * 
 	 * @param day - the day
 	 */
-	public void setDay(int day) {
+	public void setDay(final int day) {
 		this.day = day;
 	}
 	/**
@@ -173,33 +186,19 @@ public class myDate implements Parcelable{
 	/**
 	 * Constructor for my date
 	 * 
-	 * @param in
+	 * @param inparcel
 	 */
-	public myDate(Parcel in){
-		year= in.readInt();
-		month = in.readInt();
-		day = in.readInt();
+	public myDate(final Parcel inparcel){
+		year= inparcel.readInt();
+		month = inparcel.readInt();
+		day = inparcel.readInt();
 	}
 	@Override
-	public void writeToParcel(Parcel dest, int flag) {
+	public void writeToParcel(final Parcel dest, final int flag) {
 		dest.writeInt(year);
 		dest.writeInt(month);
 		dest.writeInt(day);
 		}
 	
-	public static final Parcelable.Creator<myDate> CREATOR = new Parcelable.Creator<myDate>() {
 
-		@Override
-		public myDate createFromParcel(Parcel arg0) {
-			Log.i(MainActivity.LOGTAG, "createFromParcel");
-			return new myDate(arg0);
-		}
-
-		@Override
-		public myDate[] newArray(int arg0) {
-			Log.i(MainActivity.LOGTAG, "newArray");
-			return new myDate[arg0];
-		}
-
-	};
 }

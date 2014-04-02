@@ -2,13 +2,11 @@ package fiveminions.financialreportmvpversion;
 
 
 import database.FinancialUserSource;
-import model.MemoryModel;
 import model.User;
 import presenters.LoginPresenter;
 import views.ILoginView;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -19,9 +17,7 @@ import android.widget.TextView;
  * needed for the activity of login which can get password, 
  * ID of the user and can redirect to user page and 
  * administrator page.  
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class LoginActivity extends Activity implements ILoginView {
@@ -33,7 +29,7 @@ public class LoginActivity extends Activity implements ILoginView {
 	
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:52 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login); 
 		loginPresenter = new LoginPresenter(this);
@@ -57,25 +53,25 @@ public class LoginActivity extends Activity implements ILoginView {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		datasource.close();
+		datasource.close(); // NOPMD by wen on 4/2/14 1:52 AM
 	}
 	
-	public void onLoginCheckButtonClick(View v){
+	public void onLoginCheckButtonClick(View view){
 		loginPresenter.onClick();
 	}
 
-	public void onForgotPasswordButtonClick(View v){
+	public void onForgotPasswordButtonClick(View view){
 		loginPresenter.onForgotPasswordClick();
 	}
 	
 	@Override
 	public String getUserid() {
-		return userId.getText().toString();
+		return userId.getText().toString(); // NOPMD by wen on 4/2/14 1:52 AM
 	}
 
 	@Override
 	public String getUserPassword() {
-		return password.getText().toString();
+		return password.getText().toString(); // NOPMD by wen on 4/2/14 1:52 AM
 	}
 
 	@Override

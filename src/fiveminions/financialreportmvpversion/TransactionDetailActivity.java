@@ -18,36 +18,34 @@ import android.widget.TextView;
  * of transaction detail. This class contains the detailed 
  * information including transaction bank name, type, status
  * and so forth.  
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class TransactionDetailActivity extends Activity {
 	
-	private TextView tran_bkname;
-	private TextView tran_name;
-	private TextView tran_type;
-	private TextView tran_status;
-	private TextView tran_date;
-	private TextView tran_amount;
+	private TextView tranBkname;
+	private TextView tranName;
+	private TextView tranType;
+	private TextView tranStatus;
+	private TextView tranDate;
+	private TextView tranAmount;
 	private Transaction tran;
 	private myDate date;
 	private FinancialTransactionSource datasource;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:43 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transaction_detail_activity);
 		
-		tran_bkname = (TextView) findViewById(R.id.tran_bkname);
-		tran_name = (TextView) findViewById(R.id.tran_name);
-		tran_type = (TextView) findViewById(R.id.tran_type);
-		tran_status = (TextView) findViewById(R.id.tran_status);
-		tran_date = (TextView) findViewById(R.id.tran_date);
-		tran_amount = (TextView) findViewById(R.id.tran_amount);
+		tranBkname = (TextView) findViewById(R.id.tran_bkname);
+		tranName = (TextView) findViewById(R.id.tran_name);
+		tranType = (TextView) findViewById(R.id.tran_type);
+		tranStatus = (TextView) findViewById(R.id.tran_status);
+		tranDate = (TextView) findViewById(R.id.tran_date);
+		tranAmount = (TextView) findViewById(R.id.tran_amount);
 		
-		Bundle b = getIntent().getExtras();
+		Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:43 AM
 		tran = b.getParcelable("model.Transaction");
 		date = b.getParcelable("model.myDate");
 		setFont();
@@ -68,28 +66,28 @@ public class TransactionDetailActivity extends Activity {
 		TextView textView6 = (TextView)findViewById(R.id.transD_textView5);
 		TextView textView7 = (TextView)findViewById(R.id.transD_textView6);
 		TextView textView5 = (TextView)findViewById(R.id.transD_title);
-		textView1.setTypeface(typeface);
-		textView2.setTypeface(typeface);
-		textView3.setTypeface(typeface);
-		textView4.setTypeface(typeface);
-		textView5.setTypeface(typeface1);
-		textView6.setTypeface(typeface);
-		textView7.setTypeface(typeface);
+		textView1.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM
+		textView2.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:44 AM
+		textView3.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM
+		textView4.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM
+		textView5.setTypeface(typeface1); // NOPMD by wen on 4/2/14 1:43 AM
+		textView6.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM
+		textView7.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM
 	}
 
 	private void display() {
-		tran_bkname.setText(tran.getBkDisName());
-		tran_name.setText(tran.getName());
-		tran_type.setText(tran.getType());
-		tran_status.setText(tran.getStatus());
-		tran_date.setText(date.toString());
-		tran_amount.setText(Double.toString(tran.getAmount()));
+		tranBkname.setText(tran.getBkDisName());
+		tranName.setText(tran.getName());
+		tranType.setText(tran.getType());
+		tranStatus.setText(tran.getStatus());
+		tranDate.setText(date.toString());
+		tranAmount.setText(Double.toString(tran.getAmount()));
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.transaction_detail_acitivity, menu);
+		getMenuInflater().inflate(R.menu.transaction_detail_acitivity, menu); // NOPMD by wen on 4/2/14 1:43 AM
 		return true;
 	}
 
@@ -115,7 +113,7 @@ public class TransactionDetailActivity extends Activity {
 				}
 			});
 			AlertDialog alert = builder.create();
-			alert.show();
+			alert.show(); // NOPMD by wen on 4/2/14 1:43 AM
 		}
 		return super.onOptionsItemSelected(item);
 	}

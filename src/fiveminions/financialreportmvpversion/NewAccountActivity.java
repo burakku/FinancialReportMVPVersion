@@ -16,9 +16,7 @@ import android.widget.TextView;
  * new accounts which can get and set information of 
  * the new account including monthly interest rate
  * balance, name and so forth. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class NewAccountActivity extends Activity implements INewAccountView {
@@ -29,11 +27,11 @@ public class NewAccountActivity extends Activity implements INewAccountView {
 	private EditText balance;
 	private EditText mir;
 	private TextView resultText;
-	private Bundle b;
+	private Bundle boudle;
 	private FinancialAccountSource datasource;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:50 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newaccount_page);
 		
@@ -45,7 +43,7 @@ public class NewAccountActivity extends Activity implements INewAccountView {
 		balance = (EditText) findViewById(R.id.newAcBalance);
 		mir = (EditText) findViewById(R.id.newAcMIR);
 		resultText = (TextView) findViewById(R.id.accountText);
-		b = getIntent().getExtras();
+		boudle = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:50 AM
 		
 		setFont();
 	}
@@ -59,11 +57,11 @@ public class NewAccountActivity extends Activity implements INewAccountView {
 		TextView textView3 = (TextView)findViewById(R.id.new_bAcc_balance);
 		TextView textView4 = (TextView)findViewById(R.id.new_bAcc_MIR);
 		TextView textView5 = (TextView)findViewById(R.id.new_bAcc_title);
-		textView1.setTypeface(typeface);
-		textView2.setTypeface(typeface);
-		textView3.setTypeface(typeface);
-		textView4.setTypeface(typeface);
-		textView5.setTypeface(typeface1);
+		textView1.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:50 AM
+		textView2.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:49 AM
+		textView3.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:50 AM
+		textView4.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:49 AM
+		textView5.setTypeface(typeface1); // NOPMD by wen on 4/2/14 1:49 AM
 	}
 
 	@Override
@@ -75,45 +73,45 @@ public class NewAccountActivity extends Activity implements INewAccountView {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		datasource.close();
+		datasource.close(); // NOPMD by wen on 4/2/14 1:50 AM
 	}
 	
-	public void onSubmitClick(View v){
+	public void onSubmitClick(View view){
 		presenter.onSubmitClick();
 	}
 
 
 	@Override
 	public String getAcName() {
-		return acname.getText().toString();
+		return acname.getText().toString(); // NOPMD by wen on 4/2/14 1:50 AM
 	}
 
 
 	@Override
 	public String getDisName() {
-		return disname.getText().toString();
+		return disname.getText().toString(); // NOPMD by wen on 4/2/14 1:50 AM
 	}
 
 
 	@Override
 	public String getBalance() {
-		return balance.getText().toString();
+		return balance.getText().toString(); // NOPMD by wen on 4/2/14 1:50 AM
 	}
 
 
 	@Override
 	public String getMIR() {
-		return mir.getText().toString();
+		return mir.getText().toString(); // NOPMD by wen on 4/2/14 1:50 AM
 	}
 	
 	@Override
 	public String getUserid() {
-		return b.getString("userid");
+		return boudle.getString("userid");
 	}
 
 	@Override
-	public void addAccount(BankAccount ba) {
-		datasource.addAccount(ba);
+	public void addAccount(BankAccount bankAccout) {
+		datasource.addAccount(bankAccout);
 	}
 
 

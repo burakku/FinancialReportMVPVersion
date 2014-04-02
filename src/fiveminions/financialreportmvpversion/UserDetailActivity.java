@@ -13,9 +13,7 @@ import android.widget.TextView;
  * This is a subclass describes the  methods needed for 
  * the activity of user detail transaction which can set 
  * the text view of name, user ID, password and so forth. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class UserDetailActivity extends Activity {
@@ -30,7 +28,7 @@ public class UserDetailActivity extends Activity {
 	AlertDialog dialog;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:41 AM
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.admin_page_detail);
@@ -38,8 +36,8 @@ public class UserDetailActivity extends Activity {
 		userid = (TextView) findViewById(R.id.username);
 		password = (TextView) findViewById(R.id.password);
 		email = (TextView) findViewById(R.id.email);
-		Bundle b = getIntent().getExtras();
-		user = b.getParcelable("model.User");
+		Bundle boundle = getIntent().getExtras();  // NOPMD by wen on 4/2/14 1:42 AM
+		user = boundle.getParcelable("model.User");
 		display();
 		builder = new AlertDialog.Builder(this);
 		datasource = new FinancialUserSource(this);
@@ -53,18 +51,18 @@ public class UserDetailActivity extends Activity {
 		email.setText(user.getEmail());
 	}
 
-	public void onResetPWClick(View v) {
+	public void onResetPWClick(View view) {
 		builder.setMessage(R.string.reset_pw);
 		builder.setTitle("Password Reset!");
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
+			public void onClick(DialogInterface dialog, int theid) {
 				datasource.resetPW(user.getUserID());
 				finish();
 			}
 		});
 		builder.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
+					public void onClick(DialogInterface dialog, int theid) {
 						dialog.dismiss();
 					}
 				});
@@ -72,18 +70,18 @@ public class UserDetailActivity extends Activity {
 		dialog.show();
 	}
 
-	public void onDeleteUserClick(View v) {
+	public void onDeleteUserClick(View view) {
 		builder.setMessage(R.string.remove_user);
 		builder.setTitle("Delete User!");
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
+			public void onClick(DialogInterface dialog, int theid) {
 				datasource.removeUser(user.getUserID());
 				finish();
 			}
 		});
 		builder.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
+					public void onClick(DialogInterface dialog, int theid) {
 						dialog.dismiss();
 					}
 				});

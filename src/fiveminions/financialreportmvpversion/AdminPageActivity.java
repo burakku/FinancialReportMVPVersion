@@ -18,9 +18,7 @@ import android.widget.ListView;
  * activity of administrator page. This class is for 
  * administrator of the bank to process the info for 
  * the bank activities.  
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class AdminPageActivity extends ListActivity{
@@ -28,7 +26,7 @@ public class AdminPageActivity extends ListActivity{
 	private FinancialUserSource datasource;
 	private List<User> users;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:56 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adminpage);
 		datasource = new FinancialUserSource(this);
@@ -56,7 +54,7 @@ public class AdminPageActivity extends ListActivity{
 	}
 	
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:56 AM
 		super.onListItemClick(l, v, position, id);
 		User user = users.get(position);
 		Intent intent = new Intent(this, UserDetailActivity.class);

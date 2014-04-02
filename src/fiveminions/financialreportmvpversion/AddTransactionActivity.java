@@ -2,7 +2,6 @@ package fiveminions.financialreportmvpversion;
 
 import java.util.List;
 
-import database.FinancialAccountSource;
 import database.FinancialTransactionSource;
 
 import model.Transaction;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,40 +24,42 @@ import android.widget.TextView;
  * needed for the activity of add transactions. These 
  * methods hold the name, date, amount, type and other 
  * informations for the transaction being added. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener{
 
 	AddTransactionPresenter presenter;
+	private int year; // NOPMD by wen on 4/2/14 1:57 AM
+	private int month; // NOPMD by wen on 4/2/14 1:57 AM
+	private int day; // NOPMD by wen on 4/2/14 1:57 AM
 	private EditText name;
-	private EditText date;
+	private DatePicker date; // NOPMD by wen on 4/2/14 1:58 AM
 	private EditText amount;
 	private String type;
 	private String bankname;
 	private String userid;
 	private TextView text;
-	private Spinner typeSpinner;
-	private List<String> categories;
+	private Spinner typeSpinner; // NOPMD by wen on 4/2/14 1:57 AM
+	private List<String> categories; // NOPMD by wen on 4/2/14 1:58 AM
 	private FinancialTransactionSource datasource;
-	Bundle b;
+	Bundle boudle;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:58 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_transaction);
 		presenter = new AddTransactionPresenter(this);
 		datasource = new FinancialTransactionSource(this);
-		b = getIntent().getExtras();
-		bankname = b.getString("bankname");
-		userid = b.getString("userid");
+		boudle = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:58 AM
+		bankname = boudle.getString("bankname");
+		userid = boudle.getString("userid");
 		text = (TextView) findViewById(R.id.tranText);
 		name = (EditText) findViewById(R.id.tranName);
-		date = (EditText) findViewById(R.id.tranDate);
+		date = (DatePicker) findViewById(R.id.tranDate);
 		amount = (EditText) findViewById(R.id.tranAmount);
 		typeSpinner = (Spinner) findViewById(R.id.tranTypeSpinner);
 		typeSpinner.setOnItemSelectedListener(this);
+		date.setCalendarViewShown(false);
 		
 		categories = presenter.getTypeList();
 		// Creating adapter for spinner
@@ -69,9 +71,9 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
-			long id) {
+			long theid) {
 		// On selecting a spinner item
-		type = parent.getItemAtPosition(position).toString();
+		type = parent.getItemAtPosition(position).toString(); // NOPMD by wen on 4/2/14 1:56 AM
 	}
 
 	@Override
@@ -89,23 +91,23 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
 	@Override
 	protected void onPause() {
 		super.onPause();
-		datasource.close();
+		datasource.close(); // NOPMD by wen on 4/2/14 1:56 AM
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_transaction, menu);
+		getMenuInflater().inflate(R.menu.add_transaction, menu); // NOPMD by wen on 4/2/14 1:58 AM
 		return true;
 	}
 
-	public void onSubmitClick(View v){
+	public void onSubmitClick(View view){
 		presenter.onSubmitClick();
 	}
 	
 	@Override
 	public String getName() {
-		return name.getText().toString();
+		return name.getText().toString(); // NOPMD by wen on 4/2/14 1:57 AM
 	}
 
 	@Override
@@ -115,12 +117,16 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
 
 	@Override
 	public String getDate() {
-		return date.getText().toString();
+		year = date.getYear(); // NOPMD by wen on 4/2/14 1:57 AM
+		month = date.getMonth(); // NOPMD by wen on 4/2/14 1:57 AM
+		day = date.getDayOfMonth(); // NOPMD by wen on 4/2/14 1:58 AM
+		String date = year + "-" + month + "-" + day;
+		return date; // NOPMD by wen on 4/2/14 1:57 AM
 	}
 
 	@Override
 	public String getAmount() {
-		return amount.getText().toString();
+		return amount.getText().toString(); // NOPMD by wen on 4/2/14 1:58 AM
 	}
 
 
@@ -130,17 +136,17 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
 	}
 
 	@Override
-	public boolean addTrans(Transaction t) {
+	public boolean addTrans(Transaction transaction) {
 		boolean flag = false;
-		if(datasource.addTransaction(t)){
+		if(datasource.addTransaction(transaction)){
 			flag = true;
 		}
 		return flag;
 	}
 
 	@Override
-	public void setText(String t) {
-		text.setText(t);
+	public void setText(String string) {
+		text.setText(string);
 	}
 
 	@Override

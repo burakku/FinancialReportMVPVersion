@@ -17,9 +17,7 @@ import android.widget.TextView;
  * the public methods needed for the activity of 
  * register to find user, add user and get the info 
  * of users. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class RegisterActivity extends Activity implements IRegisterView {
@@ -30,7 +28,7 @@ public class RegisterActivity extends Activity implements IRegisterView {
 	private FinancialUserSource datasource;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:49 AM
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.register);
@@ -56,26 +54,26 @@ public class RegisterActivity extends Activity implements IRegisterView {
 	protected void onPause() {
 		super.onPause();
 		datasource.close();
-		finish();
+		finish(); // NOPMD by wen on 4/2/14 1:49 AM
 	}
 
-	public void onSignUpButtonClick(View v) {
+	public void onSignUpButtonClick(View view) {
 		regPresenter.onClick();
 	}
 
 	@Override
 	public String getUserid() {
-		return userID.getText().toString();
+		return userID.getText().toString(); // NOPMD by wen on 4/2/14 1:48 AM
 	}
 
 	@Override
 	public String getPassword() {
-		return password.getText().toString();
+		return password.getText().toString(); // NOPMD by wen on 4/2/14 1:49 AM
 	}
 
 	@Override
 	public String getName() {
-		return name.getText().toString();
+		return name.getText().toString(); // NOPMD by wen on 4/2/14 1:49 AM
 	}
 
 	@Override
@@ -92,7 +90,7 @@ public class RegisterActivity extends Activity implements IRegisterView {
 
 	@Override
 	public String getEmail() {
-		return email.getText().toString();
+		return email.getText().toString(); // NOPMD by wen on 4/2/14 1:48 AM
 	}
 
 	@Override
@@ -114,11 +112,11 @@ public class RegisterActivity extends Activity implements IRegisterView {
 		TextView textView3 = (TextView)findViewById(R.id.register_text_password);
 		TextView textView4 = (TextView)findViewById(R.id.textEmail);
 		TextView textView5 = (TextView)findViewById(R.id.register_title);
-		textView1.setTypeface(typeface);
-		textView2.setTypeface(typeface);
-		textView3.setTypeface(typeface);
-		textView4.setTypeface(typeface);
-		textView5.setTypeface(typeface1);
+		textView1.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:48 AM
+		textView2.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:48 AM
+		textView3.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:48 AM
+		textView4.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:48 AM
+		textView5.setTypeface(typeface1); // NOPMD by wen on 4/2/14 1:48 AM
 	}
 
 }

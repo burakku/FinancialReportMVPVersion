@@ -1,20 +1,18 @@
 package model;
 
-import fiveminions.financialreportmvpversion.MainActivity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import fiveminions.financialreportmvpversion.MainActivity;
 
 /**
  * This class allows a bank user to access and change his 
  * or her information such as get his or her name, change
  * account password and so forth. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
-public class User implements Parcelable{
+public class User implements Parcelable{ // NOPMD by wen on 4/2/14 1:14 AM
 
 	private String userID;
 	private String password;
@@ -24,6 +22,21 @@ public class User implements Parcelable{
 	static public final User NULL_USER = new User("", "", "", "");
 	static public final User ADMIN = new User("admin", "pass123",
 			"Administrator", "admin@gatech.edu");
+	public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+
+		@Override
+		public User createFromParcel(final Parcel arg0) {
+			Log.i(MainActivity.LOGTAG, "createFromParcel");
+			return new User(arg0);
+		}
+
+		@Override
+		public User[] newArray(final int arg0) {
+			Log.i(MainActivity.LOGTAG, "newArray");
+			return new User[arg0];
+		}
+
+	};
 
 	/*******************************
 	 * Default Constructor, makes a new User
@@ -42,7 +55,7 @@ public class User implements Parcelable{
 	 * @param password
 	 * @param name
 	 */
-	public User(String userID, String password, String name, String email) {
+	public User(final String userID, final String password, final String name, final String email) {
 		this.userID = userID;
 		this.password = password;
 		this.name = name;
@@ -64,7 +77,7 @@ public class User implements Parcelable{
 	 * @param password
 	 *            - the password to be set
 	 */
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
 	}
 
@@ -83,7 +96,7 @@ public class User implements Parcelable{
 	 * @param name
 	 *            - the name to be set
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -100,7 +113,7 @@ public class User implements Parcelable{
 	 * set User ID
 	 * 
 	 */
-	public void setUserID(String uid) {
+	public void setUserID(final String uid) {
 		this.userID = uid;
 	}
 
@@ -116,7 +129,7 @@ public class User implements Parcelable{
 	 * 
 	 * set user email
 	 */
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 	/**
@@ -124,6 +137,7 @@ public class User implements Parcelable{
 	 * 
 	 * @return user name and ID 
 	 */
+	@Override
 	public String toString() {
 		return name + " : " + userID;
 	}
@@ -141,7 +155,7 @@ public class User implements Parcelable{
 	 * 
 	 * @param in 
 	 */
-	public User(Parcel in) {
+	public User(final Parcel in) { // NOPMD by wen on 4/2/14 1:15 AM
 		userID = in.readString();
 		password = in.readString();
 		name = in.readString();
@@ -155,7 +169,7 @@ public class User implements Parcelable{
 	 * @param flag
 	 */
 	@Override
-	public void writeToParcel(Parcel dest, int flag) {
+	public void writeToParcel(final Parcel dest, final int flag) {
 		Log.i(MainActivity.LOGTAG, "writeToParcel");
 		dest.writeString(userID);
 		dest.writeString(password);
@@ -163,19 +177,5 @@ public class User implements Parcelable{
 		dest.writeString(email);
 	}
 
-	public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
-
-		@Override
-		public User createFromParcel(Parcel arg0) {
-			Log.i(MainActivity.LOGTAG, "createFromParcel");
-			return new User(arg0);
-		}
-
-		@Override
-		public User[] newArray(int arg0) {
-			Log.i(MainActivity.LOGTAG, "newArray");
-			return new User[arg0];
-		}
-
-	};
+	
 }

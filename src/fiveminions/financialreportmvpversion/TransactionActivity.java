@@ -19,22 +19,20 @@ import android.widget.ListView;
  * This is a subclass of ListActivity that describes 
  * the protected methods needed for the activity of 
  * the transaction.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class TransactionActivity extends ListActivity{
 	private String userid;
 	private FinancialAccountSource datasource;
 	private List<BankAccount> accounts;
-	Bundle b;
+	Bundle boudle;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:44 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.transaction_page);
-		b = getIntent().getExtras();
-		userid = b.getString("userid");
+		boudle = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:44 AM
+		userid = boudle.getString("userid");
 		datasource = new FinancialAccountSource(this);
 		datasource.open();
 		display();
@@ -63,12 +61,12 @@ public class TransactionActivity extends ListActivity{
 	}
 	
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:44 AM
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
 		BankAccount baccount = accounts.get(position);
 		Intent intent = new Intent(this, AccountTransactionActivity.class);
-		intent.putExtra("bankname", baccount.getDisname());
+		intent.putExtra("bankname", baccount.getDisname()); // NOPMD by wen on 4/2/14 1:44 AM
 		intent.putExtra("userid", userid);
 		Log.i(MainActivity.LOGTAG, "Pass in bankname and userid");
 		startActivity(intent);

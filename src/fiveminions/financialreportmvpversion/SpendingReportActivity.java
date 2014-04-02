@@ -29,9 +29,7 @@ import android.widget.TextView;
  * methods needed for  the activity of spending report. 
  * These methods can access the information of a report 
  * about the month, year and so forth. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class SpendingReportActivity extends ListActivity implements
@@ -41,26 +39,26 @@ public class SpendingReportActivity extends ListActivity implements
 	private List<Transaction> spendingList;
 	private TextView text;
 	private TextView amountText;
-	private Report rp;
+	private Report report;
 	private ReportPresenter presenter;
-	private Spinner yearSpinner;
-	private List<String> yearList;
-	private Spinner monthSpinner;
-	private List<String> monthList;
+	private Spinner yearSpinner; // NOPMD by wen on 4/2/14 1:48 AM
+	private List<String> yearList; // NOPMD by wen on 4/2/14 1:48 AM
+	private Spinner monthSpinner; // NOPMD by wen on 4/2/14 1:48 AM
+	private List<String> monthList; // NOPMD by wen on 4/2/14 1:46 AM
 	private String year = "";
 	private String month = "";
 	private String userid;
-	Bundle b;
+	Bundle boudle;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:46 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.report);
 		datasource = new FinancialReportGenerator(this);
 		presenter = new ReportPresenter(this);
-		rp = new Report();
+		report = new Report();
 		
-		b = getIntent().getExtras();
-		userid = b.getString("userid");
+		boudle = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:46 AM
+		userid = boudle.getString("userid");
 		
 		text = (TextView) findViewById(R.id.reportText);
 		amountText = (TextView) findViewById(R.id.reportTotalAmountText);
@@ -86,20 +84,20 @@ public class SpendingReportActivity extends ListActivity implements
 		monthSpinner.setAdapter(monthAdapter);
 
 		datasource.open();
-		display(rp.getCurrentYearMonth());
+		display(report.getCurrentYearMonth());
 
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
-			long id) {
+			long theid) {
 		// On selecting a spinner item
-		switch (parent.getId()) {
+		switch (parent.getId()) { // NOPMD by wen on 4/2/14 1:44 AM
 		case R.id.reportYearSpinner:
-			year = parent.getItemAtPosition(position).toString();
+			year = parent.getItemAtPosition(position).toString(); // NOPMD by wen on 4/2/14 1:47 AM
 			break;
 		case R.id.reportMonthSpinner:
-			month = parent.getItemAtPosition(position).toString();
+			month = parent.getItemAtPosition(position).toString(); // NOPMD by wen on 4/2/14 1:48 AM
 			break;
 		}
 	}
@@ -116,15 +114,15 @@ public class SpendingReportActivity extends ListActivity implements
 				R.layout.list_view1, spendingList);
 		setListAdapter(adapter);
 		Log.i(MainActivity.LOGTAG, "Refresh Spending List");
-		text.setText(rp.getSpendingTitle(year, month));
-		amountText.setText(rp.getTotalTile(datasource.getTotal(spendingList)));
+		text.setText(report.getSpendingTitle(year, month));
+		amountText.setText(report.getTotalTile(datasource.getTotal(spendingList)));
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		datasource.open();
-		display(rp.getCurrentYearMonth());
+		display(report.getCurrentYearMonth());
 	}
 
 	@Override
@@ -134,41 +132,41 @@ public class SpendingReportActivity extends ListActivity implements
 	}
 
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:45 AM
 		super.onListItemClick(l, v, position, id);
 		Intent intent = new Intent(this, TransactionDetailActivity.class);
 		Transaction tran = spendingList.get(position);
 		intent.putExtra("model.Transaction", tran);
-		intent.putExtra("model.myDate", tran.getDate());
+		intent.putExtra("model.myDate", tran.getDate()); // NOPMD by wen on 4/2/14 1:48 AM
 		Log.i(MainActivity.LOGTAG, "Open Transaction Detail");
 		startActivity(intent);
 	}
 
-	public void onViewClick(View v) {
+	public void onViewClick(View view) {
 		presenter.onClickView();
 	}
 
 	@Override
 	public ArrayList<String> getYearList() {
-		ArrayList<String> al = new ArrayList<String>();
-		al.add("2007");
-		al.add("2008");
-		al.add("2009");
-		al.add("2010");
-		al.add("2011");
-		al.add("2012");
-		al.add("2013");
-		al.add("2014");
-		return al;
+		ArrayList<String> arrayList = new ArrayList<String>();
+		arrayList.add("2007");
+		arrayList.add("2008");
+		arrayList.add("2009");
+		arrayList.add("2010");
+		arrayList.add("2011");
+		arrayList.add("2012");
+		arrayList.add("2013");
+		arrayList.add("2014");
+		return arrayList;
 	}
 
 	@Override
 	public ArrayList<String> getMonthList() {
-		ArrayList<String> al = new ArrayList<String>();
-		al.add("01"); al.add("02"); al.add("03"); al.add("04");
-		al.add("05"); al.add("06"); al.add("07"); al.add("08");
-		al.add("09"); al.add("10"); al.add("11"); al.add("12");
-		return al;
+		ArrayList<String> arrayList = new ArrayList<String>();
+		arrayList.add("01"); arrayList.add("02"); arrayList.add("03"); arrayList.add("04");
+		arrayList.add("05"); arrayList.add("06"); arrayList.add("07"); arrayList.add("08");
+		arrayList.add("09"); arrayList.add("10"); arrayList.add("11"); arrayList.add("12");
+		return arrayList;
 	}
 
 	@Override
