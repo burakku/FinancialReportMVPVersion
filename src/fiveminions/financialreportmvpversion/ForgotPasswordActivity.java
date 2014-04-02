@@ -15,7 +15,7 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 		Button sendEmail;
 		
 		@Override
-		protected void onCreate(Bundle savedInstanceState) {
+		protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:53 AM
 			// TODO Auto-generated method stub
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.email);
@@ -31,7 +31,7 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 			userName = (EditText) findViewById(R.id.etUsername);
 			sendEmail = (Button) findViewById(R.id.bSentEmail);
 		}
-		public void onClick(View v) {
+		public void onClick(View view) {
 			// TODO Auto-generated method stub
 			convertEditTextVarsIntoStrings();
 			String emailaddress[] = { adminEmail };
@@ -44,33 +44,33 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 			
 			// Send the email
 			
-			Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-			emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailaddress);
-			emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "password reset request!");
+			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+			emailIntent.putExtra(Intent.EXTRA_EMAIL, emailaddress);
+			emailIntent.putExtra(Intent.EXTRA_SUBJECT, "password reset request!");
 			emailIntent.setType("plain/text");
-			emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
+			emailIntent.putExtra(Intent.EXTRA_TEXT, message);
 			
 			
 			try{
 				startActivity(emailIntent);
-			}catch(Exception e){
-				e.printStackTrace();
+			}catch(Exception e){ // NOPMD by wen on 4/2/14 1:53 AM
+				e.printStackTrace(); // NOPMD by wen on 4/2/14 1:53 AM
 			}
 				
 				
 		}
 		private void convertEditTextVarsIntoStrings() {
 			// TODO Auto-generated method stub
-			sEmail = personsEmail.getText().toString();
+			sEmail = personsEmail.getText().toString(); // NOPMD by wen on 4/2/14 1:53 AM
 			
-			sUerName = userName.getText().toString();
+			sUerName = userName.getText().toString(); // NOPMD by wen on 4/2/14 1:53 AM
 			
 		}
 		@Override
 		protected void onPause() {
 			// TODO Auto-generated method stub
 			super.onPause();
-			finish();
+			finish(); // NOPMD by wen on 4/2/14 1:53 AM
 		}
 	}
 

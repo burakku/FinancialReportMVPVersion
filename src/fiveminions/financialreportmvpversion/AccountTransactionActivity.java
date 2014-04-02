@@ -2,7 +2,6 @@ package fiveminions.financialreportmvpversion;
 
 import java.util.List;
 
-import model.BankAccount;
 import model.Transaction;
 
 import database.FinancialTransactionSource;
@@ -23,9 +22,7 @@ import android.widget.ListView;
  * This class describes the methods needed for the activity 
  * of account transaction which holds the information of 
  * database and deal with the operation for items selected
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class AccountTransactionActivity extends ListActivity{
@@ -34,14 +31,14 @@ public class AccountTransactionActivity extends ListActivity{
 	private List<Transaction> transactions;
 	private String bankname;
 	private String userid;
-	Bundle b;
+	Bundle boudle;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:58 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bank_transaction);
-		b = getIntent().getExtras();
-		bankname = b.getString("bankname");
-		userid = b.getString("userid");
+		boudle = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:59 AM
+		bankname = boudle.getString("bankname");
+		userid = boudle.getString("userid");
 		datasource = new FinancialTransactionSource(this);
 		datasource.open();
 		display();
@@ -50,7 +47,7 @@ public class AccountTransactionActivity extends ListActivity{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.transaction_menu, menu);
+	    inflater.inflate(R.menu.transaction_menu, menu); // NOPMD by wen on 4/2/14 1:58 AM
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -75,12 +72,12 @@ public class AccountTransactionActivity extends ListActivity{
 	}
 	
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:58 AM
 		super.onListItemClick(l, v, position, id);
 		Intent intent = new Intent(this, TransactionDetailActivity.class);
 		Transaction tran = transactions.get(position);
 		intent.putExtra("model.Transaction", tran);
-		intent.putExtra("model.myDate", tran.getDate());
+		intent.putExtra("model.myDate", tran.getDate()); // NOPMD by wen on 4/2/14 1:59 AM
 		Log.i(MainActivity.LOGTAG, "Pass in accounttransaction");
 		startActivity(intent);
 	}
@@ -88,7 +85,7 @@ public class AccountTransactionActivity extends ListActivity{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
+	    switch (item.getItemId()) { // NOPMD by wen on 4/2/14 1:58 AM
 	        case R.id.add_new_account:
 	        	Intent intent = new Intent(this, AddTransactionActivity.class);
 	        	intent.putExtra("bankname", bankname);

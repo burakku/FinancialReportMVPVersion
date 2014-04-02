@@ -20,21 +20,19 @@ import android.widget.ListView;
  * This subclass of ListActivity describes the methods 
  * needed for the activity of user page to allow user 
  * the menu to be set. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class UserpageActivity extends ListActivity {
 
-	private User user;
-	private List<String> menu;
+	private User user; // NOPMD by wen on 4/2/14 1:28 AM
+	private List<String> menu; // NOPMD by wen on 4/2/14 1:28 AM
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:27 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_page);
 
-		Bundle b = getIntent().getExtras();
+		Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:28 AM
 		user = b.getParcelable("model.User");
 
 		menu = new ArrayList<String>();
@@ -47,7 +45,7 @@ public class UserpageActivity extends ListActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.user_page_menu, menu);
+		inflater.inflate(R.menu.user_page_menu, menu); // NOPMD by wen on 4/2/14 1:28 AM
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -78,7 +76,7 @@ public class UserpageActivity extends ListActivity {
 	}
 
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	protected void onListItemClick(ListView l, View v, int position, long id) { // NOPMD by wen on 4/2/14 1:27 AM
 		super.onListItemClick(l, v, position, id);
 		switch(position) {
 		case 0:

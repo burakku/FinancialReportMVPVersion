@@ -21,9 +21,7 @@ import android.widget.ListView;
  * This class describes the methods needed for the 
  * activity of account page which include display,
  * create option menu, resume, pause and so forth. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class AccountPageActivity extends ListActivity{
@@ -32,10 +30,10 @@ public class AccountPageActivity extends ListActivity{
 	transient private FinancialAccountSource datasource;
 	transient private List<BankAccount> accounts;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 2:00 AM
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.account_page);
-		Bundle b = getIntent().getExtras();
+		Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 2:00 AM
 		userid = b.getString("userid");
 		datasource = new FinancialAccountSource(this);
 		datasource.open();
@@ -53,7 +51,7 @@ public class AccountPageActivity extends ListActivity{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.account_menu, menu);
+	    inflater.inflate(R.menu.account_menu, menu); // NOPMD by wen on 4/2/14 2:00 AM
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -73,7 +71,7 @@ public class AccountPageActivity extends ListActivity{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
+	    switch (item.getItemId()) { // NOPMD by wen on 4/2/14 1:59 AM
 	        case R.id.add_new_account:
 	        	final Intent intent = 
 	        		new Intent(this, NewAccountActivity.class);
@@ -87,9 +85,9 @@ public class AccountPageActivity extends ListActivity{
 	            return super.onOptionsItemSelected(item);
 	}	
 	@Override
-	protected void onListItemClick(ListView l,
-				View v, int position, long id) {
-		super.onListItemClick(l, v, position, id);
+	protected void onListItemClick(ListView listView,
+				View view, int position, long theid) {
+		super.onListItemClick(listView, view, position, theid);
 		final BankAccount baccount = accounts.get(position);
 		final Intent intent =
 			new Intent(this, BankAccountDetailActivity.class);

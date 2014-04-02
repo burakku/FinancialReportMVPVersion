@@ -23,9 +23,7 @@ import android.widget.ListView;
  * This subclass of Activity describes the methods needed 
  * for the activity of user home page. These methods allows
  * user home page to be set according to the input.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class UserHomepageActivity extends Activity {
@@ -44,17 +42,17 @@ public class UserHomepageActivity extends Activity {
     // slide menu items
     private String[] navMenuTitles;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:35 AM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_homepage);
         
-        Bundle b = getIntent().getExtras();
+        Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:35 AM
 		user = b.getParcelable("model.User");
         
         mTitle = mDrawerTitle = getTitle();
         
         // load slide menu items
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // NOPMD by wen on 4/2/14 1:36 AM
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
         
@@ -64,8 +62,8 @@ public class UserHomepageActivity extends Activity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
  
         // enabling action bar app icon and behaving it as toggle button
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true); // NOPMD by wen on 4/2/14 1:33 AM
+        getActionBar().setHomeButtonEnabled(true); // NOPMD by wen on 4/2/14 1:35 AM
         
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
@@ -73,13 +71,13 @@ public class UserHomepageActivity extends Activity {
                 R.string.app_name // nav drawer close - description for accessibility
         ){
             public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle);
+                getActionBar().setTitle(mTitle); // NOPMD by wen on 4/2/14 1:35 AM
                 // calling onPrepareOptionsMenu() to show action bar icons
                 invalidateOptionsMenu();
             }
  
             public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(mDrawerTitle);
+                getActionBar().setTitle(mDrawerTitle); // NOPMD by wen on 4/2/14 1:35 AM
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 invalidateOptionsMenu();
             }
@@ -94,7 +92,7 @@ public class UserHomepageActivity extends Activity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu); // NOPMD by wen on 4/2/14 1:33 AM
         return true;
     }
  
@@ -105,7 +103,7 @@ public class UserHomepageActivity extends Activity {
             return true;
         }
         // Handle action bar actions click
-        switch (item.getItemId()) {
+        switch (item.getItemId()) { // NOPMD by wen on 4/2/14 1:33 AM
         case R.id.action_settings:
             return true;
         default:
@@ -120,14 +118,14 @@ public class UserHomepageActivity extends Activity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        menu.findItem(R.id.action_settings).setVisible(!drawerOpen); // NOPMD by wen on 4/2/14 1:36 AM
         return super.onPrepareOptionsMenu(menu);
     }
  
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getActionBar().setTitle(mTitle);
+        getActionBar().setTitle(mTitle); // NOPMD by wen on 4/2/14 1:35 AM
     }
     
     /**
@@ -136,7 +134,7 @@ public class UserHomepageActivity extends Activity {
      */
  
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
+    protected void onPostCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:33 AM
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
@@ -177,29 +175,34 @@ public class UserHomepageActivity extends Activity {
 			Log.i(MainActivity.LOGTAG, "Pass in userid");
 			startActivity(intentAcc);
 			break;
+			
+        case 5:
+        	Intent intentLogin= new Intent(this, LoginActivity.class);
+			startActivity(intentLogin);
+			break;
  
         default:
             break;
         }
         
-        if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+        if (fragment == null) {
+        	  // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
+        } else {
+        	FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit(); // NOPMD by wen on 4/2/14 1:33 AM
  
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            setTitle(navMenuTitles[position]);
+            setTitle(navMenuTitles[position]); // NOPMD by wen on 4/2/14 1:35 AM
             mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-            // error in creating fragment
-            Log.e("MainActivity", "Error in creating fragment");
         }
     }
     
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) { // NOPMD by wen on 4/2/14 1:35 AM
         	displayView(position);
         }
     }
