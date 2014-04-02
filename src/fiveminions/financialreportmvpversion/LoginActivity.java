@@ -21,88 +21,96 @@ import android.widget.TextView;
  * @author Team 23
  */
 public class LoginActivity extends Activity implements ILoginView {
-	
-	private LoginPresenter loginPresenter;
-	EditText userId, password;
-	TextView resultTxt;
-	private FinancialUserSource datasource;
-	
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:52 AM
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login); 
-		loginPresenter = new LoginPresenter(this);
-		
-		userId = (EditText) findViewById(R.id.usernameLog);
-		password = (EditText) findViewById(R.id.passwordLog);	
-		resultTxt = (TextView) findViewById(R.id.loginText);
-		
-		
-		datasource = new FinancialUserSource(this);
-		datasource.open();
-		//datasource.update(datasource);
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		datasource.open();
-	}
-	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		datasource.close(); // NOPMD by wen on 4/2/14 1:52 AM
-	}
-	
-	public void onLoginCheckButtonClick(View view){
-		loginPresenter.onClick();
-	}
+    
+    private LoginPresenter loginPresenter;
+    private EditText userId, password;
+    private TextView resultTxt;
+    private FinancialUserSource datasource;
+    
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:52 AM
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login); 
+        loginPresenter = new LoginPresenter(this);
+        
+        userId = (EditText) findViewById(R.id.usernameLog);
+        password = (EditText) findViewById(R.id.passwordLog);    
+        resultTxt = (TextView) findViewById(R.id.loginText);
+        
+        
+        datasource = new FinancialUserSource(this);
+        datasource.open();
+        //datasource.update(datasource);
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        datasource.open();
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        datasource.close(); // NOPMD by wen on 4/2/14 1:52 AM
+    }
+    /**
+     * check button click.
+     * @param view
+     */
+    public void onLoginCheckButtonClick(View view) {
+        loginPresenter.onClick();
+    }
+    /**
+     * forgot password button click.
+     * @param view
+     */
+    public void onForgotPasswordButtonClick(View view) {
+        loginPresenter.onForgotPasswordClick();
+    }
+    
+    @Override
+    public String getUserid() {
+        return userId.getText().toString(); // NOPMD by wen on 4/2/14 1:52 AM
+    }
 
-	public void onForgotPasswordButtonClick(View view){
-		loginPresenter.onForgotPasswordClick();
-	}
-	
-	@Override
-	public String getUserid() {
-		return userId.getText().toString(); // NOPMD by wen on 4/2/14 1:52 AM
-	}
+    @Override
+    public String getUserPassword() {
+        return password.getText().toString(); // NOPMD by wen on 4/2/14 1:52 AM
+    }
 
-	@Override
-	public String getUserPassword() {
-		return password.getText().toString(); // NOPMD by wen on 4/2/14 1:52 AM
-	}
+    @Override
+    public void setResultText(String text) {
+        resultTxt.setText(text);
+    }
+    /**
+     * transfer to another page.
+     */
+    public void goForgotPasswordPage() {
+        Intent intent = new Intent(this, ForgotPasswordActivity.class );
+        startActivity(intent);        
+    }
+    
+    
+    @Override
+    public void goUserPage() {
+        Intent intent = new Intent(this, UserHomepageActivity.class );
+        User user = findUser(getUserid());
+        intent.putExtra("model.User", user);
+        startActivity(intent);        
+    }
 
-	@Override
-	public void setResultText(String text) {
-		resultTxt.setText(text);
-	}
-	
-	public void goForgotPasswordPage() {
-		Intent intent = new Intent(this, ForgotPasswordActivity.class );
-		startActivity(intent);		
-	}
-	
-	
-	@Override
-	public void goUserPage() {
-		Intent intent = new Intent(this, UserHomepageActivity.class );
-		User user = findUser(getUserid());
-		intent.putExtra("model.User", user);
-		startActivity(intent);		
-	}
+    @Override
+    public User findUser(String uid) {
+        return  datasource.findUser(uid);
+    }
 
-	@Override
-	public User findUser(String uid) {
-		return  datasource.findUser(uid);
-	}
-
-	@Override
-	public void goAdminPage() {
-		Intent intent = new Intent(this, AdminPageActivity.class );
-		startActivity(intent);
-	}
-	
+    @Override
+    public void goAdminPage() {
+        Intent intent = new Intent(this, AdminPageActivity.class );
+        startActivity(intent);
+    }
+    
 
 }

@@ -27,7 +27,7 @@ import android.widget.TextView;
  * @version 1.0
  * @author Team 23
  */
-public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener{
+public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener {
 
     private AddTransactionPresenter presenter;
     private int year; // NOPMD by wen on 4/2/14 1:57 AM
@@ -100,7 +100,11 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
         getMenuInflater().inflate(R.menu.add_transaction, menu); // NOPMD by wen on 4/2/14 1:58 AM
         return true;
     }
-
+    
+    /**
+     * Call the sumbitClick method in presenter.
+     * @param view the View
+     */
     public void onSubmitClick(View view) {
         presenter.onSubmitClick();
     }

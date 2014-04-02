@@ -1,7 +1,11 @@
 package fiveminions.financialreportmvpversion;
 
 import android.app.Activity;
-
-public class MonthlyIncomeActivity extends Activity{
+/**
+ * Monthly Income Report.
+ * @author Team23
+ *
+ */
+public class MonthlyIncomeActivity extends Activity {
 
 }

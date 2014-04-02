@@ -21,7 +21,7 @@ import android.widget.ListView;
  * @version 1.0
  * @author Team 23
  */
-public class AdminPageActivity extends ListActivity{
+public class AdminPageActivity extends ListActivity {
 
     private FinancialUserSource datasource;
     private List<User> users;
@@ -34,12 +34,15 @@ public class AdminPageActivity extends ListActivity{
         display();
     }
     
-    public void display(){
+    /**
+     * refresh list.
+     */
+    public void display() {
         users = datasource.getUserList();
         ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, R.layout.list_view1, users);
         setListAdapter(adapter);
     }
-    
+
     @Override
     protected void onResume() {
         super.onResume();

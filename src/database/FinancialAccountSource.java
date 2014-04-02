@@ -16,9 +16,7 @@ import android.util.Log;
  * This class describes the public methods needed for 
  * the source of financial account which check and 
  * update the information financial account. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class FinancialAccountSource {

@@ -22,57 +22,59 @@ import android.widget.TextView;
  * @author Team 23
  */
 public class MainActivity extends Activity implements IMainView{
-	public static final String LOGTAG = "Clover";
-	private MainPresenter mainPresenter;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:51 AM
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		setFont();
-		mainPresenter = new MainPresenter(this);
-	}
+    public static final String LOGTAG = "Clover";
+    private MainPresenter mainPresenter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:51 AM
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setFont();
+        mainPresenter = new MainPresenter(this);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu); // NOPMD by wen on 4/2/14 1:51 AM
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu); // NOPMD by wen on 4/2/14 1:51 AM
+        return true;
+    }
 
-	/**
-	 *  Method defined in activity_main.xml button1
-	 * @param view
-	 */
-	public void onRegisterButtonClick(View view){
-		mainPresenter.onRegisterClick();
-	}
+    /**
+     *  Method defined in activity_main.xml button1.
+     * @param view the View
+     */
+    public void onRegisterButtonClick(View view) {
+        mainPresenter.onRegisterClick();
+    }
 
-	/**
-	 *  Method defined in activity_main.xml button2
-	 * @param view
-	 */
-	public void onLoginButtonClick(View view){
-		mainPresenter.onLoginClick();
-	}
-	
-	@Override
-	public void goRegister() {
-		Intent intent = new Intent(this, RegisterActivity.class);
-		startActivity(intent);
-		
-	}
+    /**
+     *  Method defined in activity_main.xml button2.
+     * @param view the View
+     */
+    public void onLoginButtonClick(View view) {
+        mainPresenter.onLoginClick();
+    }
+    
+    @Override
+    public void goRegister() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+        
+    }
 
-	@Override
-	public void goLogin() {
-		Intent intent = new Intent(this, LoginActivity.class);
-		startActivity(intent);
-		
-	}
-	
-	public void setFont() {
-		Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
-		TextView textView = (TextView)findViewById(R.id.main_title);
-		textView.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:51 AM
-	}
+    @Override
+    public void goLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        
+    }
+    /**
+     * set font.
+     */
+    public void setFont() {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
+        TextView textView = (TextView) findViewById(R.id.main_title);
+        textView.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:51 AM
+    }
 
 }

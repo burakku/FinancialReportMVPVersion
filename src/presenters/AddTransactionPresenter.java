@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Transaction;
-import model.myDate;
+import model.MyDate;
 
 import views.IAddTransactionView;
 
@@ -51,14 +51,14 @@ public class AddTransactionPresenter {
  */
     public void onSubmitClick() {
         String name;
-        myDate date;
+        MyDate date;
         String amount;
         String type;
         String bankName;
         String userid;
         String resultText = ""; // NOPMD by hailin on 3/28/14 7:07 PM
         name = view.getName();
-        date = new myDate(view.getDate());
+        date = new MyDate(view.getDate());
         amount = view.getAmount();
         type = view.getType();
         if (name.equals("") || date.equals("") || amount.equals("") || type.equals("")) { // NOPMD by hailin on 3/29/14 12:58 AM

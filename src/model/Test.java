@@ -4,10 +4,10 @@ import android.test.AndroidTestCase;
 
 public class Test extends AndroidTestCase {
 
-	myDate date;
+	MyDate date;
 
 	protected void setUp() throws Exception {
-		date = new myDate();
+		date = new MyDate();
 		super.setUp();
 	}
 

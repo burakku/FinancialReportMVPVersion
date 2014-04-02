@@ -27,27 +27,31 @@ import android.widget.ListView;
  * @author Team 23
  */
 public class UserHomepageActivity extends Activity {
-	
-	private User user;
-	
-	private DrawerLayout mDrawerLayout;
+    
+    private User user;
+    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    // nav drawer title
+    /** 
+     * nav drawer title.
+     */
     private CharSequence mDrawerTitle;
- 
-    // used to store app title
+    /**
+     * used to store app title.
+     */
     private CharSequence mTitle;
- 
-    // slide menu items
+    /**
+     * slide menu items.
+     */
     private String[] navMenuTitles;
-
+    
+    @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:35 AM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_homepage);
         
         Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:35 AM
-		user = b.getParcelable("model.User");
+        user = b.getParcelable("model.User");
         
         mTitle = mDrawerTitle = getTitle();
         
@@ -69,7 +73,7 @@ public class UserHomepageActivity extends Activity {
                 R.drawable.ic_drawer, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
                 R.string.app_name // nav drawer close - description for accessibility
-        ){
+        ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle); // NOPMD by wen on 4/2/14 1:35 AM
                 // calling onPrepareOptionsMenu() to show action bar icons
@@ -88,7 +92,7 @@ public class UserHomepageActivity extends Activity {
             // on first time display view for first nav item
             displayView(0);
         }
-	}
+    }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,15 +108,17 @@ public class UserHomepageActivity extends Activity {
         }
         // Handle action bar actions click
         switch (item.getItemId()) { // NOPMD by wen on 4/2/14 1:33 AM
-        case R.id.action_settings:
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
+            case R.id.action_settings:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
     
     /***
-     * Called when invalidateOptionsMenu() is triggered
+     * Called when invalidateOptionsMenu() is triggered.
+     * @param menu pass in menu
+     * @return menu the Menu
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -131,8 +137,8 @@ public class UserHomepageActivity extends Activity {
     /**
      * When using the ActionBarDrawerToggle, you must call it during
      * onPostCreate() and onConfigurationChanged()...
+     * @param savedInstanceState Bundle
      */
- 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:33 AM
         super.onPostCreate(savedInstanceState);
@@ -146,50 +152,54 @@ public class UserHomepageActivity extends Activity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
+   
+    /**
+     * link the page to corresponding menu list.
+     * @param position the position in list
+     */
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
-        case 0:
-            fragment = new HomeFragment();
-            break;
-            
-        case 1:
-        	Intent intent = new Intent(this, TransactionActivity.class);
-			intent.putExtra("userid", user.getUserID());
-			Log.i(MainActivity.LOGTAG, "Pass in userid");
-			startActivity(intent);
-			break;
-			
-        case 2:
-        	Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
-			spendingIntent.putExtra("userid", user.getUserID());
-			Log.i(MainActivity.LOGTAG, "Pass in userid");
-			startActivity(spendingIntent);
-			break;
-			
-        case 4:
-        	Intent intentAcc = new Intent(this, AccountPageActivity.class);
-			intentAcc.putExtra("userid", user.getUserID());
-			Log.i(MainActivity.LOGTAG, "Pass in userid");
-			startActivity(intentAcc);
-			break;
-			
-        case 5:
-        	Intent intentLogin= new Intent(this, LoginActivity.class);
-			startActivity(intentLogin);
-			break;
- 
-        default:
-            break;
+            case 0:
+                fragment = new HomeFragment();
+                break;
+                
+            case 1:
+                Intent intent = new Intent(this, TransactionActivity.class);
+                intent.putExtra("userid", user.getUserID());
+                Log.i(MainActivity.LOGTAG, "Pass in userid");
+                startActivity(intent);
+                break;
+                
+            case 2:
+                Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
+                spendingIntent.putExtra("userid", user.getUserID());
+                Log.i(MainActivity.LOGTAG, "Pass in userid");
+                startActivity(spendingIntent);
+                break;
+                
+            case 4:
+                Intent intentAcc = new Intent(this, AccountPageActivity.class);
+                intentAcc.putExtra("userid", user.getUserID());
+                Log.i(MainActivity.LOGTAG, "Pass in userid");
+                startActivity(intentAcc);
+                break;
+                
+            case 5:
+                Intent intentLogin = new Intent(this, LoginActivity.class);
+                startActivity(intentLogin);
+                break;
+     
+            default:
+                break;
         }
         
         if (fragment == null) {
-        	  // error in creating fragment
+              // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
         } else {
-        	FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit(); // NOPMD by wen on 4/2/14 1:33 AM
  
             // update selected item and title, then close the drawer
@@ -200,10 +210,15 @@ public class UserHomepageActivity extends Activity {
         }
     }
     
+    /**
+     * Customize Item click class.
+     * @author Team23
+     *
+     */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) { // NOPMD by wen on 4/2/14 1:35 AM
-        	displayView(position);
+            displayView(position);
         }
     }
 }

@@ -40,7 +40,9 @@ public class AccountPageActivity extends ListActivity {
         display();
     }
 
-  
+   /**
+    * refresh the list view.
+    */
     public void display() {
         accounts = datasource.getAccountList(userid);
         final ArrayAdapter<BankAccount> adapter = 

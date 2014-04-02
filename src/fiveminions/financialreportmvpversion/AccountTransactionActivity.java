@@ -31,6 +31,9 @@ public class AccountTransactionActivity extends ListActivity {
     private List<Transaction> transactions;
     private String bankname;
     private String userid;
+    /**
+     * The bundle to get extra pass in message.
+     */
     Bundle boudle;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:58 AM
@@ -51,6 +54,9 @@ public class AccountTransactionActivity extends ListActivity {
         return super.onCreateOptionsMenu(menu);
     }
     
+    /**
+     * refresh list.
+     */
     public void display() {
         transactions = datasource.getTransactionList(bankname, userid);
         ArrayAdapter<Transaction> adapter = new ArrayAdapter<Transaction>(this, R.layout.list_view1, transactions);
