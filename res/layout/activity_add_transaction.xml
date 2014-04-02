@@ -1,65 +1,69 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AddTransactionActivity"
-    android:background="@color/bkg" >
+    android:background="@color/bkg"
+    android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/tranName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="name" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/tranDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tranName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="30dp"
-        android:ems="10"
-        android:hint="yyyy-mm-dd" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/tranAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tranDate"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="Amount" />
+            <EditText
+                android:id="@+id/tranName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:ems="7"
+                android:hint="Category" />
 
-    <Spinner
-        android:id="@+id/tranTypeSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tranAmount"
-        android:layout_marginTop="25dp"
-        android:prompt="@string/spinner_title" />
+            <EditText
+                android:id="@+id/tranAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:ems="7"
+                android:hint="Amount" />
 
-    <TextView
-        android:id="@+id/tranText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tranTypeSpinner" />
+            <DatePicker
+                android:id="@+id/tranDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp" />
 
-    <Button
-        android:id="@+id/tranSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tranAmount"
-        android:layout_below="@+id/tranTypeSpinner"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="61dp"
-        android:onClick="onSubmitClick"
-        android:text="Submit" />
+            <Spinner
+                android:id="@+id/tranTypeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:prompt="@string/spinner_title" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tranText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tranTypeSpinner"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/tranSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:onClick="onSubmitClick"
+                android:text="Submit" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

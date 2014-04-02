@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,8 +33,11 @@ import android.widget.TextView;
 public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener{
 
 	AddTransactionPresenter presenter;
+	private int year;
+	private int month;
+	private int day;
 	private EditText name;
-	private EditText date;
+	private DatePicker date;
 	private EditText amount;
 	private String type;
 	private String bankname;
@@ -54,10 +58,11 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
 		userid = b.getString("userid");
 		text = (TextView) findViewById(R.id.tranText);
 		name = (EditText) findViewById(R.id.tranName);
-		date = (EditText) findViewById(R.id.tranDate);
+		date = (DatePicker) findViewById(R.id.tranDate);
 		amount = (EditText) findViewById(R.id.tranAmount);
 		typeSpinner = (Spinner) findViewById(R.id.tranTypeSpinner);
 		typeSpinner.setOnItemSelectedListener(this);
+		date.setCalendarViewShown(false);
 		
 		categories = presenter.getTypeList();
 		// Creating adapter for spinner
@@ -115,7 +120,11 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
 
 	@Override
 	public String getDate() {
-		return date.getText().toString();
+		year = date.getYear();
+		month = date.getMonth();
+		day = date.getDayOfMonth();
+		String date = year + "-" + month + "-" + day;
+		return date;
 	}
 
 	@Override
