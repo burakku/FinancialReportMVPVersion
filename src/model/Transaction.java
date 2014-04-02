@@ -4,20 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import fiveminions.financialreportmvpversion.MainActivity;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import fiveminions.financialreportmvpversion.MainActivity;
 
 /**
  * This class can get and hold the information of a 
  * transaction by a bank user. One can get the name
  * of the user, transaction time and data and other 
  * kind of relative information of the transaction. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class Transaction implements Parcelable {
@@ -30,6 +27,21 @@ public class Transaction implements Parcelable {
 	private String recordTime;
 	private String bkDisName;
 	private String userid;
+	public static final Parcelable.Creator<Transaction> CREATOR = new Parcelable.Creator<Transaction>() {
+
+		@Override
+		public Transaction createFromParcel(final Parcel arg0) {
+			Log.i(MainActivity.LOGTAG, "createFromParcel");
+			return new Transaction(arg0);
+		}
+
+		@Override
+		public Transaction[] newArray(final int arg0) {
+			Log.i(MainActivity.LOGTAG, "newArray");
+			return new Transaction[arg0];
+		}
+
+	};
 	/**
 	 * Default constructor for Transaction 
 	 *
@@ -50,22 +62,21 @@ public class Transaction implements Parcelable {
 	 * @return date in format of yyyy-MM-dd
 	 */
 	private String getDateTime() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",
+		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",
 				Locale.getDefault());
-		Date date = new Date();
+		final Date date = new Date();
 		return dateFormat.format(date);
 	}
 	/**
 	 * Constructor for Bank Account 
-	 * 
 	 * @param name the name of the person
 	 * @param type the type of the transaction
 	 * @param date the date of the transaction
 	 * @param amount the amount of the transaction
 	 * @param bkDisName the bank displaying name of the user
 	 */
-	public Transaction(String name, String type, myDate date, Double amount,
-			String bkDisName, String userid) {
+	public Transaction(final String name, final String type, final myDate date, final Double amount,
+			final String bkDisName, final String userid) {
 		this.name = name;
 		this.type = type;
 		this.date = date;
@@ -88,7 +99,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param name - the name of the user
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 	/**
@@ -104,7 +115,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param type - the type of the transaction
 	 */
-	public void setType(String type) {
+	public void setType(final String type) {
 		this.type = type;
 	}
 	/**
@@ -120,7 +131,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param date - the date of the transaction
 	 */
-	public void setDate(myDate date) {
+	public void setDate(final myDate date) {
 		this.date = date;
 	}
 	/**
@@ -136,7 +147,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param amount - the amount of the transaction
 	 */
-	public void setAmount(double amount) {
+	public void setAmount(final double amount) {
 		this.amount = amount;
 	}
 	/**
@@ -152,7 +163,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param status - the status of the transaction
 	 */
-	public void setStatus(String status) {
+	public void setStatus(final String status) {
 		this.status = status;
 	}
 	/**
@@ -168,7 +179,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param recordTime - the recording time of the transaction
 	 */
-	public void setRecordTime(String recordTime) {
+	public void setRecordTime(final String recordTime) {
 		this.recordTime = recordTime;
 	}
 	/**
@@ -184,7 +195,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @return bkDisName - the bank displaying name of the user
 	 */
-	public void setBkDisName(String bkDisName) {
+	public void setBkDisName(final String bkDisName) {
 		this.bkDisName = bkDisName;
 	}
 	/**
@@ -200,7 +211,7 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param userid - the id of the user
 	 */
-	public void setUserid(String userid) {
+	public void setUserid(final String userid) {
 		this.userid = userid;
 	}
 	/**
@@ -228,11 +239,11 @@ public class Transaction implements Parcelable {
 	 * 
 	 * @param in 
 	 */
-	public Transaction(Parcel in) {
+	public Transaction(final Parcel in) { // NOPMD by wen on 4/2/14 1:16 AM
 		name = in.readString();
 		type = in.readString();
 		amount = in.readDouble();
-		date = (myDate) in.readValue(myDate.class.getClassLoader());
+		date = (myDate) in.readValue(myDate.class.getClassLoader()); // NOPMD by wen on 4/2/14 1:16 AM
 		status = in.readString();
 		recordTime = in.readString();
 		bkDisName = in.readString();
@@ -245,7 +256,7 @@ public class Transaction implements Parcelable {
 	 * @param flag
 	 */
 	@Override
-	public void writeToParcel(Parcel dest, int flag) {
+	public void writeToParcel(final Parcel dest, final int flag) {
 		Log.i(MainActivity.LOGTAG, "writeToParcel");
 		dest.writeString(name);
 		dest.writeString(type);
@@ -257,20 +268,6 @@ public class Transaction implements Parcelable {
 
 	}
 
-	public static final Parcelable.Creator<Transaction> CREATOR = new Parcelable.Creator<Transaction>() {
-
-		@Override
-		public Transaction createFromParcel(Parcel arg0) {
-			Log.i(MainActivity.LOGTAG, "createFromParcel");
-			return new Transaction(arg0);
-		}
-
-		@Override
-		public Transaction[] newArray(int arg0) {
-			Log.i(MainActivity.LOGTAG, "newArray");
-			return new Transaction[arg0];
-		}
-
-	};
+	
 
 }

@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Collection;
 /**
  * A Facade for the actual model, which specifies 
  * what methods the Model class contains. 

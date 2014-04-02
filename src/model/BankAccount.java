@@ -1,17 +1,15 @@
 package model;
-import fiveminions.financialreportmvpversion.MainActivity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import fiveminions.financialreportmvpversion.MainActivity;
 
 /**
  * This class describes the public methods needed for 
  * a bank account, which holds the information of the
  * account of a bank user including name, user ID, balance,
  * monthly interest rate and so forth.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class BankAccount implements Parcelable{
@@ -20,6 +18,23 @@ public class BankAccount implements Parcelable{
 	private double balance;
 	private double mir;
 	private String userid;
+
+	public static final Parcelable.Creator<BankAccount> CREATOR =
+			new Parcelable.Creator<BankAccount>() {
+
+				@Override
+				public BankAccount createFromParcel(final Parcel arg0) {
+					Log.i(MainActivity.LOGTAG, "createFromParcel");
+					return new BankAccount(arg0);
+				}
+
+				@Override
+				public BankAccount[] newArray(final int arg0) {
+					Log.i(MainActivity.LOGTAG, "newArray");
+					return new BankAccount[arg0];
+				}
+		
+			};
 	
 	static public final BankAccount NULL_ACCOUNT = new BankAccount("", "", 0,0,"null");
 	/**
@@ -35,15 +50,14 @@ public class BankAccount implements Parcelable{
 	}
 	/**
 	 * Constructor for Bank Account 
-	 * 
 	 * @param name the name of the person
 	 * @param disname the name displayed
 	 * @param balance the balance of the account
 	 * @param mir the monthly interest rate
 	 * @param userid the id of the person
 	 */
-	public BankAccount(String name, String disname, double balance, double mir,
-			String userid) {
+	public BankAccount(final String name, final String disname, final double balance, final double mir,
+			final String userid) {
 		super();
 		this.name = name;
 		this.disname = disname;
@@ -64,7 +78,7 @@ public class BankAccount implements Parcelable{
 	 * 
 	 * @return name - the name of the user
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 	/**
@@ -80,7 +94,7 @@ public class BankAccount implements Parcelable{
 	 * 
 	 * @param disname - the name of user displayed
 	 */
-	public void setDisname(String disname) {
+	public void setDisname(final String disname) {
 		this.disname = disname;
 	}
 	/**
@@ -96,7 +110,7 @@ public class BankAccount implements Parcelable{
 	 * 
 	 * @param balance - the balance of the account
 	 */
-	public void setBalance(double balance) {
+	public void setBalance(final double balance) {
 		this.balance = balance;
 	}
 	/**
@@ -112,7 +126,7 @@ public class BankAccount implements Parcelable{
 	 * 
 	 * @param mir - monthly interest rate
 	 */
-	public void setMir(double mir) {
+	public void setMir(final double mir) {
 		this.mir = mir;
 	}
 	/**
@@ -128,7 +142,7 @@ public class BankAccount implements Parcelable{
 	 * 
 	 * @param userid - the id of the user
 	 */
-	public void setUserid(String userid) {
+	public void setUserid(final String userid) {
 		this.userid = userid;
 	}
 	/**
@@ -155,14 +169,14 @@ public class BankAccount implements Parcelable{
 	/**
 	 * Constructor for Bank Account 
 	 * 
-	 * @param in 
+	 * @param inparcel 
 	 */
-	public BankAccount(Parcel in) {
-		name = in.readString();
-		disname = in.readString();
-		balance = in.readDouble();
-		mir = in.readDouble();
-		userid = in.readString();
+	public BankAccount(final Parcel inparcel) {
+		name = inparcel.readString();
+		disname = inparcel.readString();
+		balance = inparcel.readDouble();
+		mir = inparcel.readDouble();
+		userid = inparcel.readString();
 	}
 	/**
 	 * writeToParcel method which writes the information of
@@ -172,7 +186,7 @@ public class BankAccount implements Parcelable{
 	 * @param flag
 	 */
 	@Override
-	public void writeToParcel(Parcel dest, int flag) {
+	public void writeToParcel(final Parcel dest, final int flag) {
 		Log.i(MainActivity.LOGTAG, "writeToParcel");
 		dest.writeString(name);
 		dest.writeString(disname);
@@ -182,20 +196,4 @@ public class BankAccount implements Parcelable{
 
 	}
 
-	public static final Parcelable.Creator<BankAccount> CREATOR =
-			new Parcelable.Creator<BankAccount>() {
-
-				@Override
-				public BankAccount createFromParcel(Parcel arg0) {
-					Log.i(MainActivity.LOGTAG, "createFromParcel");
-					return new BankAccount(arg0);
-				}
-
-				@Override
-				public BankAccount[] newArray(int arg0) {
-					Log.i(MainActivity.LOGTAG, "newArray");
-					return new BankAccount[arg0];
-				}
-		
-			};
 }

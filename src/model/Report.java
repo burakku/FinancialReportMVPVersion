@@ -8,22 +8,20 @@ import java.util.Date;
  * This class holds the information of the report and
  * contains methods to access date, spending title and 
  * total title of the report.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class Report {
-	private myDate reportDate;
-	private Date date;
+	private final myDate reportDate; // NOPMD by wen on 4/2/14 1:18 AM
+	private Date date; // NOPMD by wen on 4/2/14 1:19 AM
 	/**
 	 * Default constructor for Bank Account 
 	 *
 	 */
 	public Report() {
 		date = new Date();
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		this.reportDate = new myDate(df.format(date));
+		final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // NOPMD by wen on 4/2/14 1:18 AM
+		this.reportDate = new myDate(dateFormat.format(date));
 	}
 	/**
 	 * getCurrentYearMonth method
@@ -31,9 +29,9 @@ public class Report {
 	 * @return the date of the report in format
 	 */
 	public String getCurrentYearMonth(){
-		DateFormat df = new SimpleDateFormat("yyyyMM");
+		final DateFormat dataFormat = new SimpleDateFormat("yyyyMM"); // NOPMD by wen on 4/2/14 1:18 AM
 		date = new Date();
-		return df.format(date);
+		return dataFormat.format(date);
 	}
 	/**
 	 * getSpendingTitle method
@@ -42,8 +40,8 @@ public class Report {
 	 * @param month - the month of the report
 	 * @return the spending and date of the report
 	 */
-	public String getSpendingTitle(String year, String month){
-		if(!year.equals("")|| !month.equals("")){
+	public String getSpendingTitle(final String year, final String month){
+		if(!year.equals("")|| !month.equals("")){ // NOPMD by wen on 4/2/14 1:19 AM
 			reportDate.setYear(Integer.parseInt(year));
 			reportDate.setMonth(Integer.parseInt(month));
 		}
@@ -55,7 +53,7 @@ public class Report {
 	 * @param total - the total title of the report
 	 * @return the total title of the report in string
 	 */
-	public String getTotalTile(double total){
+	public String getTotalTile(final double total){
 		return "The total is $" + total;
 	}
 }

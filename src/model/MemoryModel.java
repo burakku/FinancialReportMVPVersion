@@ -15,7 +15,7 @@ public class MemoryModel implements UserModel{
  *         false if not
  */
 	@Override
-	public boolean checkUser(String userId) {
+	public boolean checkUser(final String userId) {
 		// TODO Auto-generated method stub
 		return userList.containsKey(userId);
 	} 
@@ -27,7 +27,7 @@ public class MemoryModel implements UserModel{
  * 		   otherwise return NULL_USER
  */
 	@Override
-	public User getUserById(String userID) {
+	public User getUserById(final String userID) {
 		if(checkUser(userID)) {
 			return userList.get(userID);
 		} else {
@@ -35,7 +35,7 @@ public class MemoryModel implements UserModel{
 		}
 	}
 	
-	public void setUserList(Map<String, User> userList) {
+	public void setUserList(final Map<String, User> userList) {
 		MemoryModel.userList = userList;
 	}
 
@@ -46,10 +46,11 @@ public class MemoryModel implements UserModel{
  */
 	@Override
 	public User[] getUserList() {
-		Collection<User> uCopy = userList.values();
-		User[] uList = new User[uCopy.size()];
-		int i = 0;
-		for (User u : uCopy) uList[i++] = u;
+		final Collection<User> uCopy = userList.values();
+		final User[] uList = new User[uCopy.size()]; // NOPMD by wen on 4/2/14 1:22 AM
+		int index = 0;
+		for (final User user : uCopy) { uList[index++] = user;
+		}
 		return uList;
 	}
 	
@@ -60,7 +61,7 @@ public class MemoryModel implements UserModel{
  * 
  */
 	@Override
-	public boolean addUser(User user) {
+	public boolean addUser(final User user) {
 		
 		if(!checkUser(user.getUserID())) {
 			userList.put(user.getUserID(), user);
@@ -76,7 +77,7 @@ public class MemoryModel implements UserModel{
  * 
  */
 	@Override
-	public void removeUser(User user) {
+	public void removeUser(final User user) {
 		userList.remove(user.getUserID());
 	}
 	
