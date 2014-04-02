@@ -104,7 +104,7 @@ public class FinancialTransactionSource {
             newbalance = total + trans.getAmount();
         }
 		
-        if(newbalance > 0) {
+        if (newbalance > 0) {
             database.insert(FinancialDBOpenHelper.TABLE_TRANS, null, values);
             updateBalance(newbalance, trans.getBkDisName(), trans.getUserid());
             flag = true;
