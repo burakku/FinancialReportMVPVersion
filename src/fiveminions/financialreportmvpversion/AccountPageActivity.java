@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-/**
+/***
  * This class describes the methods needed for the 
  * activity of account page which include display,
  * create option menu, resume, pause and so forth. 
