@@ -1,5 +1,6 @@
 package model;
 
+import android.annotation.SuppressLint;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,12 +13,19 @@ import java.util.Date;
  * @author Team 23
  */
 public class Report {
+    /**
+     * myDate for user to select different date to view report.
+     */
     private final MyDate reportDate; // NOPMD by wen on 4/2/14 1:18 AM
+    /**
+     * system format date, to get current date.
+     */
     private Date date; // NOPMD by wen on 4/2/14 1:19 AM
     /**
      * Default constructor for Bank Account.
      *
      */
+    @SuppressLint("SimpleDateFormat")
     public Report() {
         date = new Date();
         final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // NOPMD by wen on 4/2/14 1:18 AM
@@ -28,6 +36,7 @@ public class Report {
      * 
      * @return the date of the report in format
      */
+    @SuppressLint("SimpleDateFormat")
     public String getCurrentYearMonth() {
         final DateFormat dataFormat = new SimpleDateFormat("yyyyMM"); // NOPMD by wen on 4/2/14 1:18 AM
         date = new Date();

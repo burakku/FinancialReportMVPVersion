@@ -13,9 +13,21 @@ import fiveminions.financialreportmvpversion.MainActivity;
  * @author Team 23
  */
 public class MyDate implements Parcelable { // NOPMD by wen on 4/2/14 1:20 AM
+	/**
+	 * year.
+	 */
     private int year;
+	/**
+	 * month.
+	 */
     private int month;
+	/**
+	 * day.
+	 */
     private int day;
+	/**
+	 * raw date format: yyyy-MM-dd.
+	 */
     private String rawDate; // NOPMD by wen on 4/2/14 1:20 AM
     
     /**
@@ -108,6 +120,7 @@ public class MyDate implements Parcelable { // NOPMD by wen on 4/2/14 1:20 AM
                 result = "December";
                 break;
             default:
+            	result = "null";
                 break;
         }
         return result;

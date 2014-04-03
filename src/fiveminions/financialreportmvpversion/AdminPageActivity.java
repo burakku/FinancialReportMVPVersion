@@ -22,8 +22,13 @@ import android.widget.ListView;
  * @author Team 23
  */
 public class AdminPageActivity extends ListActivity {
-
+    /**
+     * database source.
+     */
     private FinancialUserSource datasource;
+    /**
+     * list of user account.
+     */
     private List<User> users;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:56 AM

@@ -42,7 +42,7 @@ public class RegisterPresenter {
 		
         if (userId.equals("") || password.equals("") || name.equals("") || email.equals("")) { // NOPMD by hailin on 3/29/14 1:06 AM
             text = "Please fill out all fields!";
-        } if (!view.findUser(userId).equals(User.NULL_USER)) { // NOPMD by hailin on 3/29/14 1:07 AM
+        } else if (!view.findUser(userId).equals(User.NULL_USER)) { // NOPMD by hailin on 3/29/14 1:07 AM
             text = "The username already exsit, please try another one!";
         } else {
             final User newUser = new User(userId, password, name, email);

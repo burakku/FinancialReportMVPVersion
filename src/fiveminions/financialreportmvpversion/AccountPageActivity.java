@@ -26,9 +26,18 @@ import android.widget.ListView;
  */
 public class AccountPageActivity extends ListActivity {
     
-    transient private String userid;
-    transient private FinancialAccountSource datasource;
-    transient private List<BankAccount> accounts;
+	/**
+	 * passin userid.
+	 */
+    private String userid;
+    /**
+     * database source.
+     */
+    private FinancialAccountSource datasource;
+    /**
+     * list of bank account.
+     */
+    private List<BankAccount> accounts;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 2:00 AM
         super.onCreate(savedInstanceState);

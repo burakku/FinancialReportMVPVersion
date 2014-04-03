@@ -20,15 +20,20 @@ import android.widget.TextView;
  * @author Team 23
  */
 public class NewAccountActivity extends Activity implements INewAccountView {
-
+	/**
+	 * presenter.
+	 */
     private NewAccountPresenter presenter;
+    /**
+     * database source.
+     */
+    private FinancialAccountSource datasource;
     private EditText acname;
     private EditText disname;
     private EditText balance;
     private EditText mir;
     private TextView resultText;
     private Bundle boudle;
-    private FinancialAccountSource datasource;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:50 AM

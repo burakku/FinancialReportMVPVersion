@@ -26,10 +26,21 @@ import android.widget.ListView;
  * @author Team 23
  */
 public class AccountTransactionActivity extends ListActivity {
-
+    /**
+     * database source.
+     */
     private FinancialTransactionSource datasource;
+    /**
+     * list of transaction account.
+     */
     private List<Transaction> transactions;
+    /**
+     * pass in bank name.
+     */
     private String bankname;
+    /**
+     * pass in user id.
+     */
     private String userid;
     /**
      * The bundle to get extra pass in message.

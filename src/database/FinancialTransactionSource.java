@@ -140,15 +140,15 @@ public class FinancialTransactionSource {
  */
     public double getBalance (String disname, String userid) {
         double result = 0;
-        Cursor c = database.query(FinancialDBOpenHelper.TABLE_ACCOUNTS,
+        Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_ACCOUNTS,
 				FinancialAccountSource.ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_DISNAME + " = "
 						+ "'" + disname + "' AND " + FinancialDBOpenHelper.COLUMN_ACUSERID + " = "
 						+ "'" + userid + "'", null, null, null, null);
-        Log.i(LOGTAG, "Find " + c.getCount() + " rows in getBalance");
-        if (c != null) {
-            c.moveToFirst();
+        //Log.i(LOGTAG, "Find " + cursor.getCount() + " rows in getBalance");
+        if (cursor != null) {
+            cursor.moveToFirst();
 			//Balance is at the third column so index is 2
-            result = c.getDouble(2);
+            result = cursor.getDouble(2);
         }
         Log.i(LOGTAG, "Get balance $" + result);
         return result;

@@ -15,6 +15,9 @@ public class Test extends AndroidTestCase {
 		super.tearDown();
 	}
 
+	public void testNull(){
+		assertEquals("Invalid month value", "null", date.getFormatMonth());
+	}
 	public void testGetMonth() {
 		date.setMonth(4);
 		assertEquals("Wrong month format", "April", date.getFormatMonth());

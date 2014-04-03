@@ -21,8 +21,14 @@ import android.widget.TextView;
  * @version 1.0
  * @author Team 23
  */
-public class MainActivity extends Activity implements IMainView{
+public class MainActivity extends Activity implements IMainView {
+	/**
+	 * Tag for Log info.
+	 */
     public static final String LOGTAG = "Clover";
+	/**
+	 * presenter.
+	 */
     private MainPresenter mainPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:51 AM

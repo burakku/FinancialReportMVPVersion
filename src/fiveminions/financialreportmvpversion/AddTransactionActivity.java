@@ -28,7 +28,7 @@ import android.widget.TextView;
  * @author Team 23
  */
 public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener {
-
+    
     private AddTransactionPresenter presenter;
     private int year; // NOPMD by wen on 4/2/14 1:57 AM
     private int month; // NOPMD by wen on 4/2/14 1:57 AM
@@ -162,7 +162,4 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
     public String getUserid() {
         return userid;
     }
-
-
-
 }

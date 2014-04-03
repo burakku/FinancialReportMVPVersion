@@ -61,7 +61,7 @@ public class AddTransactionPresenter {
         date = new MyDate(view.getDate());
         amount = view.getAmount();
         type = view.getType();
-        if (name.equals("") || date.equals("") || amount.equals("") || type.equals("")) { // NOPMD by hailin on 3/29/14 12:58 AM
+        if (name.equals("") || amount.equals("") || type.equals("")) { // NOPMD by hailin on 3/29/14 12:58 AM
             resultText = "Please fill out all the fields";
         }
         else {

@@ -13,10 +13,25 @@ import fiveminions.financialreportmvpversion.MainActivity;
  * @author Team 23
  */
 public class BankAccount implements Parcelable {
+	/**
+	 * bank name.
+	 */
     private String name;
+	/**
+	 * display bank name.
+	 */
     private String disname;
+	/**
+	 * bank balance.
+	 */
     private double balance;
+	/**
+	 * monthly interest rate.
+	 */
     private double mir;
+	/**
+	 * userid.
+	 */
     private String userid;
     /**
      * parcelable creator method.
@@ -40,12 +55,12 @@ public class BankAccount implements Parcelable {
     /**
      * dummy bankaccount.
      */
-    static public final BankAccount NULL_ACCOUNT = new BankAccount("", "", 0, 0, "null");
+    public static final BankAccount NULL_ACCOUNT = new BankAccount("", "", 0, 0, "null");
     /**
      * Default constructor for Bank Account.
      *
      */
-    public BankAccount(){
+    public BankAccount() {
         this.name = "";
         this.disname = "";
         this.balance = 0;
@@ -58,7 +73,7 @@ public class BankAccount implements Parcelable {
      * @param disname the name displayed
      * @param balance the balance of the account
      * @param mir the monthly interest rate
-     * @param userid the id of the person
+     * @param userid the id that the bank belong to
      */
     public BankAccount(final String name, final String disname, final double balance, final double mir,
             final String userid) {
@@ -79,7 +94,7 @@ public class BankAccount implements Parcelable {
     }
     /**
      * setName method which sets the name of the user.
-     * 
+     * @param name the name
      */
     public void setName(final String name) {
         this.name = name;

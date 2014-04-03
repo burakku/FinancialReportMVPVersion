@@ -57,14 +57,14 @@ public class LoginActivity extends Activity implements ILoginView {
     }
     /**
      * check button click.
-     * @param view
+     * @param view the View
      */
     public void onLoginCheckButtonClick(View view) {
         loginPresenter.onClick();
     }
     /**
      * forgot password button click.
-     * @param view
+     * @param view the View
      */
     public void onForgotPasswordButtonClick(View view) {
         loginPresenter.onForgotPasswordClick();

@@ -18,14 +18,37 @@ import fiveminions.financialreportmvpversion.MainActivity;
  * @author Team 23
  */
 public class Transaction implements Parcelable {
-
+	/**
+	 * transaction name.
+	 */
     private String name;
+	/**
+	 * transaction type.
+	 */
     private String type;
+	/**
+	 * transaction date.
+	 */
     private MyDate date;
+	/**
+	 * transaction amount.
+	 */
     private double amount;
+	/**
+	 * transaction status.
+	 */
     private String status;
+	/**
+	 * transaction recorded time.
+	 */
     private String recordTime;
+	/**
+	 * transaction belong to which bank display name.
+	 */
     private String bkDisName;
+	/**
+	 * transaction belong to which userid.
+	 */
     private String userid;
     /**
      * parcelable creator.
@@ -71,13 +94,13 @@ public class Transaction implements Parcelable {
         return dateFormat.format(date);
     }
     /**
-     * Constructor for Bank Account.
+     * Constructor for Transaction.
      * @param name the name of the person
      * @param type the type of the transaction
      * @param date the date of the transaction
      * @param amount the amount of the transaction
      * @param bkDisName the bank displaying name of the user
-     * @param userid the userid of transaction
+     * @param userid the userid that transaction belong to
      */
     public Transaction(final String name, final String type, final MyDate date, final Double amount,
             final String bkDisName, final String userid) {

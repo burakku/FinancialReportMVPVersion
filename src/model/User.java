@@ -13,10 +13,21 @@ import fiveminions.financialreportmvpversion.MainActivity;
  * @author Team 23
  */
 public class User implements Parcelable { // NOPMD by wen on 4/2/14 1:14 AM
-
+	/**
+	 * userid.
+	 */
     private String userID;
+	/**
+	 * password.
+	 */
     private String password;
+	/**
+	 * name.
+	 */
     private String name;
+	/**
+	 * email.
+	 */
     private String email;
     // create a NULL_USER in case of trying to get user by a invalid useriD
     /**
