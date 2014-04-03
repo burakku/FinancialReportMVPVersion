@@ -18,9 +18,7 @@ import android.util.Log;
  * the source of financial user which can add or remove
  * user and update the information for the user data 
  * source. 
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class FinancialUserSource {
@@ -33,12 +31,12 @@ public class FinancialUserSource {
 /**
  * database open helper.
  */
-    SQLiteOpenHelper dbhelper;
+    SQLiteOpenHelper dbhelper; // NOPMD by hailin on 4/2/14 9:15 PM
 
 /**
  * database.
  */
-    SQLiteDatabase database;
+    SQLiteDatabase database; // NOPMD by hailin on 4/2/14 9:17 PM
 
 /**
  * string defining database columns.
@@ -95,16 +93,16 @@ public class FinancialUserSource {
     public User findUser(final String uid) {
         final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_USERS, USERCOLUMNS,
 				null, null, null, null, null);
-        final User user = new User();
-        Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                if (cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_USERID)).equals(uid)) {
+        final User user = new User(); // NOPMD by hailin on 4/2/14 9:18 PM
+        Log.i(LOGTAG, "Find " + cursor.getCount() + " rows"); // NOPMD by hailin on 4/2/14 9:17 PM
+        if (cursor.getCount() > 0) { // NOPMD by hailin on 4/2/14 9:16 PM
+            while (cursor.moveToNext()) { // NOPMD by hailin on 4/2/14 9:15 PM
+                if (cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_USERID)).equals(uid)) { // NOPMD by hailin on 4/2/14 9:16 PM
                     user.setUserID(uid);
-                    user.setPassword(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_PASSWORD)));
-                    user.setName(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_NAME)));
+                    user.setPassword(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_PASSWORD))); // NOPMD by hailin on 4/2/14 9:16 PM
+                    user.setName(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_NAME))); // NOPMD by hailin on 4/2/14 9:16 PM
                     Log.i(LOGTAG, "find user " + uid);
-                    return user;
+                    return user; // NOPMD by hailin on 4/2/14 9:16 PM
                 }
             }
         }
@@ -137,14 +135,14 @@ public class FinancialUserSource {
         final List<User> users = new ArrayList<User>();
         final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_USERS, USERCOLUMNS,
 				"type_of_user = 'user'", null, null, null, null);
-        User user = new User();
-        Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                user.setUserID(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_USERID)));
-                user.setPassword(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_PASSWORD)));
-                user.setName(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_NAME)));
-                user.setEmail(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_EMAIL)));
+        User user = new User(); // NOPMD by hailin on 4/2/14 9:15 PM
+        Log.i(LOGTAG, "Find " + cursor.getCount() + " rows"); // NOPMD by hailin on 4/2/14 9:18 PM
+        if (cursor.getCount() > 0) { // NOPMD by hailin on 4/2/14 9:15 PM
+            while (cursor.moveToNext()) { // NOPMD by hailin on 4/2/14 9:15 PM
+                user.setUserID(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_USERID))); // NOPMD by hailin on 4/2/14 9:16 PM
+                user.setPassword(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_PASSWORD))); // NOPMD by hailin on 4/2/14 9:15 PM
+                user.setName(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_NAME))); // NOPMD by hailin on 4/2/14 9:16 PM
+                user.setEmail(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_EMAIL))); // NOPMD by hailin on 4/2/14 9:18 PM
                 users.add(user);
             }
         }

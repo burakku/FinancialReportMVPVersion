@@ -41,7 +41,7 @@ public class RegisterPresenter {
         String text = ""; // NOPMD by hailin on 3/29/14 1:06 AM
 		
         if (userId.equals("") || password.equals("") || name.equals("") || email.equals("")) { // NOPMD by hailin on 3/29/14 1:06 AM
-            text = "Please fill out all fields!";
+            text = "Please fill out all fields!"; // NOPMD by hailin on 4/2/14 9:24 PM
         } if (!view.findUser(userId).equals(User.NULL_USER)) { // NOPMD by hailin on 3/29/14 1:07 AM
             text = "The username already exsit, please try another one!";
         } else {

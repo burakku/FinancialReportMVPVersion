@@ -19,9 +19,9 @@ import android.view.ViewGroup;
 public class HomeFragment extends Fragment {
 	
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {  // NOPMD by hailin on 4/2/14 9:11 PM
         final View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        return rootView;
+        return rootView; // NOPMD by hailin on 4/2/14 9:11 PM
     }
 
 /**
