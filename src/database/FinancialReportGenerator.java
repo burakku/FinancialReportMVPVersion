@@ -1,7 +1,9 @@
 package database;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.Transaction;
 
@@ -34,7 +36,7 @@ public class FinancialReportGenerator {
  * database.
  */
     SQLiteDatabase database; // NOPMD by hailin on 4/2/14 9:15 PM
-	
+    
 /**
  * Constructor for FinancialReportGenerator.
  * 
@@ -43,23 +45,23 @@ public class FinancialReportGenerator {
     public FinancialReportGenerator(final Context context) {
         dbhelper = new FinancialDBOpenHelper(context);
     }
-	
+    
 /**
  * void method to open the account source.
  */
     public void open() {
-    	Log.i(LOGTAG, "Account Databases opened");
-    	database = dbhelper.getWritableDatabase();
+        Log.i(LOGTAG, "Account Databases opened");
+        database = dbhelper.getWritableDatabase();
     }
 
 /**
  * void method to close the account source.
  */
     public void close() {
-    	Log.i(LOGTAG, "Account Databases closed");
-    	database.close();
+        Log.i(LOGTAG, "Account Databases closed");
+        database.close();
     }
-	
+    
 /**
  * getSpendingList method.
  * 
@@ -68,14 +70,79 @@ public class FinancialReportGenerator {
  * @return the spending list of the report
  */
     public List<Transaction> getSpendingList(final String date, final String userid) {
-    	final List<Transaction> trs = new ArrayList<Transaction>();
-    	final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
-				FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
-				+ "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " 
-				+ FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'", null, null, null, null);
-    	return FinancialTransactionSource.cursorTransaction(cursor, trs);
+        final List<Transaction> trs = new ArrayList<Transaction>();
+        final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
+                FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
+                + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " 
+                + FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'", null, null, null, null);
+        //Log.i(LOGTAG, "Find spending " + cursor.getCount() + " rows");
+        return FinancialTransactionSource.cursorTransaction(cursor, trs);
     }
-	
+    /**
+     * getIncomeList method.
+     * 
+     * @param date the date of the report
+     * @param userid the ID of the user
+     * @return the spending list of the report
+     */    
+    public List<Transaction> getIncomeList(String date, String userid) {
+        List<Transaction> trs = new ArrayList<Transaction>();
+        Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, FinancialTransactionSource.TRANSCOLUMNS,
+                FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Deposit' AND "
+                 + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND "
+                 + FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'", null, null, null, null);
+        //Log.i(LOGTAG, "Find income " + cursor.getCount() + " rows");
+        return FinancialTransactionSource.cursorTransaction(cursor, trs);
+    }
+    
+    /**
+     * get a Hash Map of spending category with name and amount.
+     * @param date the date
+     * @param userid the userid
+     * @return category a Map of category
+     */
+    public Map<String, Double> getSpendingCategoryList(String date, String userid) {
+        Map<String, Double> category = new HashMap<String, Double>();
+        String[] cols = new String[]{FinancialDBOpenHelper.COLUMN_TRCATEGORY, FinancialDBOpenHelper.COLUMN_TRAMOUNT};
+        Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, cols, 
+                FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
+                 + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND "
+                 + FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'",
+                 null, FinancialDBOpenHelper.COLUMN_TRCATEGORY, null, null);
+        //Log.i(LOGTAG, "Find spending category list " + cursor.getCount() + " rows");
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                category.put(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRCATEGORY)),
+                        cursor.getDouble(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
+            }
+        }
+        return category;
+    }
+    
+    /**
+     * get a Hash Map of income category with name and amount.
+     * @param date the date
+     * @param userid the userid
+     * @return category a Map of category
+     */
+    public Map<String, Double> getIncomeCategoryList(String date, String userid) {
+        Map<String, Double> category = new HashMap<String, Double>();
+        String[] cols = new String[]{FinancialDBOpenHelper.COLUMN_TRCATEGORY, FinancialDBOpenHelper.COLUMN_TRAMOUNT};
+        Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, cols, 
+                FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Deposit' AND "
+                 + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " 
+                 + FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" +  userid + "'",
+                 null, FinancialDBOpenHelper.COLUMN_TRCATEGORY, null, null);
+        Log.i(LOGTAG, "Find income category list " + cursor.getCount() + " rows");
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                category.put(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRCATEGORY)),
+                        cursor.getDouble(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
+            }
+        }
+        return category;
+    }
+    
 /**
  * getTotal method.
  * 
@@ -83,11 +150,11 @@ public class FinancialReportGenerator {
  * @return total the total amount of the transaction
  */
     public Double getTotal(final List<Transaction> list) {
-    	final List<Transaction> trs = list;
-    	double total = 0;
+        final List<Transaction> trs = list;
+        double total = 0;
         for (int i = 0; i < trs.size(); i++) { // NOPMD by hailin on 4/2/14 9:15 PM
             total += trs.get(i).getAmount(); // NOPMD by hailin on 4/2/14 9:14 PM
-    	}
-    	return total;	
+        }
+        return total;    
     }
 }

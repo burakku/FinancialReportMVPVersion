@@ -4,11 +4,15 @@ import java.util.List;
 
 import database.FinancialTransactionSource;
 
+import model.AbstractReport;
 import model.Transaction;
+import model.IncomeReport;
+import model.SpendingReport;
 import presenters.AddTransactionPresenter;
 import views.IAddTransactionView;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +31,7 @@ import android.widget.TextView;
  * @version 1.0
  * @author Team 23
  */
-public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener {
+public class AddTransactionActivity extends Activity implements IAddTransactionView, OnItemSelectedListener { // NOPMD by farongcheng on 4/3/14 12:28 AM
     
     private AddTransactionPresenter presenter;
     private int year; // NOPMD by wen on 4/2/14 1:57 AM
@@ -39,17 +43,26 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
     private String type;
     private String bankname;
     private String userid;
+    private String category;
     private TextView text;
     private Spinner typeSpinner; // NOPMD by wen on 4/2/14 1:57 AM
-    private List<String> categories; // NOPMD by wen on 4/2/14 1:58 AM
+    private Spinner categorySpinner;
+    private List<String> typeList; // NOPMD by wen on 4/2/14 1:58 AM
     private FinancialTransactionSource datasource;
     private Bundle boudle; // NOPMD by farongcheng on 4/2/14 12:46 PM
+    private AbstractReport sreport; // NOPMD by farongcheng on 4/3/14 12:28 AM
+    private AbstractReport ireport;
+    private ArrayAdapter<String> spendAdapter;
+    private ArrayAdapter<String> incomeAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:58 AM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
         presenter = new AddTransactionPresenter(this);
         datasource = new FinancialTransactionSource(this);
+        sreport = new SpendingReport();
+        ireport = new IncomeReport();
+        
         boudle = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:58 AM
         bankname = boudle.getString("bankname");
         userid = boudle.getString("userid");
@@ -59,27 +72,62 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
         amount = (EditText) findViewById(R.id.tranAmount);
         typeSpinner = (Spinner) findViewById(R.id.tranTypeSpinner);
         typeSpinner.setOnItemSelectedListener(this);
+        categorySpinner = (Spinner) findViewById(R.id.tranCateSpinner);
+        categorySpinner.setOnItemSelectedListener(this);
         date.setCalendarViewShown(false);
         
-        categories = presenter.getTypeList();
-        // Creating adapter for spinner
+        typeList = presenter.getTypeList();
+     // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new 
-                ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+                ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spendAdapter = new 
+                ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sreport.getCategoryList());
+        spendAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        incomeAdapter = new 
+                ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ireport.getCategoryList());
+        incomeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
         typeSpinner.setAdapter(dataAdapter);
     }
-
+   /**
+    * check the date format if date is 0-9
+    * then make it like 01, 02.. etc.
+    * @param number the digit
+    * @return String the new format
+    */
+    public String checkDigit(int number)
+    {
+        return number <= 9 ? "0" + number : String.valueOf(number);
+    }
+    
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position,
             long theid) {
         // On selecting a spinner item
-        type = parent.getItemAtPosition(position).toString(); // NOPMD by wen on 4/2/14 1:56 AM
+        switch (parent.getId()) {
+            case R.id.tranTypeSpinner:
+                type = parent.getItemAtPosition(position).toString(); // NOPMD by farongcheng on 4/3/14 12:28 AM
+                if (type.equals("Withdrawl")) { // NOPMD by farongcheng on 4/3/14 12:28 AM
+                    categorySpinner.setAdapter(spendAdapter);
+                   // Log.i("Spinner", "spending");
+                } else {
+                    categorySpinner.setAdapter(incomeAdapter);
+                   // Log.i("Spinner", "income");
+                }
+                break;
+            case R.id.tranCateSpinner:
+                category = parent.getItemAtPosition(position).toString(); // NOPMD by farongcheng on 4/3/14 12:28 AM
+                break;
+            default :
+                break;
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // TODO Auto-generated method stub
-        
     }
     
     @Override
@@ -122,9 +170,10 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
     @Override
     public String getDate() {
         year = date.getYear(); // NOPMD by wen on 4/2/14 1:57 AM
-        month = date.getMonth(); // NOPMD by wen on 4/2/14 1:57 AM
+        month = date.getMonth() + 1; // NOPMD by wen on 4/2/14 1:57 AM
         day = date.getDayOfMonth(); // NOPMD by wen on 4/2/14 1:58 AM
-        String date = year + "-" + month + "-" + day;
+        String date = year + "-" + checkDigit(month) + "-" + checkDigit(day);
+        Log.i("date_month", date);
         return date; // NOPMD by wen on 4/2/14 1:57 AM
     }
 
@@ -161,5 +210,10 @@ public class AddTransactionActivity extends Activity implements IAddTransactionV
     @Override
     public String getUserid() {
         return userid;
+    }
+
+    @Override
+    public String getCategory() {
+        return category;
     }
 }

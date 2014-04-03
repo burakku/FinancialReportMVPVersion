@@ -29,6 +29,7 @@ public class TransactionDetailActivity extends Activity {
     private TextView tranStatus;
     private TextView tranDate;
     private TextView tranAmount;
+    private TextView tranCategory;
     private Transaction tran;
     private MyDate date;
     private FinancialTransactionSource datasource;
@@ -44,7 +45,7 @@ public class TransactionDetailActivity extends Activity {
         tranStatus = (TextView) findViewById(R.id.tran_status);
         tranDate = (TextView) findViewById(R.id.tran_date);
         tranAmount = (TextView) findViewById(R.id.tran_amount);
-        
+        tranCategory = (TextView) findViewById(R.id.tran_category);
         Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:43 AM
         tran = b.getParcelable("model.Transaction");
         date = b.getParcelable("model.myDate");
@@ -86,6 +87,7 @@ public class TransactionDetailActivity extends Activity {
         tranStatus.setText(tran.getStatus());
         tranDate.setText(date.toString());
         tranAmount.setText(Double.toString(tran.getAmount()));
+        tranCategory.setText(tran.getCategory());
     }
 
     @Override

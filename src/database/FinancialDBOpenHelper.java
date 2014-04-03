@@ -152,6 +152,10 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper {
  * user id column.
  */
     public static final String COLUMN_TRUSERID = "trUserID";
+/**
+* transaction category column.
+*/
+    public static final String COLUMN_TRCATEGORY = "trCategory";
 	
 /**
  *  string use to create transaction table.
@@ -162,6 +166,7 @@ public class FinancialDBOpenHelper extends SQLiteOpenHelper {
 		    + COLUMN_TRDATE + " DATE, " + COLUMN_TRAMOUNT + " DOUBLE, "
 			+ COLUMN_TRSTATUS + " TEXT," + COLUMN_TRRECORD + " DATE,"
 			+ COLUMN_TBDNAME + " TEXT," + COLUMN_TRUSERID + " TEXT,"
+			+ COLUMN_TRCATEGORY + " TEXT, "
 		    + "FOREIGN KEY(" + COLUMN_TBDNAME + ") REFERENCES " + TABLE_ACCOUNTS
 		    + "(" + COLUMN_DISNAME + ")" 
 		    + "FOREIGN KEY(" + COLUMN_TRUSERID + ") REFERENCES " + TABLE_USERS

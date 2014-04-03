@@ -47,7 +47,8 @@ public class FinancialTransactionSource {
         FinancialDBOpenHelper.COLUMN_TRSTATUS,
         FinancialDBOpenHelper.COLUMN_TRRECORD,
         FinancialDBOpenHelper.COLUMN_TBDNAME,
-        FinancialDBOpenHelper.COLUMN_TRUSERID
+        FinancialDBOpenHelper.COLUMN_TRUSERID,
+        FinancialDBOpenHelper.COLUMN_TRCATEGORY
     };
     
 /**
@@ -56,7 +57,7 @@ public class FinancialTransactionSource {
  * @param context context of the transaction source
  */
     public FinancialTransactionSource(Context context) { // NOPMD by hailin on 4/2/14 9:19 PM
-    	dbhelper = new FinancialDBOpenHelper(context);
+        dbhelper = new FinancialDBOpenHelper(context);
     }
     
 /**
@@ -93,22 +94,22 @@ public class FinancialTransactionSource {
         values.put(FinancialDBOpenHelper.COLUMN_TRRECORD, trans.getRecordTime()); // NOPMD by hailin on 4/2/14 9:22 PM
         values.put(FinancialDBOpenHelper.COLUMN_TBDNAME, trans.getBkDisName()); // NOPMD by hailin on 4/2/14 9:19 PM
         values.put(FinancialDBOpenHelper.COLUMN_TRUSERID, trans.getUserid()); // NOPMD by hailin on 4/2/14 9:22 PM
-
-		
+        values.put(FinancialDBOpenHelper.COLUMN_TRCATEGORY, trans.getCategory());
+        
         final double total = getBalance(trans.getBkDisName(), trans.getUserid());
         if (trans.getType().equals("Withdrawl")) { // NOPMD by hailin on 4/2/14 9:22 PM
             newbalance = total - trans.getAmount();
         } else {
             newbalance = total + trans.getAmount();
         }
-		
+        
         if (newbalance > 0) { // NOPMD by hailin on 4/2/14 9:20 PM
             database.insert(FinancialDBOpenHelper.TABLE_TRANS, null, values);
             updateBalance(newbalance, trans.getBkDisName(), trans.getUserid());
             flag = true;
         } 
 //        Log.i(LOGTAG, "Add a new transaction " + trans.getName() + " in "
-//						+ trans.getBkDisName());
+//                        + trans.getBkDisName());
         return flag;
     }
     
@@ -122,9 +123,9 @@ public class FinancialTransactionSource {
     public List<Transaction> getTransactionList (final String bankname, final String userid) {
         final List<Transaction> trs = new ArrayList<Transaction>();
         final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, TRANSCOLUMNS,
-				FinancialDBOpenHelper.COLUMN_TBDNAME + " = " + "'" + bankname + "' AND " // NOPMD by hailin on 4/2/14 9:20 PM
-				+ FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'",
-				null, null, null, null);
+                FinancialDBOpenHelper.COLUMN_TBDNAME + " = " + "'" + bankname + "' AND " // NOPMD by hailin on 4/2/14 9:20 PM
+                + FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'",
+                null, null, null, null);
         Log.i(LOGTAG, "Find " + cursor.getCount() + " rows"); // NOPMD by hailin on 4/2/14 9:22 PM
         return cursorTransaction(cursor, trs);
     }
@@ -139,14 +140,14 @@ public class FinancialTransactionSource {
     public double getBalance (String disname, String userid) {
         double result = 0;
         Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_ACCOUNTS,
-				FinancialAccountSource.ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_DISNAME + " = "
-						+ "'" + disname + "' AND " + FinancialDBOpenHelper.COLUMN_ACUSERID + " = "
-						+ "'" + userid + "'", null, null, null, null);
+                FinancialAccountSource.ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_DISNAME + " = "
+                        + "'" + disname + "' AND " + FinancialDBOpenHelper.COLUMN_ACUSERID + " = "
+                        + "'" + userid + "'", null, null, null, null);
 
         //Log.i(LOGTAG, "Find " + cursor.getCount() + " rows in getBalance");
         if (cursor != null) {
             cursor.moveToFirst();
-			//Balance is at the third column so index is 2
+            //Balance is at the third column so index is 2
             result = cursor.getDouble(2);
         }
         Log.i(LOGTAG, "Get balance $" + result);
@@ -164,8 +165,8 @@ public class FinancialTransactionSource {
         ContentValues cd = new ContentValues(); // NOPMD by hailin on 4/2/14 9:19 PM
         cd.put(FinancialDBOpenHelper.COLUMN_BALANCE, nb);
         database.update(FinancialDBOpenHelper.TABLE_ACCOUNTS, cd,
-				FinancialDBOpenHelper.COLUMN_DISNAME + " = " + "'" + disname + "' AND "
-				+ FinancialDBOpenHelper.COLUMN_ACUSERID + " = " + "'" + userid + "'", null);
+                FinancialDBOpenHelper.COLUMN_DISNAME + " = " + "'" + disname + "' AND "
+                + FinancialDBOpenHelper.COLUMN_ACUSERID + " = " + "'" + userid + "'", null);
         Log.i(LOGTAG, "Update new balance $" + nb +  " in" + disname);
     }
     
@@ -199,10 +200,11 @@ public class FinancialTransactionSource {
                 tr.setRecordTime(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRRECORD)));
                 tr.setBkDisName(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TBDNAME)));
                 tr.setUserid(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRUSERID)));
+                tr.setCategory(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRCATEGORY)));
                 trs.add(tr);
             }
         }
         return trs;
     }
-	
+    
 }

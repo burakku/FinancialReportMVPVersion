@@ -41,6 +41,11 @@ public interface IAddTransactionView {
  */
     String getUserid();
 /**
+ * get the category of the user.
+ * @return category user id
+ */    
+	String getCategory();
+/**
  * add transaction to the database.
  * @param transaction transaction
  * @return addtrans if transaction is added

@@ -93,7 +93,7 @@ public class UserpageActivity extends ListActivity {
                 startActivity(intent);
                 break;
             case 1:
-                Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
+                Intent spendingIntent = new Intent(this, ReportTransActivity.class);
                 spendingIntent.putExtra("userid", user.getUserID());
                 Log.i(MainActivity.LOGTAG, "Pass in userid");
                 startActivity(spendingIntent);

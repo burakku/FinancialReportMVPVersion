@@ -51,6 +51,10 @@ public class Transaction implements Parcelable {
 	 */
     private String userid;
     /**
+     * transaction category.
+     */
+    private String category;
+    /**
      * parcelable creator.
      */
     public static final Parcelable.Creator<Transaction> CREATOR = new Parcelable.Creator<Transaction>() {
@@ -81,6 +85,7 @@ public class Transaction implements Parcelable {
         this.recordTime = getDateTime();
         this.bkDisName = "";
         this.userid = "";
+        this.category= "";
     }
     /**
      * getDateTime method which returns the date of the transaction.
@@ -101,9 +106,10 @@ public class Transaction implements Parcelable {
      * @param amount the amount of the transaction
      * @param bkDisName the bank displaying name of the user
      * @param userid the userid that transaction belong to
+     * @param category the category of the transaction
      */
     public Transaction(final String name, final String type, final MyDate date, final Double amount,
-            final String bkDisName, final String userid) {
+            final String bkDisName, final String userid, final String category) {
         this.name = name;
         this.type = type;
         this.date = date;
@@ -112,6 +118,8 @@ public class Transaction implements Parcelable {
         this.recordTime = getDateTime();
         this.bkDisName = bkDisName;
         this.userid = userid;
+        this.category = category;
+        
     }
     /**
      * getName method.
@@ -242,6 +250,20 @@ public class Transaction implements Parcelable {
         this.userid = userid;
     }
     /**
+     * get the category type.
+     * @return category
+     */
+	public String getCategory() {
+		return category;
+	}
+   /**
+    * set the category.
+    * @param category the category
+    */
+	public void setCategory(String category) {
+		this.category = category;
+	}
+    /**
      * toString method which return user name and the amount and date of 
      * the transaction.
      * 
@@ -274,6 +296,7 @@ public class Transaction implements Parcelable {
         status = in.readString();
         recordTime = in.readString();
         bkDisName = in.readString();
+        category = in.readString();
     }
     /**
      * writeToParcel method which writes the information of
@@ -292,7 +315,7 @@ public class Transaction implements Parcelable {
         dest.writeString(status);
         dest.writeString(recordTime);
         dest.writeString(bkDisName);
-
+        dest.writeString(category);
     }
 
     

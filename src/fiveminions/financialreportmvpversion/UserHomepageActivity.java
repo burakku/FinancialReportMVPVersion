@@ -167,25 +167,30 @@ public class UserHomepageActivity extends Activity {
                 
             case 1:
                 Intent intent = new Intent(this, TransactionActivity.class);
-                intent.putExtra("userid", user.getUserID());
+                intent.putExtra("userid", user.getUserID()); // NOPMD by farongcheng on 4/3/14 12:34 AM
                // Log.i(MainActivity.LOGTAG, "Pass in userid");
                 startActivity(intent);
                 break;
-                
             case 2:
-                Intent spendingIntent = new Intent(this, SpendingReportActivity.class);
+                Intent spendingIntent = new Intent(this, ReportCategoryActivity.class);
                 spendingIntent.putExtra("userid", user.getUserID());
                 Log.i(MainActivity.LOGTAG, "Pass in userid");
+                spendingIntent.putExtra("reportType", "spending");
                 startActivity(spendingIntent);
                 break;
-                
+            case 3:
+                Intent incomeIntent = new Intent(this, ReportCategoryActivity.class);
+                incomeIntent.putExtra("userid", user.getUserID());
+                Log.i(MainActivity.LOGTAG, "Pass in userid");
+                incomeIntent.putExtra("reportType", "income");
+                startActivity(incomeIntent);
+                break;
             case 4:
                 Intent intentAcc = new Intent(this, AccountPageActivity.class);
                 intentAcc.putExtra("userid", user.getUserID());
                 Log.i(MainActivity.LOGTAG, "Pass in userid");
                 startActivity(intentAcc);
                 break;
-                
             case 5:
                 Intent intentLogin = new Intent(this, LoginActivity.class);
                 startActivity(intentLogin);

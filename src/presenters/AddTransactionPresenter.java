@@ -35,13 +35,13 @@ public class AddTransactionPresenter {
  * geTypeList method which returns the array list of the type 
  * of the transactions.
  * 
- * @return categories the categories of the transactions
+ * @return types the categories of the transactions
  */
     public ArrayList<String> getTypeList() { // NOPMD by hailin on 3/29/14 12:58 AM
-        final List<String> categories = new ArrayList<String>();
-        categories.add("Withdrawl");
-        categories.add("Deposit");
-        return (ArrayList<String>) categories;
+        final List<String> types = new ArrayList<String>();
+        types.add("Withdrawl");
+        types.add("Deposit");
+        return (ArrayList<String>) types;
     }
 	
 /**
@@ -57,10 +57,12 @@ public class AddTransactionPresenter {
         String bankName;
         String userid;
         String resultText = ""; // NOPMD by hailin on 3/28/14 7:07 PM
+        String category;
         name = view.getName();
         date = new MyDate(view.getDate());
         amount = view.getAmount();
         type = view.getType();
+        category = view.getCategory();
         if (name.equals("") || amount.equals("") || type.equals("")) { // NOPMD by hailin on 3/29/14 12:58 AM
             resultText = "Please fill out all the fields";
         }
@@ -68,7 +70,8 @@ public class AddTransactionPresenter {
             bankName = view.getBKDisname();
             userid = view.getUserid();
             final double dbamount = Double.parseDouble(amount);
-            if (view.addTrans(new Transaction(name, type, date, dbamount, bankName, userid))) {
+            if (view.addTrans(new Transaction(name, type, date, dbamount,
+            		bankName, userid, category))) {
                 view.goBack();
             } else {
                 resultText = "Don't have enough balance.";
