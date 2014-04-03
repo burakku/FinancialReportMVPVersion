@@ -24,9 +24,13 @@ public interface IReportView {
     ArrayList<String> getMonthList(); // NOPMD by hailin on 3/28/14 7:21 PM
     
 /**
- * get year and month list
+ * get year and month list.
  * @return list list of year and month
  */
     String getYearMonth();
+    
+/**
+ * refresh view.
+ */
     void refresh();
 }

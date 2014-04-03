@@ -33,12 +33,12 @@ public class FinancialUserSource {
 /**
  * database open helper.
  */
-    transient SQLiteOpenHelper dbhelper;
+    SQLiteOpenHelper dbhelper;
 
 /**
  * database.
  */
-    transient SQLiteDatabase database;
+    SQLiteDatabase database;
 
 /**
  * string defining database columns.
