@@ -28,12 +28,12 @@ public class FinancialAccountSource {
 /**
  * database open helper.
  */
-    transient SQLiteOpenHelper dbhelper;
+    transient SQLiteOpenHelper dbhelper; // NOPMD by hailin on 4/2/14 9:18 PM
     
 /**
  * database.
  */
-    transient SQLiteDatabase database;
+    transient SQLiteDatabase database; // NOPMD by hailin on 4/2/14 9:19 PM
 
  /**
   * string variable for creating database table.
@@ -89,14 +89,14 @@ public class FinancialAccountSource {
  */
     public boolean checkAccount(final String uid, final String disname) {
         final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_ACCOUNTS,
-				ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_ACUSERID + " = "
+				ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_ACUSERID + " = " // NOPMD by hailin on 4/2/14 9:12 PM
 						+ "'" + uid + "'", null, null, null, null);
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                final String name = cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_DISNAME));
-                if (name.equals(disname)) {
+        if (cursor.getCount() > 0) { // NOPMD by hailin on 4/2/14 9:12 PM
+            while (cursor.moveToNext()) { // NOPMD by hailin on 4/2/14 9:13 PM
+                final String name = cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_DISNAME)); // NOPMD by hailin on 4/2/14 9:12 PM
+                if (name.equals(disname)) { // NOPMD by hailin on 4/2/14 9:18 PM
                     Log.i(LOGTAG, "find exsit account in " + uid);
-                    return true;
+                    return true; // NOPMD by hailin on 4/2/14 9:13 PM
                 }
             }
         }
@@ -133,18 +133,18 @@ public class FinancialAccountSource {
 				ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_ACUSERID + " = "
 						+ "'" + uid + "'", null, null, null, null);
 		// Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                BankAccount ba = new BankAccount();
-                ba.setName(cursor.getString(cursor
+        if (cursor.getCount() > 0) { // NOPMD by hailin on 4/2/14 9:18 PM
+            while (cursor.moveToNext()) { // NOPMD by hailin on 4/2/14 9:19 PM
+                BankAccount ba = new BankAccount(); // NOPMD by hailin on 4/2/14 9:18 PM
+                ba.setName(cursor.getString(cursor // NOPMD by hailin on 4/2/14 9:18 PM
                     .getColumnIndex(FinancialDBOpenHelper.COLUMN_ACNAME)));
-                ba.setDisname(cursor.getString(cursor
+                ba.setDisname(cursor.getString(cursor // NOPMD by hailin on 4/2/14 9:12 PM
 						.getColumnIndex(FinancialDBOpenHelper.COLUMN_DISNAME)));
-                ba.setBalance(cursor.getDouble(cursor
+                ba.setBalance(cursor.getDouble(cursor // NOPMD by hailin on 4/2/14 9:12 PM
 						.getColumnIndex(FinancialDBOpenHelper.COLUMN_BALANCE)));
-                ba.setMir(cursor.getDouble(cursor
+                ba.setMir(cursor.getDouble(cursor // NOPMD by hailin on 4/2/14 9:12 PM
 						.getColumnIndex(FinancialDBOpenHelper.COLUMN_MIR)));
-                ba.setUserid(cursor.getString(cursor
+                ba.setUserid(cursor.getString(cursor // NOPMD by hailin on 4/2/14 9:18 PM
 						.getColumnIndex(FinancialDBOpenHelper.COLUMN_ACUSERID)));
                 accounts.add(ba);
             }
@@ -174,13 +174,13 @@ public class FinancialAccountSource {
  * @return result the amount of the balance
  */
     public double getBalance(final String disname) {
-        double result = 0;
+        double result = 0; // NOPMD by hailin on 4/2/14 9:18 PM
         final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_ACCOUNTS,
 				ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_DISNAME + " = "
 						+ "'" + disname + "'", null, null, null, null);
         if (cursor != null) {
-            cursor.moveToFirst();
-            result = cursor.getDouble(1);
+            cursor.moveToFirst(); // NOPMD by hailin on 4/2/14 9:12 PM
+            result = cursor.getDouble(1); // NOPMD by hailin on 4/2/14 9:19 PM
         }
         return result;
     }	

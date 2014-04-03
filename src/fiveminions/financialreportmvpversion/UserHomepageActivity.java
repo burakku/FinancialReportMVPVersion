@@ -168,7 +168,7 @@ public class UserHomepageActivity extends Activity {
             case 1:
                 Intent intent = new Intent(this, TransactionActivity.class);
                 intent.putExtra("userid", user.getUserID());
-                Log.i(MainActivity.LOGTAG, "Pass in userid");
+               // Log.i(MainActivity.LOGTAG, "Pass in userid");
                 startActivity(intent);
                 break;
                 

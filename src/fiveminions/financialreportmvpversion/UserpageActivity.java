@@ -24,8 +24,13 @@ import android.widget.ListView;
  * @author Team 23
  */
 public class UserpageActivity extends ListActivity {
-
+    /**
+     * user.
+     */
     private User user; // NOPMD by wen on 4/2/14 1:28 AM
+    /**
+     * a list of user.
+     */
     private List<String> menu; // NOPMD by wen on 4/2/14 1:28 AM
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:27 AM

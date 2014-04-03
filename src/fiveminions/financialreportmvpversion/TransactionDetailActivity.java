@@ -61,13 +61,13 @@ public class TransactionDetailActivity extends Activity {
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf");
         Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/jennifer-bold.ttf");
         
-        TextView textView1 = (TextView)findViewById(R.id.transD_textView1);
-        TextView textView2 = (TextView)findViewById(R.id.transD_textView2);
-        TextView textView3 = (TextView)findViewById(R.id.transD_textView3);
-        TextView textView4 = (TextView)findViewById(R.id.transD_textView4);
-        TextView textView6 = (TextView)findViewById(R.id.transD_textView5);
-        TextView textView7 = (TextView)findViewById(R.id.transD_textView6);
-        TextView textView5 = (TextView)findViewById(R.id.transD_title);
+        TextView textView1 = (TextView) findViewById(R.id.transD_textView1);
+        TextView textView2 = (TextView) findViewById(R.id.transD_textView2);
+        TextView textView3 = (TextView) findViewById(R.id.transD_textView3);
+        TextView textView4 = (TextView) findViewById(R.id.transD_textView4);
+        TextView textView6 = (TextView) findViewById(R.id.transD_textView5);
+        TextView textView7 = (TextView) findViewById(R.id.transD_textView6);
+        TextView textView5 = (TextView) findViewById(R.id.transD_title);
         textView1.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM
         textView2.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:44 AM
         textView3.setTypeface(typeface); // NOPMD by wen on 4/2/14 1:43 AM

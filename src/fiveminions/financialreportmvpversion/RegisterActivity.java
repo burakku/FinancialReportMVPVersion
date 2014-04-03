@@ -20,10 +20,15 @@ import android.widget.TextView;
  * @author Team 23
  */
 public class RegisterActivity extends Activity implements IRegisterView {
-
+    /**
+     * presenter.
+     */
     private RegisterPresenter regPresenter;
     private EditText name, userID, password, email;
     private TextView resultTxt;
+    /**
+     * database source.
+     */
     private FinancialUserSource datasource;
 
     @Override

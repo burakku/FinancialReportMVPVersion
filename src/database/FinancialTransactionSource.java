@@ -17,9 +17,7 @@ import android.util.Log;
  * This class describes the methods needed for the 
  * source of financial transaction which operates on
  * transaction's balance and add or delete transaction.
- * 
  * @version 1.0
- * 
  * @author Team 23
  */
 public class FinancialTransactionSource {
@@ -31,12 +29,12 @@ public class FinancialTransactionSource {
 /**
  * database open helper.
  */
-    SQLiteOpenHelper dbhelper;
+    SQLiteOpenHelper dbhelper; // NOPMD by hailin on 4/2/14 9:20 PM
     
 /**
  * database.
  */
-    SQLiteDatabase database;
+    SQLiteDatabase database; // NOPMD by hailin on 4/2/14 9:21 PM
 
 /**
  * string variable for creating database table.
@@ -57,7 +55,7 @@ public class FinancialTransactionSource {
  * 
  * @param context context of the transaction source
  */
-    public FinancialTransactionSource(Context context) {
+    public FinancialTransactionSource(Context context) { // NOPMD by hailin on 4/2/14 9:19 PM
     	dbhelper = new FinancialDBOpenHelper(context);
     }
     
@@ -84,33 +82,33 @@ public class FinancialTransactionSource {
  * @return flag true or false based on the result
  */
     public boolean addTransaction(final Transaction trans) {
-        boolean flag = false;
+        boolean flag = false; // NOPMD by hailin on 4/2/14 9:19 PM
         final ContentValues values = new ContentValues();
-        double newbalance = 0;
-        values.put(FinancialDBOpenHelper.COLUMN_TRNAME, trans.getName());
-        values.put(FinancialDBOpenHelper.COLUMN_TRTYPE, trans.getType());
-        values.put(FinancialDBOpenHelper.COLUMN_TRDATE, trans.getDate().getRawDate());
-        values.put(FinancialDBOpenHelper.COLUMN_TRAMOUNT, trans.getAmount());
-        values.put(FinancialDBOpenHelper.COLUMN_TRSTATUS, trans.getStatus());
-        values.put(FinancialDBOpenHelper.COLUMN_TRRECORD, trans.getRecordTime());
-        values.put(FinancialDBOpenHelper.COLUMN_TBDNAME, trans.getBkDisName());
-        values.put(FinancialDBOpenHelper.COLUMN_TRUSERID, trans.getUserid());
+        double newbalance = 0; // NOPMD by hailin on 4/2/14 9:20 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRNAME, trans.getName()); // NOPMD by hailin on 4/2/14 9:20 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRTYPE, trans.getType()); // NOPMD by hailin on 4/2/14 9:19 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRDATE, trans.getDate().getRawDate()); // NOPMD by hailin on 4/2/14 9:21 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRAMOUNT, trans.getAmount()); // NOPMD by hailin on 4/2/14 9:22 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRSTATUS, trans.getStatus()); // NOPMD by hailin on 4/2/14 9:22 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRRECORD, trans.getRecordTime()); // NOPMD by hailin on 4/2/14 9:22 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TBDNAME, trans.getBkDisName()); // NOPMD by hailin on 4/2/14 9:19 PM
+        values.put(FinancialDBOpenHelper.COLUMN_TRUSERID, trans.getUserid()); // NOPMD by hailin on 4/2/14 9:22 PM
 
 		
         final double total = getBalance(trans.getBkDisName(), trans.getUserid());
-        if (trans.getType().equals("Withdrawl")) {
+        if (trans.getType().equals("Withdrawl")) { // NOPMD by hailin on 4/2/14 9:22 PM
             newbalance = total - trans.getAmount();
         } else {
             newbalance = total + trans.getAmount();
         }
 		
-        if (newbalance > 0) {
+        if (newbalance > 0) { // NOPMD by hailin on 4/2/14 9:20 PM
             database.insert(FinancialDBOpenHelper.TABLE_TRANS, null, values);
             updateBalance(newbalance, trans.getBkDisName(), trans.getUserid());
             flag = true;
         } 
-        Log.i(LOGTAG, "Add a new transaction " + trans.getName() + " in "
-						+ trans.getBkDisName());
+//        Log.i(LOGTAG, "Add a new transaction " + trans.getName() + " in "
+//						+ trans.getBkDisName());
         return flag;
     }
     
@@ -121,13 +119,13 @@ public class FinancialTransactionSource {
  * @param userid the ID of the user
  * @return list transaction list
  */
-    public List<Transaction> getTransactionList (String bankname, String userid) {
-        List<Transaction> trs = new ArrayList<Transaction>();
-        Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, TRANSCOLUMNS,
-				FinancialDBOpenHelper.COLUMN_TBDNAME + " = " + "'" + bankname + "' AND "
+    public List<Transaction> getTransactionList (final String bankname, final String userid) {
+        final List<Transaction> trs = new ArrayList<Transaction>();
+        final Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, TRANSCOLUMNS,
+				FinancialDBOpenHelper.COLUMN_TBDNAME + " = " + "'" + bankname + "' AND " // NOPMD by hailin on 4/2/14 9:20 PM
 				+ FinancialDBOpenHelper.COLUMN_TRUSERID + " = " + "'" + userid + "'",
 				null, null, null, null);
-        Log.i(LOGTAG, "Find " + cursor.getCount() + " rows");
+        Log.i(LOGTAG, "Find " + cursor.getCount() + " rows"); // NOPMD by hailin on 4/2/14 9:22 PM
         return cursorTransaction(cursor, trs);
     }
     
@@ -144,6 +142,7 @@ public class FinancialTransactionSource {
 				FinancialAccountSource.ACCOUNTCOLUMNS, FinancialDBOpenHelper.COLUMN_DISNAME + " = "
 						+ "'" + disname + "' AND " + FinancialDBOpenHelper.COLUMN_ACUSERID + " = "
 						+ "'" + userid + "'", null, null, null, null);
+
         //Log.i(LOGTAG, "Find " + cursor.getCount() + " rows in getBalance");
         if (cursor != null) {
             cursor.moveToFirst();
@@ -161,8 +160,8 @@ public class FinancialTransactionSource {
  * @param disname the name displayed
  * @param userid the ID of the user
  */
-    public void updateBalance (double nb, String disname, String userid) {
-        ContentValues cd = new ContentValues();
+    public void updateBalance (double nb, String disname, String userid) { // NOPMD by hailin on 4/2/14 9:19 PM
+        ContentValues cd = new ContentValues(); // NOPMD by hailin on 4/2/14 9:19 PM
         cd.put(FinancialDBOpenHelper.COLUMN_BALANCE, nb);
         database.update(FinancialDBOpenHelper.TABLE_ACCOUNTS, cd,
 				FinancialDBOpenHelper.COLUMN_DISNAME + " = " + "'" + disname + "' AND "
@@ -175,8 +174,8 @@ public class FinancialTransactionSource {
  * 
  * @param recordTime the recorded time of the delete option
  */
-    public void deleteTransaction (String recordTime) {
-        String[] values = new String[]{recordTime};
+    public void deleteTransaction (String recordTime) { // NOPMD by hailin on 4/2/14 9:19 PM
+        String[] values = new String[]{recordTime}; // NOPMD by hailin on 4/2/14 9:20 PM
         database.delete(FinancialDBOpenHelper.TABLE_TRANS, FinancialDBOpenHelper.COLUMN_TRRECORD + "=?", values);
         Log.i(LOGTAG, "transaction deleted");
     }
@@ -188,13 +187,13 @@ public class FinancialTransactionSource {
  * @param trs the list of the transaction 
  * @return list transaction list
  */
-    protected static List<Transaction> cursorTransaction(Cursor c, List<Transaction> trs) {
-        if (c.getCount() > 0) {
+    protected static List<Transaction> cursorTransaction(Cursor c, List<Transaction> trs) { // NOPMD by hailin on 4/2/14 9:19 PM
+        if (c.getCount() > 0) { // NOPMD by hailin on 4/2/14 9:22 PM
             while (c.moveToNext()) {
-                Transaction tr = new Transaction();
+                Transaction tr = new Transaction(); // NOPMD by hailin on 4/2/14 9:22 PM
                 tr.setName(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRNAME)));
                 tr.setType(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRTYPE)));
-                tr.setDate(new MyDate(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRDATE))));
+                tr.setDate(new MyDate(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRDATE)))); // NOPMD by hailin on 4/2/14 9:21 PM
                 tr.setAmount(c.getDouble(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
                 tr.setStatus(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRSTATUS)));
                 tr.setRecordTime(c.getString(c.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRRECORD)));

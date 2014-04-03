@@ -71,7 +71,6 @@ public class User implements Parcelable { // NOPMD by wen on 4/2/14 1:14 AM
 
     /*********************************
      * constructor.
-     * 
      * @param userID userid
      * @param password password
      * @param name name

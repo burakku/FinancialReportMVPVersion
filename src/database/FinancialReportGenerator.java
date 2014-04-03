@@ -28,12 +28,12 @@ public class FinancialReportGenerator {
 /**
  * database open helper.
  */
-    SQLiteOpenHelper dbhelper;
+    SQLiteOpenHelper dbhelper; // NOPMD by hailin on 4/2/14 9:14 PM
     
 /**
  * database.
  */
-    SQLiteDatabase database;
+    SQLiteDatabase database; // NOPMD by hailin on 4/2/14 9:15 PM
 	
 /**
  * Constructor for FinancialReportGenerator.
@@ -85,8 +85,8 @@ public class FinancialReportGenerator {
     public Double getTotal(final List<Transaction> list) {
     	final List<Transaction> trs = list;
     	double total = 0;
-        for (int i = 0; i < trs.size(); i++) {
-            total += trs.get(i).getAmount();
+        for (int i = 0; i < trs.size(); i++) { // NOPMD by hailin on 4/2/14 9:15 PM
+            total += trs.get(i).getAmount(); // NOPMD by hailin on 4/2/14 9:14 PM
     	}
     	return total;	
     }

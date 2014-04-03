@@ -22,7 +22,6 @@ import database.FinancialAccountSource;
  */
 public class BankAccountDetailActivity extends Activity {
     public static final String LOGTAG = "CLOVER";
-    private String test;
     private TextView bankname;
     private TextView accountname;
     private TextView balance;
