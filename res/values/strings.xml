@@ -21,7 +21,7 @@
 	<string android:layout_height="wrap_content" android:id="@+id/forgotpassword" android:layout_width="wrap_content" name="forgotpassword">\nplease fill in correct information below and make sure the email are send from the same adress as filled. We will verify these information.\n</string><string-array name="nav_drawer_items">
         <item >Home</item>
         <item >Transaction</item>        <item >Monthly Spending</item>
-        <item >Monthly Income</item>
+        <item >Monthly Income</item>	 <item> Monthly Cash Flow</item>
         <item >Account</item>
         <item >Logout</item>
     </string-array>
