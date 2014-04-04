@@ -186,12 +186,19 @@ public class UserHomepageActivity extends Activity {
                 startActivity(incomeIntent);
                 break;
             case 4:
+                Intent cashFlowIntent = new Intent(this, ReportCategoryActivity.class);
+                cashFlowIntent.putExtra("userid", user.getUserID());
+                Log.i(MainActivity.LOGTAG, "Pass in userid");
+                cashFlowIntent.putExtra("reportType", "cashFlow");
+                startActivity(cashFlowIntent);
+                break;
+            case 5:
                 Intent intentAcc = new Intent(this, AccountPageActivity.class);
                 intentAcc.putExtra("userid", user.getUserID());
                 Log.i(MainActivity.LOGTAG, "Pass in userid");
                 startActivity(intentAcc);
                 break;
-            case 5:
+            case 6:
                 Intent intentLogin = new Intent(this, LoginActivity.class);
                 startActivity(intentLogin);
                 break;

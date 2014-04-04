@@ -1,12 +1,14 @@
 package fiveminions.financialreportmvpversion;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import database.FinancialReportGenerator;
 
 import model.AbstractReport;
+import model.CashFlowReport;
 import model.IncomeReport;
 import model.SpendingReport;
 import presenters.ReportPresenter;
@@ -36,6 +38,7 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
     private String reportType;
     private AbstractReport spendingreport;
     private AbstractReport incomereport;
+    private AbstractReport cashFlowReport;
     private FinancialReportGenerator datasource;
     private Map<String, Double> category;
     private ArrayAdapter<String> adapter; // NOPMD by farongcheng on 4/3/14 12:30 AM
@@ -45,6 +48,7 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
     private List<String> yearList; // NOPMD by farongcheng on 4/3/14 12:33 AM
     private List<String> monthList; // NOPMD by farongcheng on 4/3/14 12:30 AM
     private DateList dl; // NOPMD by farongcheng on 4/3/14 12:30 AM
+    private double totalCashFlow;
     private String year = "";
     private String month = "";
     private Bundle bundle;
@@ -56,12 +60,14 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
         presenter = new ReportPresenter(this);
         spendingreport = new SpendingReport();
         incomereport = new IncomeReport();
+        cashFlowReport = new CashFlowReport();
         dl = new DateList();
+    	category = new HashMap<String, Double>();
         // Get passing value
         bundle = getIntent().getExtras(); // NOPMD by farongcheng on 4/3/14 12:29 AM
         userid = bundle.getString("userid");
         reportType = bundle.getString("reportType");
-
+        totalCashFlow = 0;
         text = (TextView) findViewById(R.id.reportText);
         amountText = (TextView) findViewById(R.id.reportTotalAmountText);
 
@@ -104,19 +110,45 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
      * @param yearmonth the selected year and month
      */
     private void display(String yearmonth) {
+    	
+    	totalCashFlow = 0;
         Log.i(MainActivity.LOGTAG, "ssss" + year + month);
         cateList = new ArrayList<String>();
         if (reportType.equals("spending")) { // NOPMD by farongcheng on 4/3/14 12:29 AM
             category = datasource.getSpendingCategoryList(yearmonth, userid);
-        } else {
+        } else if (reportType.equals("income")){
             category = datasource.getIncomeCategoryList(yearmonth, userid);
+        } else if (reportType.equals("cashFlow")) {
+      
+        	double incomeFlow = 0;
+        	double spendFlow = 0;
+        	
+        	Map<String, Double> spend = datasource.getSpendingCategoryList(yearmonth, userid);
+        	for (double each : spend.values()) {
+        			spendFlow += each;
+        			totalCashFlow -= each;
+            }
+        	Map<String, Double> income  = datasource.getIncomeCategoryList(yearmonth, userid);
+        	for (double each : income.values()) {
+        		  incomeFlow += each;
+        		  totalCashFlow += each;
+          }
+        category.putAll(spend);
+        category.putAll(income);
+        cateList.add("Income : " + Double.toString(incomeFlow));
+        cateList.add("Expenses : " + Double.toString(spendFlow));
+        cateList.add("Flow : " + Double.toString(totalCashFlow));
         }
-        for (String key : category.keySet()) {
-            cateList.add(key + ": " + Double.toString(category.get(key)));
-        }
+        
         double totalamount = 0;
-        for (double each : category.values()) {
-            totalamount += each;
+        if(!reportType.equals("cashFlow")) {
+        	for (String key : category.keySet()) {
+        		cateList.add(key + ": " + Double.toString(category.get(key)));
+        	}
+        	
+        	for (double each : category.values()) {
+        		totalamount += each;
+        	}
         }
         
         adapter = new ArrayAdapter<String>(this, R.layout.list_view1, cateList);
@@ -125,9 +157,12 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
         if (reportType.equals("spending")) { // NOPMD by farongcheng on 4/3/14 12:33 AM
             amountText.setText(spendingreport.getTotalTile(totalamount));
             text.setText(spendingreport.getTitle(year, month));
-        } else {
+        } else if (reportType.equals("income")) {
             amountText.setText(incomereport.getTotalTile(totalamount));
             text.setText(incomereport.getTitle(year, month));
+        } else {
+        	 amountText.setText(cashFlowReport.getTotalTile(totalCashFlow));
+             text.setText(cashFlowReport.getTitle(year, month));
         }
         
     }
@@ -139,6 +174,7 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
         Intent intent = new Intent(this, ReportTransActivity.class);
         intent.putExtra("userid", userid);
         intent.putExtra("reportType", reportType);
+        intent.putExtra("totalCashFlow", totalCashFlow);
         intent.putExtra("year", year);
         intent.putExtra("month", month);
         startActivity(intent);

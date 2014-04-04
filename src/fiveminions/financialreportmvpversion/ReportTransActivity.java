@@ -3,6 +3,7 @@ package fiveminions.financialreportmvpversion;
 import java.util.List;
 
 import model.AbstractReport;
+import model.CashFlowReport;
 import model.Transaction;
 import model.IncomeReport;
 import model.SpendingReport;
@@ -31,10 +32,12 @@ public class ReportTransActivity extends ListActivity {
     private TextView amountText;
     private AbstractReport spendingreport;
     private AbstractReport incomereport;
+    private AbstractReport cashFlowreport;
     private String year;
     private String month;
     private String userid;
     private String reportType;
+    private double totalCashFlow;
     private Bundle bundle; // NOPMD by farongcheng on 4/3/14 12:33 AM
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by farongcheng on 4/3/14 12:34 AM
@@ -43,9 +46,11 @@ public class ReportTransActivity extends ListActivity {
         datasource = new FinancialReportGenerator(this);
         spendingreport = new SpendingReport();
         incomereport = new IncomeReport();
+        cashFlowreport = new CashFlowReport();
         bundle = getIntent().getExtras(); // NOPMD by farongcheng on 4/3/14 12:34 AM
         userid = bundle.getString("userid");
         reportType = bundle.getString("reportType");
+        totalCashFlow = bundle.getDouble("totalCashFlow");
         year = bundle.getString("year");
         month = bundle.getString("month");
         
@@ -65,6 +70,9 @@ public class ReportTransActivity extends ListActivity {
             transactionList = datasource.getSpendingList(year + month, userid);
         } else if (reportType.equals("income")) { // NOPMD by farongcheng on 4/3/14 12:33 AM
             transactionList = datasource.getIncomeList(year + month, userid);
+        } else {
+        	transactionList = datasource.getIncomeList(year + month, userid);
+        	transactionList.addAll(datasource.getSpendingList(year + month, userid));
         }
         ArrayAdapter<Transaction> adapter = new ArrayAdapter<Transaction>(this,
                 R.layout.list_view1, transactionList);
@@ -73,10 +81,14 @@ public class ReportTransActivity extends ListActivity {
         if (reportType.equals("spending")) { // NOPMD by farongcheng on 4/3/14 12:33 AM
             amountText.setText(spendingreport.getTotalTile(datasource.getTotal(transactionList)));
             text.setText(spendingreport.getTitle(year, month));
-        } else {
+        } else if (reportType.equals("income")){
             amountText.setText(incomereport.getTotalTile(datasource.getTotal(transactionList)));
             text.setText(incomereport.getTitle(year, month));
+        } else {
+        	amountText.setText("The cash flow is " + Double.toString(totalCashFlow));
+            text.setText(cashFlowreport.getTitle(year, month));
         }
+        
     }
 
     @Override
