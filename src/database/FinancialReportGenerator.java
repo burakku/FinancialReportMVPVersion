@@ -103,7 +103,8 @@ public class FinancialReportGenerator {
      */
     public Map<String, Double> getSpendingCategoryList(String date, String userid) {
         Map<String, Double> category = new HashMap<String, Double>();
-        String[] cols = new String[]{FinancialDBOpenHelper.COLUMN_TRCATEGORY, FinancialDBOpenHelper.COLUMN_TRAMOUNT};
+        String[] cols = new String[]{FinancialDBOpenHelper.COLUMN_TRCATEGORY, "SUM("
+        + FinancialDBOpenHelper.COLUMN_TRAMOUNT + ")"};
         Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, cols, 
                 FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Withdrawl' AND "
                  + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND "
@@ -113,7 +114,7 @@ public class FinancialReportGenerator {
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 category.put(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRCATEGORY)),
-                        cursor.getDouble(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
+                        cursor.getDouble(cursor.getColumnIndex("SUM(" + FinancialDBOpenHelper.COLUMN_TRAMOUNT + ")")));
             }
         }
         return category;
@@ -127,7 +128,8 @@ public class FinancialReportGenerator {
      */
     public Map<String, Double> getIncomeCategoryList(String date, String userid) {
         Map<String, Double> category = new HashMap<String, Double>();
-        String[] cols = new String[]{FinancialDBOpenHelper.COLUMN_TRCATEGORY, FinancialDBOpenHelper.COLUMN_TRAMOUNT};
+        String[] cols = new String[]{FinancialDBOpenHelper.COLUMN_TRCATEGORY, "SUM("
+        + FinancialDBOpenHelper.COLUMN_TRAMOUNT + ")"};
         Cursor cursor = database.query(FinancialDBOpenHelper.TABLE_TRANS, cols, 
                 FinancialDBOpenHelper.COLUMN_TRTYPE + " = " + "'Deposit' AND "
                  + "strftime('%Y%m'," + FinancialDBOpenHelper.COLUMN_TRDATE + ") = " + "'" + date + "' AND " 
@@ -137,7 +139,7 @@ public class FinancialReportGenerator {
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 category.put(cursor.getString(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRCATEGORY)),
-                        cursor.getDouble(cursor.getColumnIndex(FinancialDBOpenHelper.COLUMN_TRAMOUNT)));
+                        cursor.getDouble(cursor.getColumnIndex("SUM(" + FinancialDBOpenHelper.COLUMN_TRAMOUNT + ")")));
             }
         }
         return category;
