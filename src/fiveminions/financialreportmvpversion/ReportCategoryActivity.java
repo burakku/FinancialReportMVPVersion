@@ -153,11 +153,13 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
     
     @Override
     public void onResume() {
+    	super.onResume();
         Log.i(LOGTAG, "FinancialReportGenerator opened");
         datasource.open();
     }
     @Override
     public void onPause() {
+    	super.onPause();
         Log.i(LOGTAG, "FinancialReportGenerator closed");
         datasource.close();
     }
