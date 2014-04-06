@@ -1,6 +1,9 @@
 package fiveminions.financialreportmvpversion;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import database.FinancialUserSource;
 import model.User;
 import presenters.LoginPresenter;
@@ -33,6 +36,10 @@ public class LoginActivity extends Activity implements ILoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login); 
         loginPresenter = new LoginPresenter(this);
+        
+        AdView adView = (AdView)this.findViewById(R.id.adViewTest);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        adView.loadAd(adRequest);
         
         userId = (EditText) findViewById(R.id.usernameLog);
         password = (EditText) findViewById(R.id.passwordLog);    

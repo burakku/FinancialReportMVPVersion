@@ -156,6 +156,18 @@ public class User implements Parcelable { // NOPMD by wen on 4/2/14 1:14 AM
     public void setEmail(final String email) {
         this.email = email;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	boolean same = false;;
+    	User other = (User) o;
+
+	    if (userID.equals(other.getUserID()) && password.equals(other.getPassword())
+	    		&& name.equals(other.getName()) && email.equals(other.getEmail())) {
+	    	same = true;
+	    }
+	    return same;
+    }
 
     /**
      * toString method which return user name and ID.

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bkg_start"
-    android:orientation="vertical" >
-
+    android:background="@color/bkg_start" >
 
     <EditText
         android:id="@+id/usernameLog"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="Username"
@@ -25,8 +24,9 @@
         android:id="@+id/passwordLog"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@id/usernameLog"
         android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -38,7 +38,8 @@
         android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/passwordLog"
         android:layout_marginTop="10dp"
         android:text="@string/login_text"
         android:textColor="@color/user_text"
@@ -48,8 +49,9 @@
         android:id="@+id/loginbutton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:layout_below="@id/loginText"
         android:background="@drawable/button_bk"
         android:onClick="onLoginCheckButtonClick"
         android:text="@string/login_button"
@@ -62,7 +64,8 @@
         android:id="@+id/bForgotpassword"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginbutton"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_bk"
         android:onClick="onForgotPasswordButtonClick"
@@ -72,4 +75,12 @@
         android:textStyle="bold"
         android:width="150dp" />
 
-</LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewTest"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-8351836798727044/5995435211" />
+
+</RelativeLayout>

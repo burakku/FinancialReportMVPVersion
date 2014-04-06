@@ -13,6 +13,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Clover" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name="fiveminions.financialreportmvpversion.MainActivity"
             android:label="@string/app_name"
@@ -176,12 +180,12 @@
             </intent-filter>
         </activity>
 
-        <uses-library android:name="android.test.runner" />
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
     </application>
 
-    <instrumentation
-        android:name="android.test.InstrumentationTestRunner"
-        android:label="JUnitTest.java"
-        android:targetPackage="fiveminions.financialreportmvpversion" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
