@@ -1,5 +1,6 @@
 package fiveminions.financialreportmvpversion;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +53,7 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
     private String year = "";
     private String month = "";
     private Bundle bundle;
+    private NumberFormat numForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by farongcheng on 4/3/14 12:29 AM
@@ -63,6 +65,7 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
         cashFlowReport = new CashFlowReport();
         dl = new DateList();
     	category = new HashMap<String, Double>();
+    	numForm = NumberFormat.getCurrencyInstance();
         // Get passing value
         bundle = getIntent().getExtras(); // NOPMD by farongcheng on 4/3/14 12:29 AM
         userid = bundle.getString("userid");
@@ -135,15 +138,15 @@ public class ReportCategoryActivity extends ListActivity implements // NOPMD by 
           }
         category.putAll(spend);
         category.putAll(income);
-        cateList.add("Income : " + Double.toString(incomeFlow));
-        cateList.add("Expenses : " + Double.toString(spendFlow));
-        cateList.add("Flow : " + Double.toString(totalCashFlow));
+        cateList.add("Income : " + numForm.format(incomeFlow));
+        cateList.add("Expenses : " + numForm.format(spendFlow));
+        cateList.add("Flow : " + numForm.format(totalCashFlow));
         }
         
         double totalamount = 0;
         if(!reportType.equals("cashFlow")) {
         	for (String key : category.keySet()) {
-        		cateList.add(key + ": " + Double.toString(category.get(key)));
+        		cateList.add(key + ": " + numForm.format(category.get(key)));
         	}
         	
         	for (double each : category.values()) {

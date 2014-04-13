@@ -1,6 +1,8 @@
 package fiveminions.financialreportmvpversion;
 
 
+import java.text.NumberFormat;
+
 import database.FinancialTransactionSource;
 import model.Transaction;
 import model.MyDate;
@@ -81,12 +83,13 @@ public class TransactionDetailActivity extends Activity {
      * set up all text fields.
      */
     private void display() {
+    	NumberFormat numForm = NumberFormat.getCurrencyInstance();
         tranBkname.setText(tran.getBkDisName());
         tranName.setText(tran.getName());
         tranType.setText(tran.getType());
         tranStatus.setText(tran.getStatus());
         tranDate.setText(date.toString());
-        tranAmount.setText(Double.toString(tran.getAmount()));
+        tranAmount.setText(numForm.format(tran.getAmount()));
         tranCategory.setText(tran.getCategory());
     }
 

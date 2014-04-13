@@ -199,7 +199,7 @@ public class UserHomepageActivity extends Activity {
                 startActivity(intentAcc);
                 break;
             case 6:
-                Intent intentLogin = new Intent(this, LoginActivity.class);
+                Intent intentLogin = new Intent(this, MainActivity.class);
                 startActivity(intentLogin);
                 break;
      

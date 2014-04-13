@@ -1,5 +1,6 @@
 package model;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -271,8 +272,9 @@ public class Transaction implements Parcelable {
      */
     @Override
     public String toString() {
+    	NumberFormat numForm = NumberFormat.getCurrencyInstance();
         return this.bkDisName + " : " + this.name
-                + " : $" + this.amount + " ( " + this.date + ")";
+                + " : " + numForm.format(this.amount) + " ( " + this.date + ")";
     }
     /**
      * describeContents method which returns content.

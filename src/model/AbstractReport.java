@@ -2,6 +2,7 @@ package model;
 
 import android.annotation.SuppressLint;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,7 +52,8 @@ public abstract class AbstractReport {
      * @return the total title of the report in string
      */
     public String getTotalTile(final double total) {
-        return "The total is $" + total;
+    	NumberFormat numForm = NumberFormat.getCurrencyInstance();
+        return "The total is " + numForm.format(total);
     }
     
     /**

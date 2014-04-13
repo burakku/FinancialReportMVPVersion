@@ -1,4 +1,6 @@
 package model;
+import java.text.NumberFormat;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -170,8 +172,9 @@ public class BankAccount implements Parcelable {
      */
     @Override
     public String toString() {
+    	NumberFormat numForm = NumberFormat.getCurrencyInstance();
         String result;
-        result = this.name + " : $" + this.balance;
+        result = this.name + " : " + numForm.format(this.balance);
         return result;
     }
     
