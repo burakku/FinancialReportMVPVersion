@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.AbstractReport;
+import model.MyDate;
 import model.SpendingReport;
 import model.Transaction;
 import model.User;
@@ -125,10 +126,14 @@ public class HomeFragment extends Fragment {
 
     private void setBarGraph() {
     	double[] month = new double[5];
+    	ArrayList<String> barText = new ArrayList<String>();
+    	MyDate myDate = new MyDate();
     	LinkedList<String> dateList = spendingReport.getRecentYearMonth();
     	for (int i = 0; i < 5; i++) {
     		month[i] = 0;
     		String date = dateList.get(i);
+    		myDate.setMonth(Integer.parseInt(date.substring(4)));
+    		barText.add(myDate.getFormatMonth());
     		spendingList = datasource.getSpendingList(date, user.getUserID());
     		for (Transaction t : spendingList) {
     			month[i] = month[i] + t.getAmount();
@@ -136,25 +141,30 @@ public class HomeFragment extends Fragment {
     	}
     	ArrayList<Bar> points = new ArrayList<Bar>();
     	Bar d = new Bar();
-    	d.setColor(Color.parseColor("#99CC00"));
-    	d.setName("Test1");
+    	d.setColor(Color.parseColor("#FF0000"));
+    	d.setName(barText.get(0));
     	d.setValue((float) month[0]);
     	Bar d2 = new Bar();
-    	d2.setColor(Color.parseColor("#FFBB33"));
-    	d2.setName("Test2");
+    	d2.setColor(Color.parseColor("#FF0000"));
+    	d2.setName(barText.get(1));
     	d2.setValue((float) month[1]);
     	Bar d3 = new Bar();
-    	d3.setColor(Color.parseColor("#DB7093"));
-    	d3.setName("Test3");
+    	d3.setColor(Color.parseColor("#FF0000"));
+    	d3.setName(barText.get(2));
     	d3.setValue((float) month[2]);
     	Bar d4 = new Bar();
-    	d4.setColor(Color.parseColor("#DB7093"));
-    	d4.setName("Test4");
+    	d4.setColor(Color.parseColor("#FF0000"));
+    	d4.setName(barText.get(3));
     	d4.setValue((float) month[3]);
+    	Bar d5 = new Bar();
+    	d5.setColor(Color.parseColor("#FF0000"));
+    	d5.setName(barText.get(4));
+    	d5.setValue((float) month[3]);
     	points.add(d);
     	points.add(d2);
     	points.add(d3);
     	points.add(d4);
+    	points.add(d5);
 
     	BarGraph g = (BarGraph) getView().findViewById(R.id.barGraph1);
     	g.setBars(points);
