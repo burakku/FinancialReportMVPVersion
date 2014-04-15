@@ -2,31 +2,158 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/bkg" >
+    android:background="@color/bkg"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:textSize="28dp"
-        android:textColor="@color/user_text_reg"
-        android:text="Clover Overview" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:text="Monthly Spending" />
-    
-    <views.PieGraph
-        android:id="@+id/pieGraph"
-        android:layout_width="wrap_content"
-        android:layout_height="182dp" />
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="Clover Overview"
+                android:textColor="@color/user_text_reg"
+                android:textSize="28dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Current Month Spending"
+                android:textSize="18dp" />
+
+            <views.PieGraph
+                android:id="@+id/pieGraph"
+                android:layout_width="wrap_content"
+                android:layout_height="182dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView2" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_below="@id/pieGraph"
+                android:background="@color/food"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/foodText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pieGraph"
+                android:layout_toRightOf="@id/button1"
+                android:layout_marginLeft="10dp"
+                android:text="Food" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_alignLeft="@id/button1"
+                android:layout_below="@id/button1"
+                android:layout_marginTop="5dp"
+                android:background="@color/rent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/rentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/button2"
+                android:layout_alignLeft="@id/foodText"
+                android:text="Rent" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_alignLeft="@id/button1"
+                android:layout_below="@id/button2"
+                android:layout_marginTop="5dp"
+                android:background="@color/entertainment"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/entertainmentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/button3"
+                android:layout_alignLeft="@id/foodText"
+                android:text="Entertainment" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_alignLeft="@id/button1"
+                android:layout_below="@id/button3"
+                android:layout_marginTop="5dp"
+                android:background="@color/shopping"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/shoppingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/button4"
+                android:layout_alignLeft="@id/foodText"
+                android:text="Shopping" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_alignLeft="@id/button1"
+                android:layout_below="@id/button4"
+                android:layout_marginTop="5dp"
+                android:background="@color/other"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/otherText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/button5"
+                android:layout_alignLeft="@id/foodText"
+                android:text="Other" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_alignLeft="@id/textView2"
+                android:layout_below="@+id/otherText"
+                android:text="Monthly Spending"
+                android:textSize="18dp" />
+
+            <views.BarGraph
+                android:id="@+id/barGraph1"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/textView3" />
+        </RelativeLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -53,40 +53,7 @@ public class UserHomepageActivity extends Activity {
         Bundle b = getIntent().getExtras(); // NOPMD by wen on 4/2/14 1:35 AM
         user = b.getParcelable("model.User");
         
-        mTitle = mDrawerTitle = getTitle();
-        
-        // load slide menu items
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // NOPMD by wen on 4/2/14 1:36 AM
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-        
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, navMenuTitles));
-        
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
- 
-        // enabling action bar app icon and behaving it as toggle button
-        getActionBar().setDisplayHomeAsUpEnabled(true); // NOPMD by wen on 4/2/14 1:33 AM
-        getActionBar().setHomeButtonEnabled(true); // NOPMD by wen on 4/2/14 1:35 AM
-        
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, //nav menu toggle icon
-                R.string.app_name, // nav drawer open - description for accessibility
-                R.string.app_name // nav drawer close - description for accessibility
-        ) {
-            public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle); // NOPMD by wen on 4/2/14 1:35 AM
-                // calling onPrepareOptionsMenu() to show action bar icons
-                invalidateOptionsMenu();
-            }
- 
-            public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(mDrawerTitle); // NOPMD by wen on 4/2/14 1:35 AM
-                // calling onPrepareOptionsMenu() to hide action bar icons
-                invalidateOptionsMenu();
-            }
-        };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        setDrawerMenu();
  
         if (savedInstanceState == null) {
             // on first time display view for first nav item
@@ -132,6 +99,46 @@ public class UserHomepageActivity extends Activity {
     public void setTitle(CharSequence title) {
         mTitle = title;
         getActionBar().setTitle(mTitle); // NOPMD by wen on 4/2/14 1:35 AM
+    }
+    
+    /**
+     * setup the drawer menu
+     */
+    public void setDrawerMenu() {
+    	mTitle = mDrawerTitle = getTitle();
+        
+        // load slide menu items
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // NOPMD by wen on 4/2/14 1:36 AM
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+        
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, navMenuTitles));
+        
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+ 
+        // enabling action bar app icon and behaving it as toggle button
+        getActionBar().setDisplayHomeAsUpEnabled(true); // NOPMD by wen on 4/2/14 1:33 AM
+        getActionBar().setHomeButtonEnabled(true); // NOPMD by wen on 4/2/14 1:35 AM
+        
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.drawable.ic_drawer, //nav menu toggle icon
+                R.string.app_name, // nav drawer open - description for accessibility
+                R.string.app_name // nav drawer close - description for accessibility
+        ) {
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle(mTitle); // NOPMD by wen on 4/2/14 1:35 AM
+                // calling onPrepareOptionsMenu() to show action bar icons
+                invalidateOptionsMenu();
+            }
+ 
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle(mDrawerTitle); // NOPMD by wen on 4/2/14 1:35 AM
+                // calling onPrepareOptionsMenu() to hide action bar icons
+                invalidateOptionsMenu();
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
     
     /**

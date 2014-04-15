@@ -5,7 +5,9 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * This class holds the information of the report and
@@ -44,6 +46,24 @@ public abstract class AbstractReport {
         date = new Date();
         return dataFormat.format(date);
     }
+    
+    @SuppressLint("SimpleDateFormat")
+	public LinkedList<String> getRecentYearMonth() {
+    	final DateFormat dataFormat = new SimpleDateFormat("yyyyMM");
+    	LinkedList<String> dateList = new LinkedList<String>();
+    	date = new Date();
+    	Calendar calendar = Calendar.getInstance();
+    	calendar.setTime(date);
+    	calendar.add(Calendar.MONTH, 0);
+    	date = calendar.getTime();
+		dateList.add(dataFormat.format(date));
+    	for (int i = 0; i < 4; i++) {
+    		calendar.add(Calendar.MONTH, -1);
+    		date = calendar.getTime();
+    		dateList.add(dataFormat.format(date));
+    	}
+    	return dateList;
+    }
 
     /**
      * getTotalTitle method.
@@ -53,7 +73,7 @@ public abstract class AbstractReport {
      */
     public String getTotalTile(final double total) {
     	NumberFormat numForm = NumberFormat.getCurrencyInstance();
-        return "The total is " + numForm.format(total);
+    	return "The total is " + numForm.format(total);
     }
     
     /**

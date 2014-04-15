@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
+            android:textColor="@color/user_text_bright"
             android:ems="10"
             android:singleLine="true"
             android:gravity="left" >
@@ -67,6 +68,7 @@
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:ems="10"
+            android:textColor="@color/user_text_bright"
             android:singleLine="true"
             android:gravity="left" />
 
@@ -94,6 +96,7 @@
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:ems="10"
+            android:textColor="@color/user_text_bright"
             android:singleLine="true"
             android:gravity="left"
             android:inputType="numberDecimal" />
@@ -122,6 +125,7 @@
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:ems="10"
+            android:textColor="@color/user_text_bright"
             android:singleLine="true"
             android:gravity="left"
             android:inputType="numberDecimal" />

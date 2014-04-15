@@ -29,6 +29,7 @@ public class LoginActivity extends Activity implements ILoginView {
     private EditText userId, password;
     private TextView resultTxt;
     private FinancialUserSource datasource;
+    private AdView adView;
     
     
     @Override
@@ -37,7 +38,7 @@ public class LoginActivity extends Activity implements ILoginView {
         setContentView(R.layout.login); 
         loginPresenter = new LoginPresenter(this);
         
-        AdView adView = (AdView)this.findViewById(R.id.adViewTest);
+        adView = (AdView)this.findViewById(R.id.adViewTest);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         adView.loadAd(adRequest);
         
@@ -53,12 +54,18 @@ public class LoginActivity extends Activity implements ILoginView {
     
     @Override
     protected void onResume() {
+    	if (adView != null) {
+    		adView.resume();
+    	}
         super.onResume();
         datasource.open();
     }
     
     @Override
     protected void onPause() {
+    	if (adView !=null) {
+    		adView.pause();
+    	}
         super.onPause();
         datasource.close(); // NOPMD by wen on 4/2/14 1:52 AM
     }
