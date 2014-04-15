@@ -159,7 +159,7 @@ public class HomeFragment extends Fragment {
     	Bar d5 = new Bar();
     	d5.setColor(Color.parseColor("#FF0000"));
     	d5.setName(barText.get(4));
-    	d5.setValue((float) month[3]);
+    	d5.setValue((float) month[4]);
     	points.add(d);
     	points.add(d2);
     	points.add(d3);
