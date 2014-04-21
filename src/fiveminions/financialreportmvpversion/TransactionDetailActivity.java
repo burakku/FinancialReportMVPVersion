@@ -3,6 +3,12 @@ package fiveminions.financialreportmvpversion;
 
 import java.text.NumberFormat;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import database.FinancialTransactionSource;
 import model.Transaction;
 import model.MyDate;
@@ -11,6 +17,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -23,7 +30,7 @@ import android.widget.TextView;
  * @version 1.0
  * @author Team 23
  */
-public class TransactionDetailActivity extends Activity {
+public class TransactionDetailActivity extends FragmentActivity {
     
     private TextView tranBkname;
     private TextView tranName;
@@ -35,6 +42,8 @@ public class TransactionDetailActivity extends Activity {
     private Transaction tran;
     private MyDate date;
     private FinancialTransactionSource datasource;
+    private GoogleMap map;
+    static final LatLng ATL = new LatLng(33.776328, -84.396013);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { // NOPMD by wen on 4/2/14 1:43 AM
@@ -56,6 +65,16 @@ public class TransactionDetailActivity extends Activity {
         
         datasource = new FinancialTransactionSource(this);
         datasource.open();
+        
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+                .getMap();
+        if (map!=null){
+        	map.setMyLocationEnabled(true);
+        	map.moveCamera(CameraUpdateFactory.newLatLngZoom(ATL, 13));
+        	map.addMarker(new MarkerOptions()
+            .title("Transaction Location")
+            .position(ATL));
+        }
     }
     /**
      * set font method.

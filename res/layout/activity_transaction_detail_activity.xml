@@ -6,174 +6,194 @@
     android:orientation="vertical"
     tools:context=".TransactionDetailActivity" >
 
-    <TextView
-        android:id="@+id/transD_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Transaction Detail"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/user_text_reg" />
-
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="30dp"
-        android:weightSum="10" >
+        android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/transD_textView1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Name"
-            android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tran_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="tran_name" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/transD_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Transaction Detail"
+                android:layout_gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/user_text_reg" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="12dp"
-        android:weightSum="10" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="30dp"
+                android:weightSum="10" >
 
-        <TextView
-            android:id="@+id/transD_textView2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Date"
-            android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/transD_textView1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Name"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tran_date"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="tran_date" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tran_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="tran_name" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="12dp"
-        android:weightSum="10" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:weightSum="10" >
 
-        <TextView
-            android:id="@+id/transD_textView3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Amount"
-            android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/transD_textView2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Date"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tran_amount"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="tran_amount" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tran_date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="tran_date" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="12dp"
-        android:weightSum="10" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:weightSum="10" >
 
-        <TextView
-            android:id="@+id/transD_textView4"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Type"
-            android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/transD_textView3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Amount"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tran_type"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="tran_type" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tran_amount"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="tran_amount" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="12dp"
-        android:weightSum="10" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:weightSum="10" >
 
-        <TextView
-            android:id="@+id/transD_textView5"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Bank Name"
-            android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/transD_textView4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Type"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tran_bkname"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="bkname" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tran_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="tran_type" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="12dp"
-        android:weightSum="10" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:weightSum="10" >
 
-        <TextView
-            android:id="@+id/transD_textView6"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Status"
-            android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/transD_textView5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Bank Name"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tran_status"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="tran_status" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tran_bkname"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="bkname" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="12dp"
-        android:weightSum="10" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:weightSum="10" >
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:text="Category"
-            android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/transD_textView6"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Status"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tran_category"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="tran_category" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tran_status"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="tran_status" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:weightSum="10" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="Category"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tran_category"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="tran_category" />
+            </LinearLayout>
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="15dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
